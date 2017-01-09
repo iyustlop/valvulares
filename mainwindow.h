@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "initdb.h"
+
 #include <QMainWindow>
 
 namespace Ui {
@@ -14,9 +16,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    initDB valvularesDB;
 
 private:
     Ui::MainWindow *ui;
+    void showError(const QSqlError &err);
 };
 
 #endif // MAINWINDOW_H
