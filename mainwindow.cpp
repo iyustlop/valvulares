@@ -34,37 +34,67 @@ void MainWindow::showError(const QSqlError &err)
 
 void MainWindow::on_pushButtonCreate_clicked()
 {
-Patient crearPaciente;
+    Patient crearPaciente;
 
-if (ui->lineEditNumeroHistoria->text().isEmpty()){
-    QMessageBox::critical(this, "Unable to insert in Database",
+    if (ui->lineEditNumeroHistoria->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
                 "Error insert in Numero Historia ");
-}
-else{
-    crearPaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
-}
+        return;
+    }
+    else{
+        crearPaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+    }
 
-if (ui->lineEditNombre->text().isEmpty()){
-    QMessageBox::critical(this, "Unable to insert in Database",
+    if (ui->lineEditNombre->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
                 "Error insert in Nombre ");
-}
-else{
-    crearPaciente.setNombre(ui->lineEditNombre->text());
-}
+        return;
+    }
+    else{
+        crearPaciente.setNombre(ui->lineEditNombre->text());
+    }
 
-if (ui->lineEditApellidos->text().isEmpty()){
-    QMessageBox::critical(this, "Unable to insert in Database",
+    if (ui->lineEditApellidos->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
                 "Error insert in Apellidos ");
-}
-else{
-    crearPaciente.setApellidos(ui->lineEditApellidos->text());
-}
+        return;
+    }
+    else{
+        crearPaciente.setApellidos(ui->lineEditApellidos->text());
+    }
 
-QSqlError err = valvularesDB.insertDB(crearPaciente);
-if (err.type() != QSqlError::NoError) {
-    showError(err);
-    return;
-}
+    if (ui->comboBox->currentIndex() == 0){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Etiologia ");
+        return;
+    }
+    else{
+        crearPaciente.setApellidos(ui->comboBox->currentText());
+    }
+
+    if (ui->comboBoxCausa->currentIndex() == -1){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Causa ");
+        return;
+    }
+    else{
+        crearPaciente.setApellidos(ui->comboBoxCausa->currentText());
+    }
+
+    if (ui->comboBoxPatologiaValvular->currentIndex() == -1){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Apellidos ");
+        return;
+    }
+    else{
+        crearPaciente.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
+    }
+
+    QSqlError err = valvularesDB.insertDB(crearPaciente);
+    if (err.type() != QSqlError::NoError) {
+        showError(err);
+        return;
+    }
 }
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
