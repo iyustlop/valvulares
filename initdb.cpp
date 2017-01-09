@@ -19,3 +19,18 @@ QSqlError initDB::startDb(){
 
     return QSqlError();
 }
+
+QSqlError initDB::insertDB(Patient patient){
+    QSqlQuery query;
+
+    if (!query.prepare("insert into person values(:id, :name, :surname)"))
+        return query.lastError();
+    query.bindValue(":id",patient.getNumeroHistoria());
+    query.bindValue(":name",patient.getNombre());
+    query.bindValue(":surname",patient.getApellidos());
+
+    if (!query.exec())
+        return query.lastError();
+
+    return QSqlError();
+}

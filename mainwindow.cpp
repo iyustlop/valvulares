@@ -31,3 +31,18 @@ void MainWindow::showError(const QSqlError &err)
     QMessageBox::critical(this, "Unable to initialize Database",
                 "Error initializing database: " + err.text());
 }
+
+void MainWindow::on_pushButtonCreate_clicked()
+{
+Patient crearPaciente;
+
+crearPaciente.setNumeroHistoria("1");
+crearPaciente.setNombre("Ignacio");
+crearPaciente.setApellidos("Yuste");
+
+QSqlError err = valvularesDB.insertDB(crearPaciente);
+if (err.type() != QSqlError::NoError) {
+    showError(err);
+    return;
+}
+}

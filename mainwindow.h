@@ -18,6 +18,9 @@ public:
     ~MainWindow();
     initDB valvularesDB;
 
+private slots:
+    void on_pushButtonCreate_clicked();
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
