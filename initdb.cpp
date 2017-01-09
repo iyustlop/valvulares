@@ -13,9 +13,12 @@ QSqlError initDB::startDb(){
         return db.lastError();
 
     QSqlQuery query;
-    if(!query.exec("create table person (id int primary key, "
+    /*if(!query.exec("create table person (id int primary key, "
                    "firstname varchar(20), lastname varchar(20))"))
-            return query.lastError();
+            return query.lastError();*/
+    // Avoid error trying to create the table.
+    query.exec("create table person (id int primary key, "
+                       "firstname varchar(20), lastname varchar(20))");
 
     return QSqlError();
 }

@@ -36,9 +36,16 @@ void MainWindow::on_pushButtonCreate_clicked()
 {
 Patient crearPaciente;
 
-crearPaciente.setNumeroHistoria("1");
-crearPaciente.setNombre("Ignacio");
-crearPaciente.setApellidos("Yuste");
+if (ui->lineEditNumeroHistoria->text().isEmpty()){
+    QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Numero Historia ");
+}
+else{
+    crearPaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+}
+
+crearPaciente.setNombre(ui->lineEditNombre->text());
+crearPaciente.setApellidos(ui->lineEditApellidos->text());
 
 QSqlError err = valvularesDB.insertDB(crearPaciente);
 if (err.type() != QSqlError::NoError) {
