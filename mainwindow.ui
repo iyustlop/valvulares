@@ -6,24 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1000</width>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Valvulares DB</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>361</width>
-      <height>84</height>
+      <x>0</x>
+      <y>5</y>
+      <width>601</width>
+      <height>124</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <property name="leftMargin">
+      <number>5</number>
+     </property>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -68,6 +74,93 @@
          </item>
         </layout>
        </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="labelSexo">
+           <property name="text">
+            <string>Sexo</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonHombre">
+           <property name="text">
+            <string>Hombre</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButtonMujer">
+           <property name="text">
+            <string>Mujer</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Etiologia</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Primaria</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Secundaria</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Causa</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_2"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Patología valvular</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_3"/>
+         </item>
+        </layout>
+       </item>
       </layout>
      </item>
      <item>
@@ -82,7 +175,7 @@
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Update</string>
+          <string>Read</string>
          </property>
         </widget>
        </item>
@@ -96,7 +189,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>1000</width>
      <height>17</height>
     </rect>
    </property>
