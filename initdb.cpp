@@ -1,5 +1,7 @@
 #include "initdb.h"
 
+#include <QMessageBox>
+
 initDB::initDB()
 {
 
@@ -45,13 +47,12 @@ Patient initDB::readDB(QString queryId){
     QSqlQuery query;
     Patient readPatient;
 
-   /* if (!query.prepare("select * from person where id = :id"))
-        return query.lastError();
+    query.prepare("select * from person where id = :id");
 
     query.bindValue(":id",queryId);
 
-    if (!query.exec())
-        return query.lastError();*/
+    if(!query.exec())
+      //  QMessageBox::critical(this, "Unable to load database", "Problem select in the data base");
 
     return readPatient;
 }

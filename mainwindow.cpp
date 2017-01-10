@@ -138,6 +138,8 @@ void MainWindow::on_pushButton_clicked()
     Patient insertarPaciente;
     QString queryId;
 
+    queryId = ui->lineEditNumeroHistoria->text();
 
+    insertarPaciente = valvularesDB.readDB(queryId);
 
 }
