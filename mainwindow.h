@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButtonUpdate_clicked();
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);

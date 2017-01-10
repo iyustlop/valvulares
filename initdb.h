@@ -12,6 +12,7 @@ public:
     QSqlError startDb();
     QSqlError insertDB(Patient patient);
     Patient readDB(QString queryId);
+    QSqlError updateDB(Patient patient);
 };
 
 #endif // INITDB_H

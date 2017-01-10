@@ -65,3 +65,23 @@ Patient initDB::readDB(QString queryId){
 
     return readPatient;
 }
+
+QSqlError initDB::updateDB(Patient patient){
+    QSqlQuery query;
+
+    if (!query.prepare("update person set firstname=:name, lastname=:lastname, genre=:genre, etiology=:etiology, "
+                       "cause=:cause, valvularPatology=:valvularPatology"))
+        return query.lastError();
+
+    query.bindValue(":name",patient.getNombre());
+    query.bindValue(":lastname",patient.getApellidos());
+    query.bindValue(":genre",patient.getGenero());
+    query.bindValue(":etiology",patient.getEtiologia());
+    query.bindValue(":cause",patient.getCausa());
+    query.bindValue(":valvularPatology",patient.getPatlogiaValvular());
+
+    if (!query.exec())
+        return query.lastError();
+
+    return QSqlError();
+}

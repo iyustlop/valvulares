@@ -156,3 +156,81 @@ void MainWindow::on_pushButton_clicked()
     ui->comboBoxPatologiaValvular->setCurrentText(insertarPaciente.getPatlogiaValvular());
 
 }
+
+void MainWindow::on_pushButtonUpdate_clicked()
+{
+    Patient updatePaciente;
+
+    if (ui->lineEditNumeroHistoria->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Numero Historia ");
+        return;
+    }
+    else{
+        updatePaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+    }
+
+    if (ui->lineEditNombre->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Nombre ");
+        return;
+    }
+    else{
+        updatePaciente.setNombre(ui->lineEditNombre->text());
+    }
+
+    if (ui->lineEditApellidos->text().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Apellidos ");
+        return;
+    }
+    else{
+        updatePaciente.setApellidos(ui->lineEditApellidos->text());
+    }
+
+    if (ui->radioButtonHombre->isChecked()){
+        updatePaciente.setGenero("Hombre");
+    }
+    else{
+        updatePaciente.setGenero("Mujer");
+    }
+    if (ui->comboBox->currentIndex() == 0){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Etiologia ");
+        return;
+    }
+    else{
+        updatePaciente.setEtiologia(ui->comboBox->currentText());
+    }
+
+    if (ui->comboBoxCausa->currentIndex() == -1){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Causa ");
+        return;
+    }
+    else{
+        updatePaciente.setCausa(ui->comboBoxCausa->currentText());
+    }
+
+    if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Apellidos ");
+        return;
+    }
+    else{
+        updatePaciente.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
+    }
+
+    QSqlError err = valvularesDB.updateDB(updatePaciente);
+    if (err.type() != QSqlError::NoError) {
+        showError(err);
+        return;
+    }
+
+    ui->lineEditNombre->clear();
+    ui->lineEditApellidos->clear();
+    ui->lineEditNumeroHistoria->clear();
+    ui->comboBox->setCurrentIndex(0);
+    ui->comboBoxCausa->clear();
+    ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+}
