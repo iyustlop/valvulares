@@ -65,7 +65,8 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     if (ui->radioButtonHombre->isChecked()){
         crearPaciente.setGenero("Hombre");
-    if (ui->radioButtonMujer->isChecked())
+    }
+    else{
         crearPaciente.setGenero("Mujer");
     }
     if (ui->comboBox->currentIndex() == 0){
@@ -100,6 +101,13 @@ void MainWindow::on_pushButtonCreate_clicked()
         showError(err);
         return;
     }
+
+    ui->lineEditNombre->clear();
+    ui->lineEditApellidos->clear();
+    ui->lineEditNumeroHistoria->clear();
+    ui->comboBox->setCurrentIndex(0);
+    ui->comboBoxCausa->clear();
+    ui->comboBoxPatologiaValvular->setCurrentIndex(0);
 }
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
