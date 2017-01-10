@@ -17,8 +17,7 @@ QSqlError initDB::startDb(){
                    "firstname varchar(20), lastname varchar(20))"))
             return query.lastError();*/
     // Avoid error trying to create the table.
-    query.exec("create table person (id int primary key, "
-                       "firstname varchar(20), lastname varchar(20))");
+    query.exec("create table person (id int primary key, firstname varchar(20), lastname varchar(20), genre varchar(20), etiology varchar(20), cause varchar(20), valvularPatology varchar(20))");
 
     return QSqlError();
 }
@@ -26,11 +25,15 @@ QSqlError initDB::startDb(){
 QSqlError initDB::insertDB(Patient patient){
     QSqlQuery query;
 
-    if (!query.prepare("insert into person values(:id, :name, :surname)"))
+    if (!query.prepare("insert into person values(:id, :name, :lastname)"))
         return query.lastError();
     query.bindValue(":id",patient.getNumeroHistoria());
     query.bindValue(":name",patient.getNombre());
-    query.bindValue(":surname",patient.getApellidos());
+    query.bindValue(":lastname",patient.getApellidos());
+    query.bindValue(":genre",patient.getApellidos());
+    query.bindValue(":etiology",patient.getApellidos());
+    query.bindValue(":cause",patient.getApellidos());
+    query.bindValue(":valvularPatology",patient.getApellidos());
 
     if (!query.exec())
         return query.lastError();

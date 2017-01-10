@@ -63,6 +63,11 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearPaciente.setApellidos(ui->lineEditApellidos->text());
     }
 
+    if (ui->radioButtonHombre){
+        crearPaciente.setGenero("Hombre");
+    if (ui->radioButtonMujer)
+        crearPaciente.setGenero("Mujer");
+    }
     if (ui->comboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
                 "Error insert in Etiologia ");
@@ -117,5 +122,4 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
             ui->comboBoxCausa->addItem("Dilatacion Anillo");
             ui->comboBoxCausa->addItem("Dilatacion Ao");
         }
-
 }

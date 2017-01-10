@@ -28,6 +28,14 @@ QString Patient::getApellidos(){
     return apellidos;
 }
 
+void Patient::setGenero(QString genre){
+    genero = genre;
+}
+
+QString Patient::getGenero(){
+    return genero;
+}
+
 void Patient::setEtiologia(QString etiology){
     etiologia = etiology;
 }

@@ -13,6 +13,8 @@ public:
     QString getNombre();
     void setApellidos(QString surname);
     QString getApellidos();
+    void setGenero(QString genre);
+    QString getGenero();
     void setEtiologia(QString etiology);
     QString getEtiologia();
     void setCausa(QString cause);
@@ -23,6 +25,7 @@ private:
     QString numeroHistoria;
     QString nombre;
     QString apellidos;
+    QString genero;
     QString etiologia;
     QString causa;
     QString patologiaValvular;
