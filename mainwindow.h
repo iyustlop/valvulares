@@ -23,6 +23,8 @@ private slots:
 
     void on_comboBox_activated(const QString &arg1);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);

@@ -40,3 +40,18 @@ QSqlError initDB::insertDB(Patient patient){
 
     return QSqlError();
 }
+
+Patient initDB::readDB(QString queryId){
+    QSqlQuery query;
+    Patient readPatient;
+
+   /* if (!query.prepare("select * from person where id = :id"))
+        return query.lastError();
+
+    query.bindValue(":id",queryId);
+
+    if (!query.exec())
+        return query.lastError();*/
+
+    return readPatient;
+}

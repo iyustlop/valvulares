@@ -108,26 +108,36 @@ void MainWindow::on_pushButtonCreate_clicked()
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+
 }
 
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
-        if (arg1 == "Primaria") {
-            ui->comboBoxCausa->clear();
-            ui->comboBoxCausa->addItem("Reumática");
-            ui->comboBoxCausa->addItem("Degenerativa");
-            ui->comboBoxCausa->addItem("Mixomatosa");
-            ui->comboBoxCausa->addItem("Endocarditis");
-            ui->comboBoxCausa->addItem("Bicúspide");
-            ui->comboBoxCausa->addItem("Traumática");
-            ui->comboBoxCausa->addItem("Farmacos");
-            ui->comboBoxCausa->addItem("Radioterapia");
-        }
-        if (arg1 == "Secundaria"){
-            ui->comboBoxCausa->clear();
-            ui->comboBoxCausa->addItem("Dilatacion R. Ao");
-            ui->comboBoxCausa->addItem("Isquémico");
-            ui->comboBoxCausa->addItem("Dilatacion Anillo");
-            ui->comboBoxCausa->addItem("Dilatacion Ao");
-        }
+    if (arg1 == "Primaria") {
+        ui->comboBoxCausa->clear();
+        ui->comboBoxCausa->addItem("Reumática");
+        ui->comboBoxCausa->addItem("Degenerativa");
+        ui->comboBoxCausa->addItem("Mixomatosa");
+        ui->comboBoxCausa->addItem("Endocarditis");
+        ui->comboBoxCausa->addItem("Bicúspide");
+        ui->comboBoxCausa->addItem("Traumática");
+        ui->comboBoxCausa->addItem("Farmacos");
+        ui->comboBoxCausa->addItem("Radioterapia");
+    }
+    if (arg1 == "Secundaria"){
+        ui->comboBoxCausa->clear();
+        ui->comboBoxCausa->addItem("Dilatacion R. Ao");
+        ui->comboBoxCausa->addItem("Isquémico");
+        ui->comboBoxCausa->addItem("Dilatacion Anillo");
+        ui->comboBoxCausa->addItem("Dilatacion Ao");
+    }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    Patient insertarPaciente;
+    QString queryId;
+
+
+
 }
