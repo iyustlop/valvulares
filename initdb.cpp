@@ -25,15 +25,15 @@ QSqlError initDB::startDb(){
 QSqlError initDB::insertDB(Patient patient){
     QSqlQuery query;
 
-    if (!query.prepare("insert into person values(:id, :name, :lastname)"))
+    if (!query.prepare("insert into person values(:id, :name, :lastname, :genre, :etiology, :cause, :valvularPatology)"))
         return query.lastError();
     query.bindValue(":id",patient.getNumeroHistoria());
     query.bindValue(":name",patient.getNombre());
     query.bindValue(":lastname",patient.getApellidos());
-    query.bindValue(":genre",patient.getApellidos());
-    query.bindValue(":etiology",patient.getApellidos());
-    query.bindValue(":cause",patient.getApellidos());
-    query.bindValue(":valvularPatology",patient.getApellidos());
+    query.bindValue(":genre",patient.getGenero());
+    query.bindValue(":etiology",patient.getEtiologia());
+    query.bindValue(":cause",patient.getCausa());
+    query.bindValue(":valvularPatology",patient.getPatlogiaValvular());
 
     if (!query.exec())
         return query.lastError();

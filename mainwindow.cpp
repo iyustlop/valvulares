@@ -63,9 +63,9 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearPaciente.setApellidos(ui->lineEditApellidos->text());
     }
 
-    if (ui->radioButtonHombre){
+    if (ui->radioButtonHombre->isChecked()){
         crearPaciente.setGenero("Hombre");
-    if (ui->radioButtonMujer)
+    if (ui->radioButtonMujer->isChecked())
         crearPaciente.setGenero("Mujer");
     }
     if (ui->comboBox->currentIndex() == 0){
@@ -74,7 +74,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setApellidos(ui->comboBox->currentText());
+        crearPaciente.setEtiologia(ui->comboBox->currentText());
     }
 
     if (ui->comboBoxCausa->currentIndex() == -1){
@@ -83,10 +83,10 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setApellidos(ui->comboBoxCausa->currentText());
+        crearPaciente.setCausa(ui->comboBoxCausa->currentText());
     }
 
-    if (ui->comboBoxPatologiaValvular->currentIndex() == -1){
+    if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
                 "Error insert in Apellidos ");
         return;

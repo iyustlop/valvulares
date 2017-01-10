@@ -180,6 +180,56 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>EM</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>IM</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>IAO</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>EAO</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ET</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>IT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>EP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>IP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Disfunción Protésica</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
