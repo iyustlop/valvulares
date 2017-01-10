@@ -51,8 +51,17 @@ Patient initDB::readDB(QString queryId){
 
     query.bindValue(":id",queryId);
 
-    if(!query.exec())
-      //  QMessageBox::critical(this, "Unable to load database", "Problem select in the data base");
+    if(query.exec()){
+        if (query.next()){
+            readPatient.setNumeroHistoria(query.value(0).toString());
+            readPatient.setNombre(query.value(1).toString());
+            readPatient.setApellidos(query.value(2).toString());
+            readPatient.setGenero(query.value(3).toString());
+            readPatient.setEtiologia(query.value(4).toString());
+            readPatient.setCausa(query.value(5).toString());
+            readPatient.setPatologiaValvular(query.value(6).toString());
+        }
+    }
 
     return readPatient;
 }

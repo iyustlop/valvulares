@@ -142,4 +142,17 @@ void MainWindow::on_pushButton_clicked()
 
     insertarPaciente = valvularesDB.readDB(queryId);
 
+    ui->lineEditNombre->setText(insertarPaciente.getNombre());
+    ui->lineEditApellidos->setText(insertarPaciente.getApellidos());
+    if (insertarPaciente.getGenero() == "Hombre"){
+        ui->radioButtonHombre->setChecked(true);
+    }
+    else{
+        ui->radioButtonMujer->setChecked(true);
+    }
+    ui->comboBox->setCurrentText(insertarPaciente.getEtiologia());
+    on_comboBox_activated(insertarPaciente.getEtiologia());
+    ui->comboBoxCausa->setCurrentText(insertarPaciente.getCausa());
+    ui->comboBoxPatologiaValvular->setCurrentText(insertarPaciente.getPatlogiaValvular());
+
 }
