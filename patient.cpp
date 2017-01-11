@@ -59,3 +59,13 @@ void Patient::setPatologiaValvular(QString patology){
 QString Patient::getPatlogiaValvular(){
     return patologiaValvular;
 }
+
+QString Patient::getFechaNacimiento()
+{
+    return fechaNacimiento;
+}
+
+void Patient::setFechaNacimiento(QString birthdate)
+{
+    fechaNacimiento = birthdate;
+}

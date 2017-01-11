@@ -22,9 +22,14 @@ QSqlError initDB::startDb(){
                    "firstname varchar(20), lastname varchar(20))"))
             return query.lastError();*/
     // Avoid error trying to create the table.
-    query.exec("create table person (id int primary key, firstname varchar(20), lastname varchar(20), genre varchar(20), bbirthdate varchar(20)");
-    query.exec("create table etiologia (etiology varchar(20), cause varchar(20), valvularPatology varchar(20),mixedVpatology varchar(5),valvularPatologySecondary varchar(20))");
-    query.exec("create table disfuncionProtsica (causa varchar(20), protesis varchar(20), modelo varchar(20), numero varchar(20), fechaCirugia varchar(20))");
+    query.exec("create table person (id int primary key, name varchar(20), lastname varchar(20), "
+               "genre varchar(20), birthdate varchar(20)");
+    query.exec("create table etiologia (etiologyId int, etiology varchar(20), cause varchar(20), "
+               "valvularPatology varchar(20),mixedVpatology varchar(5),valvularPatologySecondary varchar(20),"
+               "FOREIGN KEY(etiologyId) REFERENCES person(id))");
+    query.exec("create table disfuncionProtsica (disfuncionId int, causa varchar(20), protesis varchar(20), "
+               "modelo varchar(20), numero varchar(20), fechaCirugia varchar(20),"
+               "FOREIGN KEY(disfuncionId) REFERENCES person(id))");
 
     return QSqlError();
 }
@@ -32,12 +37,17 @@ QSqlError initDB::startDb(){
 QSqlError initDB::insertDB(Patient patient){
     QSqlQuery query;
 
-    if (!query.prepare("insert into person values(:id, :name, :lastname, :genre, :etiology, :cause, :valvularPatology)"))
+    if (!query.prepare("insert into person values(:id, :name, :lastname, :genre, :birthdate)"))
         return query.lastError();
     query.bindValue(":id",patient.getNumeroHistoria());
     query.bindValue(":name",patient.getNombre());
     query.bindValue(":lastname",patient.getApellidos());
     query.bindValue(":genre",patient.getGenero());
+    query.bindValue(":birthdate",patient.getEtiologia());
+    if (!query.exec())
+        return query.lastError();
+
+    if (!query.prepare("insert into person values(:etiology, :cause, :valvularPatology)"))
     query.bindValue(":etiology",patient.getEtiologia());
     query.bindValue(":cause",patient.getCausa());
     query.bindValue(":valvularPatology",patient.getPatlogiaValvular());
