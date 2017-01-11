@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>973</width>
+    <width>983</width>
     <height>315</height>
    </rect>
   </property>
@@ -106,26 +106,36 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <widget class="QLabel" name="labelSexo">
           <property name="text">
            <string>Sexo</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="4" column="1">
          <widget class="QRadioButton" name="radioButtonHombre">
           <property name="text">
            <string>Hombre</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
+        <item row="5" column="1">
          <widget class="QRadioButton" name="radioButtonMujer">
           <property name="text">
            <string>Mujer</string>
           </property>
          </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="fechaDeNacimientoLabel">
+          <property name="text">
+           <string>Fecha de Nacimiento</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="fechaDeNacimientoLineEdit"/>
         </item>
        </layout>
       </item>
@@ -270,14 +280,14 @@
             </item>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="combinadaLabel">
             <property name="text">
              <string>Combinada</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="3" column="1">
            <widget class="QComboBox" name="combinadaComboBox">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -308,14 +318,7 @@
             </item>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="patologiaValvularCombinadaLabel">
-            <property name="text">
-             <string>Patologia Valvular </string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
+          <item row="4" column="1">
            <widget class="QComboBox" name="comboBoxPatologiaValvularCombinada">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -331,12 +334,32 @@
             </property>
            </widget>
           </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="patologiaValvularCombinadaLabel">
+            <property name="text">
+             <string>Patologia Valvular </string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item>
          <layout class="QFormLayout" name="formLayout_3">
           <item row="1" column="1">
-           <widget class="QComboBox" name="causaComboBox"/>
+           <widget class="QComboBox" name="causaComboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="causaLabel">
@@ -368,6 +391,75 @@
             </property>
            </widget>
           </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="modeloLabel">
+            <property name="text">
+             <string>Modelo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="modeloLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="nMeroLabel">
+            <property name="text">
+             <string>Número</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="nMeroLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="fechaCirugiaLabel">
+            <property name="text">
+             <string>Fecha Cirugia</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="fechaCirugiaLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -376,6 +468,18 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="1">
          <widget class="QPushButton" name="pushButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>Read</string>
           </property>
@@ -383,6 +487,18 @@
         </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="pushButtonCreate">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>Create</string>
           </property>
@@ -411,7 +527,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>400</width>
+            <width>215</width>
             <height>20</height>
            </size>
           </property>
@@ -419,6 +535,18 @@
         </item>
         <item row="2" column="1">
          <widget class="QPushButton" name="pushButtonUpdate">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>Update</string>
           </property>
@@ -435,7 +563,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>973</width>
+     <width>983</width>
      <height>17</height>
     </rect>
    </property>
