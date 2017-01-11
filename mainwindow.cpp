@@ -26,10 +26,59 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::showError(const QSqlError &err)
+void MainWindow::on_comboBox_activated(const QString &arg1)
 {
-    QMessageBox::critical(this, "Unable to initialize Database",
-                "Error initializing database: " + err.text());
+    if (arg1 == "Primaria") {
+        ui->comboBoxCausa->clear();
+        ui->comboBoxCausa->addItem("Reumática");
+        ui->comboBoxCausa->addItem("Degenerativa");
+        ui->comboBoxCausa->addItem("Mixomatosa");
+        ui->comboBoxCausa->addItem("Endocarditis");
+        ui->comboBoxCausa->addItem("Bicúspide");
+        ui->comboBoxCausa->addItem("Traumática");
+        ui->comboBoxCausa->addItem("Farmacos");
+        ui->comboBoxCausa->addItem("Radioterapia");
+    }
+    if (arg1 == "Secundaria"){
+        ui->comboBoxCausa->clear();
+        ui->comboBoxCausa->addItem("Dilatacion R. Ao");
+        ui->comboBoxCausa->addItem("Isquémico");
+        ui->comboBoxCausa->addItem("Dilatacion Anillo");
+        ui->comboBoxCausa->addItem("Dilatacion Ao");
+    }
+}
+
+void MainWindow::on_comboBoxPatologiaValvular_activated(const QString &arg1)
+{
+    if (arg1 == "Disfunción Protésica") {
+        ui->causaComboBox->clear();
+        ui->causaComboBox->addItem("Trombosis");
+        ui->causaComboBox->addItem("Leak");
+        ui->causaComboBox->addItem("Endocarditis");
+        ui->causaComboBox->addItem("Pannus");
+        ui->causaComboBox->addItem("Mismatch");
+    }
+    else{
+        ui->causaComboBox->clear();
+    }
+}
+
+void MainWindow::on_combinadaComboBox_activated(const QString &arg1)
+{
+    if (arg1 == "Si") {
+        ui->comboBoxPatologiaValvularCombinada->clear();
+        ui->comboBoxPatologiaValvularCombinada->addItem("EM");
+        ui->comboBoxPatologiaValvularCombinada->addItem("IM");
+        ui->comboBoxPatologiaValvularCombinada->addItem("EAO");
+        ui->comboBoxPatologiaValvularCombinada->addItem("IAO");
+        ui->comboBoxPatologiaValvularCombinada->addItem("ET");
+        ui->comboBoxPatologiaValvularCombinada->addItem("IT");
+        ui->comboBoxPatologiaValvularCombinada->addItem("EP");
+        ui->comboBoxPatologiaValvularCombinada->addItem("IP");
+    }
+    else{
+        ui->comboBoxPatologiaValvularCombinada->clear();
+    }
 }
 
 void MainWindow::on_pushButtonCreate_clicked()
@@ -109,28 +158,6 @@ void MainWindow::on_pushButtonCreate_clicked()
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
 
-}
-
-void MainWindow::on_comboBox_activated(const QString &arg1)
-{
-    if (arg1 == "Primaria") {
-        ui->comboBoxCausa->clear();
-        ui->comboBoxCausa->addItem("Reumática");
-        ui->comboBoxCausa->addItem("Degenerativa");
-        ui->comboBoxCausa->addItem("Mixomatosa");
-        ui->comboBoxCausa->addItem("Endocarditis");
-        ui->comboBoxCausa->addItem("Bicúspide");
-        ui->comboBoxCausa->addItem("Traumática");
-        ui->comboBoxCausa->addItem("Farmacos");
-        ui->comboBoxCausa->addItem("Radioterapia");
-    }
-    if (arg1 == "Secundaria"){
-        ui->comboBoxCausa->clear();
-        ui->comboBoxCausa->addItem("Dilatacion R. Ao");
-        ui->comboBoxCausa->addItem("Isquémico");
-        ui->comboBoxCausa->addItem("Dilatacion Anillo");
-        ui->comboBoxCausa->addItem("Dilatacion Ao");
-    }
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -233,4 +260,10 @@ void MainWindow::on_pushButtonUpdate_clicked()
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+}
+
+void MainWindow::showError(const QSqlError &err)
+{
+    QMessageBox::critical(this, "Unable to initialize Database",
+                "Error initializing database: " + err.text());
 }

@@ -27,6 +27,10 @@ private slots:
 
     void on_pushButtonUpdate_clicked();
 
+    void on_comboBoxPatologiaValvular_activated(const QString &arg1);
+
+    void on_combinadaComboBox_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
