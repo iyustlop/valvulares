@@ -52,14 +52,22 @@ void MainWindow::on_comboBoxPatologiaValvular_activated(const QString &arg1)
 {
     if (arg1 == "Disfunción Protésica") {
         ui->causaComboBox->clear();
+        ui->protesisComboBox->clear();
         ui->causaComboBox->addItem("Trombosis");
         ui->causaComboBox->addItem("Leak");
         ui->causaComboBox->addItem("Endocarditis");
         ui->causaComboBox->addItem("Pannus");
         ui->causaComboBox->addItem("Mismatch");
+        ui->protesisComboBox->addItem("Mecánica Aórtica");
+        ui->protesisComboBox->addItem("Mecánica Mitral");
+        ui->protesisComboBox->addItem("Mecánica Aórtica");
+        ui->protesisComboBox->addItem("Mecánica Mitral");
+        ui->protesisComboBox->addItem("Mecánica Mitral");
+        ui->protesisComboBox->addItem("Mecánica Tricuspide");
     }
     else{
         ui->causaComboBox->clear();
+        ui->protesisComboBox->clear();
     }
 }
 

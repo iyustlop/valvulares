@@ -9,7 +9,10 @@ initDB::initDB()
 
 QSqlError initDB::startDb(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\Users\\iyust\\Documents\\Desarrollo\\valvulares.db");
+    // direccion relativa
+    QString dataBaseLocation = QDir::currentPath();
+
+    db.setDatabaseName("..\\valvulares.db");
 
     if (!db.open())
         return db.lastError();
