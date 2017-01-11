@@ -9,10 +9,10 @@ initDB::initDB()
 
 QSqlError initDB::startDb(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    // direccion relativa
+
     QString dataBaseLocation = QDir::currentPath();
 
-    db.setDatabaseName("..\\valvulares.db");
+    db.setDatabaseName(dataBaseLocation+"/valvulares.db");
 
     if (!db.open())
         return db.lastError();
@@ -22,7 +22,8 @@ QSqlError initDB::startDb(){
                    "firstname varchar(20), lastname varchar(20))"))
             return query.lastError();*/
     // Avoid error trying to create the table.
-    query.exec("create table person (id int primary key, firstname varchar(20), lastname varchar(20), genre varchar(20), etiology varchar(20), cause varchar(20), valvularPatology varchar(20))");
+    query.exec("create table person (id int primary key, firstname varchar(20), lastname varchar(20), genre varchar(20), bbirthdate varchar(20)");
+    query.exec("create table etiologia (etiology varchar(20), cause varchar(20), valvularPatology varchar(20))");
 
     return QSqlError();
 }
