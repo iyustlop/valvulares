@@ -23,7 +23,8 @@ QSqlError initDB::startDb(){
             return query.lastError();*/
     // Avoid error trying to create the table.
     query.exec("create table person (id int primary key, firstname varchar(20), lastname varchar(20), genre varchar(20), bbirthdate varchar(20)");
-    query.exec("create table etiologia (etiology varchar(20), cause varchar(20), valvularPatology varchar(20))");
+    query.exec("create table etiologia (etiology varchar(20), cause varchar(20), valvularPatology varchar(20),mixedVpatology varchar(5),valvularPatologySecondary varchar(20))");
+    query.exec("create table disfuncionProtsica (causa varchar(20), protesis varchar(20), modelo varchar(20), numero varchar(20), fechaCirugia varchar(20))");
 
     return QSqlError();
 }
