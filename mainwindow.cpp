@@ -92,6 +92,8 @@ void MainWindow::on_combinadaComboBox_activated(const QString &arg1)
 void MainWindow::on_pushButtonCreate_clicked()
 {
     Patient crearPaciente;
+    Etiology crearEtiologia;
+
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -132,7 +134,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setEtiologia(ui->comboBox->currentText());
+        crearEtiologia.setEtiologia(ui->comboBox->currentText());
     }
 
     if (ui->comboBoxCausa->currentIndex() == -1){
@@ -141,7 +143,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setCausa(ui->comboBoxCausa->currentText());
+        crearEtiologia.setCausa(ui->comboBoxCausa->currentText());
     }
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
@@ -150,10 +152,10 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
+        crearEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
 
-    QSqlError err = valvularesDB.insertDB(crearPaciente);
+    QSqlError err = valvularesDB.insertDB(crearPaciente, crearEtiologia);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -171,6 +173,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
+    Etiology insertarEtiologia;
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
@@ -185,16 +188,17 @@ void MainWindow::on_pushButton_clicked()
     else{
         ui->radioButtonMujer->setChecked(true);
     }
-    ui->comboBox->setCurrentText(insertarPaciente.getEtiologia());
-    on_comboBox_activated(insertarPaciente.getEtiologia());
-    ui->comboBoxCausa->setCurrentText(insertarPaciente.getCausa());
-    ui->comboBoxPatologiaValvular->setCurrentText(insertarPaciente.getPatlogiaValvular());
+    ui->comboBox->setCurrentText(insertarEtiologia.getEtiologia());
+    on_comboBox_activated(insertarEtiologia.getEtiologia());
+    ui->comboBoxCausa->setCurrentText(insertarEtiologia.getCausa());
+    ui->comboBoxPatologiaValvular->setCurrentText(insertarEtiologia.getPatlogiaValvular());
 
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
 {
     Patient updatePaciente;
+    Etiology updateEtiologia;
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -235,7 +239,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setEtiologia(ui->comboBox->currentText());
+        updateEtiologia.setEtiologia(ui->comboBox->currentText());
     }
 
     if (ui->comboBoxCausa->currentIndex() == -1){
@@ -244,7 +248,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setCausa(ui->comboBoxCausa->currentText());
+        updateEtiologia.setCausa(ui->comboBoxCausa->currentText());
     }
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
@@ -253,10 +257,10 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
+        updateEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
 
-    QSqlError err = valvularesDB.updateDB(updatePaciente);
+    QSqlError err = valvularesDB.updateDB(updatePaciente, updateEtiologia);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;

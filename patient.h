@@ -17,21 +17,13 @@ public:
     QString getGenero();
     void setFechaNacimiento(QString birthdate);
     QString getFechaNacimiento();
-    void setEtiologia(QString etiology);
-    QString getEtiologia();
-    void setCausa(QString cause);
-    QString getCausa();
-    void setPatologiaValvular(QString patology);
-    QString getPatlogiaValvular();
+
 private:
     QString numeroHistoria;
     QString nombre;
     QString apellidos;
     QString genero;
     QString fechaNacimiento;
-    QString etiologia;
-    QString causa;
-    QString patologiaValvular;
 };
 
 #endif // PATIENT_H
