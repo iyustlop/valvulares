@@ -14,12 +14,18 @@ public:
     void setCausa(QString cause);
     QString getCausa();
     void setPatologiaValvular(QString patology);
-    QString getPatlogiaValvular();
+    QString getPatlogiaValvular();  
+    void setMixedVpatology(QString mixedVpatologia);
+    QString getMixedVpatology();
+    void setValvularPatologySecondary(QString valvularPatologiaSecundaria);
+    QString getValvularPatologySecondary();
 private:
     QString numeroHistoria;
     QString etiologia;
     QString causa;
     QString patologiaValvular;
+    QString mixedVpatology;
+    QString valvularPatologySecondary;
 };
 
 #endif // ETIOLOGY_H

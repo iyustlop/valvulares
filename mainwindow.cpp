@@ -103,6 +103,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     }
     else{
         crearPersona.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+        crearEtiologia.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
     }
 
     if (ui->lineEditNombre->text().isEmpty()){
@@ -149,12 +150,22 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Apellidos ");
+                "Error insert in Patologia Valvular ");
         return;
     }
     else{
         crearEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
+    if (ui->combinadaComboBox->currentIndex() == 0){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Combinada ");
+        return;
+    }
+    else{
+        crearEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
+    }
+
+    crearEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
 
     crearPaciente.setPersona(crearPersona);
     crearPaciente.setEtiologia(crearEtiologia);
@@ -171,6 +182,8 @@ void MainWindow::on_pushButtonCreate_clicked()
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+    ui->combinadaComboBox->setCurrentIndex(0);
+    ui->comboBoxPatologiaValvularCombinada->clear();
 
 }
 
@@ -263,7 +276,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Apellidos ");
+                "Error insert in Patologia Valvular ");
         return;
     }
     else{

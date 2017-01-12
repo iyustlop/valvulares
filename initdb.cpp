@@ -25,7 +25,7 @@ QSqlError initDB::startDb(){
     query.exec("create table person (id int primary key, name varchar(20), lastname varchar(20), "
                "genre varchar(20), birthdate varchar(20))");
     query.exec("create table etiologia (etiologyId int, etiology varchar(20), cause varchar(20), "
-               "valvularPatology varchar(20),mixedVpatology varchar(5),valvularPatologySecondary varchar(20),"
+               "valvularPatology varchar(20), mixedVpatology varchar(5), valvularPatologySecondary varchar(20),"
                "FOREIGN KEY(etiologyId) REFERENCES person(id))");
     query.exec("create table disfuncionProtesica (disfuncionId int, causa varchar(20), protesis varchar(20), "
                "modelo varchar(20), numero varchar(20), fechaCirugia varchar(20),"
@@ -54,10 +54,14 @@ QSqlError initDB::insertDB(Patient paciente){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("insert into etiologia values(:etiology, :cause, :valvularPatology)"))
+    if (!query.prepare("insert into etiologia values(:etiologyId,:etiology, :cause, :valvularPatology, :mixedVpatology, :valvularPatologySecondary)"))
+        return query.lastError();
+    query.bindValue(":etiologyId",persona.getNumeroHistoria());
     query.bindValue(":etiology",etiologia.getEtiologia());
     query.bindValue(":cause",etiologia.getCausa());
     query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
+    query.bindValue(":mixedVpatology", etiologia.getMixedVpatology());
+    query.bindValue(":valvularPatologySecondary",etiologia.getValvularPatologySecondary());
 
     if (!query.exec())
         return query.lastError();

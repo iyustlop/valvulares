@@ -11,8 +11,7 @@ public:
     Patient();
     Person getPersona();
     void setPersona(Person person);
-
-    Etiology getEtiologia() ;
+    Etiology getEtiologia();
     void setEtiologia(Etiology etiology);
 
 private:
