@@ -22,13 +22,24 @@ QSqlError initDB::startDb(){
                    "firstname varchar(20), lastname varchar(20))"))
             return query.lastError();*/   
     // Avoid error trying to create the table.
-    query.exec("create table person (id int primary key, name varchar(20), lastname varchar(20), "
-               "genre varchar(20), birthdate varchar(20))");
-    query.exec("create table etiologia (etiologyId int, etiology varchar(20), cause varchar(20), "
-               "valvularPatology varchar(20), mixedVpatology varchar(5), valvularPatologySecondary varchar(20),"
+    query.exec("create table person (id int primary key, "
+               "name varchar(20), "
+               "lastname varchar(20), "
+               "genre varchar(20), "
+               "birthdate varchar(20))");
+    query.exec("create table etiologia (etiologyId int, "
+               "etiology varchar(20), "
+               "cause varchar(20), "
+               "valvularPatology varchar(20), "
+               "mixedVpatology varchar(5), "
+               "valvularPatologySecondary varchar(20),"
                "FOREIGN KEY(etiologyId) REFERENCES person(id))");
-    query.exec("create table disfuncionProtesica (disfuncionId int, causa varchar(20), protesis varchar(20), "
-               "modelo varchar(20), numero varchar(20), fechaCirugia varchar(20),"
+    query.exec("create table disfuncionProtesica (disfuncionId int, "
+               "causa varchar(20), "
+               "protesis varchar(20), "
+               "modelo varchar(20), "
+               "numero varchar(20), "
+               "fechaCirugia varchar(20), "
                "FOREIGN KEY(disfuncionId) REFERENCES person(id))");
 
     return QSqlError();
