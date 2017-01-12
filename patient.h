@@ -2,28 +2,22 @@
 #define PATIENT_H
 
 #include<QString>
+#include "person.h"
+#include "etiology.h"
 
 class Patient
 {
 public:
     Patient();
-    void setNumeroHistoria(QString nHistoria);
-    QString getNumeroHistoria();
-    void setNombre(QString name);
-    QString getNombre();
-    void setApellidos(QString surname);
-    QString getApellidos();
-    void setGenero(QString genre);
-    QString getGenero();
-    void setFechaNacimiento(QString birthdate);
-    QString getFechaNacimiento();
+    Person getPersona();
+    void setPersona(Person person);
+
+    Etiology getEtiologia() ;
+    void setEtiologia(Etiology etiology);
 
 private:
-    QString numeroHistoria;
-    QString nombre;
-    QString apellidos;
-    QString genero;
-    QString fechaNacimiento;
+    Person persona;
+    Etiology etiologia;
 };
 
 #endif // PATIENT_H

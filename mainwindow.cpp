@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "initdb.h"
+#include "patient.h"
 
 #include <QMessageBox>
 
@@ -91,7 +92,7 @@ void MainWindow::on_combinadaComboBox_activated(const QString &arg1)
 
 void MainWindow::on_pushButtonCreate_clicked()
 {
-    Patient crearPaciente;
+    Person crearPaciente;
     Etiology crearEtiologia;
 
 
@@ -174,15 +175,20 @@ void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
     Etiology insertarEtiologia;
+    Person insertarPersona;
+
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
 
     insertarPaciente = valvularesDB.readDB(queryId);
 
-    ui->lineEditNombre->setText(insertarPaciente.getNombre());
-    ui->lineEditApellidos->setText(insertarPaciente.getApellidos());
-    if (insertarPaciente.getGenero() == "Hombre"){
+    insertarPersona = insertarPaciente.getPersona();
+    insertarEtiologia = insertarPaciente.getEtiologia();
+
+    ui->lineEditNombre->setText(insertarPersona.getNombre());
+    ui->lineEditApellidos->setText(insertarPersona.getApellidos());
+    if (insertarPersona.getGenero() == "Hombre"){
         ui->radioButtonHombre->setChecked(true);
     }
     else{
@@ -197,7 +203,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButtonUpdate_clicked()
 {
-    Patient updatePaciente;
+    Person updatePersona;
     Etiology updateEtiologia;
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
@@ -206,7 +212,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+        updatePersona.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
     }
 
     if (ui->lineEditNombre->text().isEmpty()){
@@ -215,7 +221,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setNombre(ui->lineEditNombre->text());
+        updatePersona.setNombre(ui->lineEditNombre->text());
     }
 
     if (ui->lineEditApellidos->text().isEmpty()){
@@ -224,14 +230,14 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
     else{
-        updatePaciente.setApellidos(ui->lineEditApellidos->text());
+        updatePersona.setApellidos(ui->lineEditApellidos->text());
     }
 
     if (ui->radioButtonHombre->isChecked()){
-        updatePaciente.setGenero("Hombre");
+        updatePersona.setGenero("Hombre");
     }
     else{
-        updatePaciente.setGenero("Mujer");
+        updatePersona.setGenero("Mujer");
     }
     if (ui->comboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -260,7 +266,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         updateEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
 
-    QSqlError err = valvularesDB.updateDB(updatePaciente, updateEtiologia);
+    QSqlError err = valvularesDB.updateDB(updatePersona, updateEtiologia);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;

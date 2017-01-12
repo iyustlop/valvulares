@@ -5,43 +5,18 @@ Patient::Patient()
 
 }
 
-void Patient::setNumeroHistoria(QString nHistoria){
-    numeroHistoria = nHistoria;
+void Patient::setPersona(Person nPersona){
+    persona = nPersona;
 }
 
-QString Patient::getNumeroHistoria(){
-    return numeroHistoria;
+Person Patient::getPersona(){
+    return persona;
 }
 
-void Patient::setNombre(QString name){
-    nombre = name;
+void Patient::setEtiologia(Etiology nEtiologia){
+    etiologia = nEtiologia;
 }
-QString Patient::getNombre(){
-    return nombre;
-}
-
-void Patient::setApellidos(QString surname){
-    apellidos = surname;
+Etiology Patient::getEtiologia(){
+    return etiologia;
 }
 
-QString Patient::getApellidos(){
-    return apellidos;
-}
-
-void Patient::setGenero(QString genre){
-    genero = genre;
-}
-
-QString Patient::getGenero(){
-    return genero;
-}
-
-QString Patient::getFechaNacimiento()
-{
-    return fechaNacimiento;
-}
-
-void Patient::setFechaNacimiento(QString birthdate)
-{
-    fechaNacimiento = birthdate;
-}

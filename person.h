@@ -3,10 +3,10 @@
 
 #include<QString>
 
-class person
+class Person
 {
 public:
-    person();
+    Person();
     void setNumeroHistoria(QString nHistoria);
     QString getNumeroHistoria();
     void setNombre(QString name);

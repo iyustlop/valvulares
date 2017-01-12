@@ -34,7 +34,7 @@ QSqlError initDB::startDb(){
     return QSqlError();
 }
 
-QSqlError initDB::insertDB(Patient patient, Etiology etiology){
+QSqlError initDB::insertDB(Person patient, Etiology etiology){
     QSqlQuery query;
 
     if (!query.prepare("insert into person values(:id, :name, :lastname, :genre, :birthdate)"))
@@ -60,7 +60,8 @@ QSqlError initDB::insertDB(Patient patient, Etiology etiology){
 
 Patient initDB::readDB(QString queryId){
     QSqlQuery query;
-    Patient readPatient;
+    Patient readPaciente;
+    Person readPatient;
     Etiology readEtiology;
 
     query.prepare("select * from person where id = :id");
@@ -79,10 +80,10 @@ Patient initDB::readDB(QString queryId){
         }
     }
 
-    return readPatient;
+    return readPaciente;
 }
 
-QSqlError initDB::updateDB(Patient patient, Etiology etiology){
+QSqlError initDB::updateDB(Person patient, Etiology etiology){
     QSqlQuery query;
 
     if (!query.prepare("update person set firstname=:name, lastname=:lastname, genre=:genre, etiology=:etiology, "
