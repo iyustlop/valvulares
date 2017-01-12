@@ -2,6 +2,7 @@
 #define INITDB_H
 
 #include "patient.h"
+#include "person.h"
 #include "etiology.h"
 
 #include <QtSql>
@@ -11,9 +12,9 @@ class initDB
 public:
     initDB();
     QSqlError startDb();
-    QSqlError insertDB(Person patient, Etiology etiology);
+    QSqlError insertDB(Patient paciente);
     Patient readDB(QString queryId);
-    QSqlError updateDB(Person patient, Etiology etiology);
+    QSqlError updateDB(Patient paciente);
 };
 
 #endif // INITDB_H

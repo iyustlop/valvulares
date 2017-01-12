@@ -92,9 +92,9 @@ void MainWindow::on_combinadaComboBox_activated(const QString &arg1)
 
 void MainWindow::on_pushButtonCreate_clicked()
 {
-    Person crearPaciente;
+    Person crearPersona;
     Etiology crearEtiologia;
-
+    Patient crearPaciente;
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -102,7 +102,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
+        crearPersona.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
     }
 
     if (ui->lineEditNombre->text().isEmpty()){
@@ -111,7 +111,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setNombre(ui->lineEditNombre->text());
+        crearPersona.setNombre(ui->lineEditNombre->text());
     }
 
     if (ui->lineEditApellidos->text().isEmpty()){
@@ -120,14 +120,14 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearPaciente.setApellidos(ui->lineEditApellidos->text());
+        crearPersona.setApellidos(ui->lineEditApellidos->text());
     }
 
     if (ui->radioButtonHombre->isChecked()){
-        crearPaciente.setGenero("Hombre");
+        crearPersona.setGenero("Hombre");
     }
     else{
-        crearPaciente.setGenero("Mujer");
+        crearPersona.setGenero("Mujer");
     }
     if (ui->comboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -156,7 +156,10 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
 
-    QSqlError err = valvularesDB.insertDB(crearPaciente, crearEtiologia);
+    crearPaciente.setPersona(crearPersona);
+    crearPaciente.setEtiologia(crearEtiologia);
+
+    QSqlError err = valvularesDB.insertDB(crearPaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -203,6 +206,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButtonUpdate_clicked()
 {
+    Patient updatePaciente;
     Person updatePersona;
     Etiology updateEtiologia;
 
@@ -266,7 +270,10 @@ void MainWindow::on_pushButtonUpdate_clicked()
         updateEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
     }
 
-    QSqlError err = valvularesDB.updateDB(updatePersona, updateEtiologia);
+    updatePaciente.setPersona(updatePersona);
+    updatePaciente.setEtiologia(updateEtiologia);
+
+    QSqlError err = valvularesDB.updateDB(updatePaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;

@@ -34,23 +34,30 @@ QSqlError initDB::startDb(){
     return QSqlError();
 }
 
-QSqlError initDB::insertDB(Person patient, Etiology etiology){
+QSqlError initDB::insertDB(Patient paciente){
+
+    Person persona;
+    Etiology etiologia;
+
+    persona = paciente.getPersona();
+    etiologia = paciente.getEtiologia();
+
     QSqlQuery query;
 
     if (!query.prepare("insert into person values(:id, :name, :lastname, :genre, :birthdate)"))
         return query.lastError();
-    query.bindValue(":id",patient.getNumeroHistoria());
-    query.bindValue(":name",patient.getNombre());
-    query.bindValue(":lastname",patient.getApellidos());
-    query.bindValue(":genre",patient.getGenero());
-    query.bindValue(":birthdate",patient.getFechaNacimiento());
+    query.bindValue(":id",persona.getNumeroHistoria());
+    query.bindValue(":name",persona.getNombre());
+    query.bindValue(":lastname",persona.getApellidos());
+    query.bindValue(":genre",persona.getGenero());
+    query.bindValue(":birthdate",persona.getFechaNacimiento());
     if (!query.exec())
         return query.lastError();
 
     if (!query.prepare("insert into etiologia values(:etiology, :cause, :valvularPatology)"))
-    query.bindValue(":etiology",etiology.getEtiologia());
-    query.bindValue(":cause",etiology.getCausa());
-    query.bindValue(":valvularPatology",etiology.getPatlogiaValvular());
+    query.bindValue(":etiology",etiologia.getEtiologia());
+    query.bindValue(":cause",etiologia.getCausa());
+    query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
 
     if (!query.exec())
         return query.lastError();
@@ -60,6 +67,7 @@ QSqlError initDB::insertDB(Person patient, Etiology etiology){
 
 Patient initDB::readDB(QString queryId){
     QSqlQuery query;
+
     Patient readPaciente;
     Person readPatient;
     Etiology readEtiology;
@@ -83,19 +91,25 @@ Patient initDB::readDB(QString queryId){
     return readPaciente;
 }
 
-QSqlError initDB::updateDB(Person patient, Etiology etiology){
+QSqlError initDB::updateDB(Patient paciente){
     QSqlQuery query;
+
+    Person persona;
+    Etiology etiologia;
+
+    persona = paciente.getPersona();
+    etiologia = paciente.getEtiologia();
 
     if (!query.prepare("update person set firstname=:name, lastname=:lastname, genre=:genre, etiology=:etiology, "
                        "cause=:cause, valvularPatology=:valvularPatology"))
         return query.lastError();
 
-    query.bindValue(":name",patient.getNombre());
-    query.bindValue(":lastname",patient.getApellidos());
-    query.bindValue(":genre",patient.getGenero());
-    query.bindValue(":etiology",etiology.getEtiologia());
-    query.bindValue(":cause",etiology.getCausa());
-    query.bindValue(":valvularPatology",etiology.getPatlogiaValvular());
+    query.bindValue(":name",persona.getNombre());
+    query.bindValue(":lastname",persona.getApellidos());
+    query.bindValue(":genre",persona.getGenero());
+    query.bindValue(":etiology",etiologia.getEtiologia());
+    query.bindValue(":cause",etiologia.getCausa());
+    query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
 
     if (!query.exec())
         return query.lastError();
