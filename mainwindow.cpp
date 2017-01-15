@@ -61,10 +61,10 @@ void MainWindow::on_comboBoxPatologiaValvular_activated(const QString &arg1)
         ui->causaComboBox->addItem("Mismatch");
         ui->protesisComboBox->addItem("Mecánica Aórtica");
         ui->protesisComboBox->addItem("Mecánica Mitral");
-        ui->protesisComboBox->addItem("Mecánica Aórtica");
-        ui->protesisComboBox->addItem("Mecánica Mitral");
-        ui->protesisComboBox->addItem("Mecánica Mitral");
-        ui->protesisComboBox->addItem("Mecánica Tricuspide");
+        ui->protesisComboBox->addItem("Biológica Aórtica");
+        ui->protesisComboBox->addItem("Biológica Mitral");
+        ui->protesisComboBox->addItem("Anillo Mitral");
+        ui->protesisComboBox->addItem("Anillo Tricuspide");
     }
     else{
         ui->causaComboBox->clear();
@@ -184,6 +184,11 @@ void MainWindow::on_pushButtonCreate_clicked()
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
     ui->combinadaComboBox->setCurrentIndex(0);
     ui->comboBoxPatologiaValvularCombinada->clear();
+    ui->radioButtonHombre->setAutoExclusive(false);
+    ui->radioButtonHombre->setChecked(false);
+    ui->radioButtonMujer->setAutoExclusive(false);
+    ui->radioButtonMujer->setChecked(false);
+
 
 }
 

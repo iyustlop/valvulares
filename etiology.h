@@ -1,6 +1,8 @@
 #ifndef ETIOLOGY_H
 #define ETIOLOGY_H
 
+#include "protesicdisfunction.h"
+
 #include<QString>
 
 class Etiology
@@ -19,6 +21,8 @@ public:
     QString getMixedVpatology();
     void setValvularPatologySecondary(QString valvularPatologiaSecundaria);
     QString getValvularPatologySecondary();
+    ProtesicDisfunction getDisfuncionProtesica();
+    void setDisfuncionProtesica(ProtesicDisfunction protesicDisfunction);
 private:
     QString numeroHistoria;
     QString etiologia;
@@ -26,6 +30,7 @@ private:
     QString patologiaValvular;
     QString mixedVpatology;
     QString valvularPatologySecondary;
+    ProtesicDisfunction disfuncionProtesica;
 };
 
 #endif // ETIOLOGY_H

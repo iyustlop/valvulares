@@ -27,14 +27,14 @@ QSqlError initDB::startDb(){
                "lastname varchar(20), "
                "genre varchar(20), "
                "birthdate varchar(20))");
-    query.exec("create table etiologia (etiologyId int, "
+    query.exec("create table etiology (etiologyId int, "
                "etiology varchar(20), "
                "cause varchar(20), "
                "valvularPatology varchar(20), "
                "mixedVpatology varchar(5), "
                "valvularPatologySecondary varchar(20),"
                "FOREIGN KEY(etiologyId) REFERENCES person(id))");
-    query.exec("create table disfuncionProtesica (disfuncionId int, "
+    query.exec("create table prosesicDisfunction (disfuncionId int, "
                "causa varchar(20), "
                "protesis varchar(20), "
                "modelo varchar(20), "
@@ -65,7 +65,7 @@ QSqlError initDB::insertDB(Patient paciente){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("insert into etiologia values(:etiologyId,:etiology, :cause, :valvularPatology, :mixedVpatology, :valvularPatologySecondary)"))
+    if (!query.prepare("insert into etiology values(:etiologyId,:etiology, :cause, :valvularPatology, :mixedVpatology, :valvularPatologySecondary)"))
         return query.lastError();
     query.bindValue(":etiologyId",persona.getNumeroHistoria());
     query.bindValue(":etiology",etiologia.getEtiologia());

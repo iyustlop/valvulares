@@ -56,3 +56,13 @@ void Etiology::setMixedVpatology(QString mixedVpatologia)
 {
     mixedVpatology = mixedVpatologia;
 }
+
+ProtesicDisfunction Etiology::getDisfuncionProtesica()
+{
+    return disfuncionProtesica;
+}
+
+void Etiology::setDisfuncionProtesica(ProtesicDisfunction disfunctionP)
+{
+    disfuncionProtesica = disfunctionP;
+}
