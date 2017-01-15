@@ -176,19 +176,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
 
-    ui->lineEditNombre->clear();
-    ui->lineEditApellidos->clear();
-    ui->lineEditNumeroHistoria->clear();
-    ui->comboBox->setCurrentIndex(0);
-    ui->comboBoxCausa->clear();
-    ui->comboBoxPatologiaValvular->setCurrentIndex(0);
-    ui->combinadaComboBox->setCurrentIndex(0);
-    ui->comboBoxPatologiaValvularCombinada->clear();
-    ui->radioButtonHombre->setAutoExclusive(false);
-    ui->radioButtonHombre->setChecked(false);
-    ui->radioButtonMujer->setAutoExclusive(false);
-    ui->radioButtonMujer->setChecked(false);
-
+    clearUi();
 
 }
 
@@ -297,16 +285,28 @@ void MainWindow::on_pushButtonUpdate_clicked()
         return;
     }
 
-    ui->lineEditNombre->clear();
-    ui->lineEditApellidos->clear();
-    ui->lineEditNumeroHistoria->clear();
-    ui->comboBox->setCurrentIndex(0);
-    ui->comboBoxCausa->clear();
-    ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+    clearUi();
+
 }
 
 void MainWindow::showError(const QSqlError &err)
 {
     QMessageBox::critical(this, "Unable to initialize Database",
                 "Error initializing database: " + err.text());
+}
+
+void MainWindow::clearUi()
+{
+    ui->lineEditNombre->clear();
+    ui->lineEditApellidos->clear();
+    ui->lineEditNumeroHistoria->clear();
+    ui->comboBox->setCurrentIndex(0);
+    ui->comboBoxCausa->clear();
+    ui->comboBoxPatologiaValvular->setCurrentIndex(0);
+    ui->combinadaComboBox->setCurrentIndex(0);
+    ui->comboBoxPatologiaValvularCombinada->clear();
+    ui->radioButtonHombre->setAutoExclusive(false);
+    ui->radioButtonHombre->setChecked(false);
+    ui->radioButtonMujer->setAutoExclusive(false);
+    ui->radioButtonMujer->setChecked(false);
 }

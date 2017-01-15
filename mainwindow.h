@@ -34,6 +34,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
+    void clearUi();
 };
 
 #endif // MAINWINDOW_H

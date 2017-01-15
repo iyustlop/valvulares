@@ -49,9 +49,11 @@ QSqlError initDB::insertDB(Patient paciente){
 
     Person persona;
     Etiology etiologia;
+    ProtesicDisfunction disfuncionProtesica;
 
     persona = paciente.getPersona();
     etiologia = paciente.getEtiologia();
+    disfuncionProtesica = etiologia.getDisfuncionProtesica();
 
     QSqlQuery query;
 
@@ -65,7 +67,8 @@ QSqlError initDB::insertDB(Patient paciente){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("insert into etiology values(:etiologyId,:etiology, :cause, :valvularPatology, :mixedVpatology, :valvularPatologySecondary)"))
+    if (!query.prepare("insert into etiology values(:etiologyId,:etiology, :cause, :valvularPatology, "
+                       ":mixedVpatology, :valvularPatologySecondary)"))
         return query.lastError();
     query.bindValue(":etiologyId",persona.getNumeroHistoria());
     query.bindValue(":etiology",etiologia.getEtiologia());
@@ -76,6 +79,21 @@ QSqlError initDB::insertDB(Patient paciente){
 
     if (!query.exec())
         return query.lastError();
+
+    if (etiologia.getPatlogiaValvular() == "Disfunción Protésica"){
+        if (!query.prepare("insert into prosesicDisfunction values(:protesicDisfunctionID,:causa, :protesis, "
+                           ":modelo, :numero, :fechaCirugia)"))
+            return query.lastError();
+        query.bindValue(":protesicDisfunctionID",persona.getNumeroHistoria());
+        query.bindValue(":causa",disfuncionProtesica.getCausa());
+        query.bindValue(":protesis",disfuncionProtesica.getProtesis());
+        query.bindValue(":modelo",disfuncionProtesica.getModelo());
+        query.bindValue(":numero", disfuncionProtesica.getNumero());
+        query.bindValue(":fechaCirugia",disfuncionProtesica.getFechaCirugia());
+
+        if (!query.exec())
+            return query.lastError();
+    }
 
     return QSqlError();
 }
