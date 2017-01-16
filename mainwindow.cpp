@@ -125,6 +125,8 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearPersona.setApellidos(ui->lineEditApellidos->text());
     }
 
+    crearPersona.setFechaNacimiento(ui->dateEditBirthDate->text());
+
     if (ui->radioButtonHombre->isChecked()){
         crearPersona.setGenero("Hombre");
     }
@@ -176,6 +178,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         disfuncionProtesica.setProtesis(ui->protesisComboBox->currentText());
         disfuncionProtesica.setModelo(ui->modeloLineEdit->text());
         disfuncionProtesica.setNumero(ui->nMeroLineEdit->text());
+        disfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->text());
 
         crearEtiologia.setDisfuncionProtesica(disfuncionProtesica);
     }
@@ -299,7 +302,6 @@ void MainWindow::on_pushButtonUpdate_clicked()
     }
 
     clearUi();
-
 }
 
 void MainWindow::showError(const QSqlError &err)
@@ -313,7 +315,7 @@ void MainWindow::clearUi()
     ui->lineEditNombre->clear();
     ui->lineEditApellidos->clear();
     ui->lineEditNumeroHistoria->clear();
-    ui->dateEditBirthDate->clear();
+    ui->dateEditBirthDate->setDate(QDate::currentDate());
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
@@ -327,5 +329,5 @@ void MainWindow::clearUi()
     ui->causaComboBox->clear();
     ui->modeloLineEdit->clear();
     ui->nMeroLineEdit->clear();
-    ui->dateEditSugeryDate->clear();
+    ui->dateEditSugeryDate->setDate(QDate::currentDate());
 }
