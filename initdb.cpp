@@ -34,7 +34,7 @@ QSqlError initDB::startDb(){
                "mixedVpatology varchar(5), "
                "valvularPatologySecondary varchar(20),"
                "FOREIGN KEY(etiologyId) REFERENCES person(id))");
-    query.exec("create table prosesicDisfunction (disfuncionId int, "
+    query.exec("create table protesicDisfunction (disfuncionId int, "
                "causa varchar(20), "
                "protesis varchar(20), "
                "modelo varchar(20), "

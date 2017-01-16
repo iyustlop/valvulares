@@ -168,7 +168,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     crearEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
 
-    if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción protésica"){
+    if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
 
         disfuncionProtesica = crearEtiologia.getDisfuncionProtesica();
 
