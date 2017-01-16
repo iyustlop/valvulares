@@ -81,7 +81,7 @@ QSqlError initDB::insertDB(Patient paciente){
         return query.lastError();
 
     if (etiologia.getPatlogiaValvular() == "Disfunción Protésica"){
-        if (!query.prepare("insert into prosesicDisfunction values(:protesicDisfunctionID,:causa, :protesis, "
+        if (!query.prepare("insert into protesicDisfunction values(:protesicDisfunctionID, :causa, :protesis, "
                            ":modelo, :numero, :fechaCirugia)"))
             return query.lastError();
         query.bindValue(":protesicDisfunctionID",persona.getNumeroHistoria());
