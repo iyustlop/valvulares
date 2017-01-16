@@ -94,6 +94,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 {
     Person crearPersona;
     Etiology crearEtiologia;
+    ProtesicDisfunction disfuncionProtesica;
     Patient crearPaciente;
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
@@ -166,6 +167,18 @@ void MainWindow::on_pushButtonCreate_clicked()
     }
 
     crearEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
+
+    if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción protésica"){
+
+        disfuncionProtesica = crearEtiologia.getDisfuncionProtesica();
+
+        disfuncionProtesica.setCausa(ui->causaComboBox->currentText());
+        disfuncionProtesica.setProtesis(ui->protesisComboBox->currentText());
+        disfuncionProtesica.setModelo(ui->modeloLineEdit->text());
+        disfuncionProtesica.setNumero(ui->nMeroLineEdit->text());
+
+        crearEtiologia.setDisfuncionProtesica(disfuncionProtesica);
+    }
 
     crearPaciente.setPersona(crearPersona);
     crearPaciente.setEtiologia(crearEtiologia);
@@ -300,6 +313,7 @@ void MainWindow::clearUi()
     ui->lineEditNombre->clear();
     ui->lineEditApellidos->clear();
     ui->lineEditNumeroHistoria->clear();
+    ui->dateEditBirthDate->clear();
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
@@ -309,4 +323,9 @@ void MainWindow::clearUi()
     ui->radioButtonHombre->setChecked(false);
     ui->radioButtonMujer->setAutoExclusive(false);
     ui->radioButtonMujer->setChecked(false);
+    ui->protesisComboBox->clear();
+    ui->causaComboBox->clear();
+    ui->modeloLineEdit->clear();
+    ui->nMeroLineEdit->clear();
+    ui->dateEditSugeryDate->clear();
 }

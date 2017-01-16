@@ -135,20 +135,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="fechaDeNacimientoLineEdit">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>500</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="QDateEdit" name="dateEditBirthDate"/>
         </item>
        </layout>
       </item>
@@ -458,20 +445,7 @@
            </widget>
           </item>
           <item row="5" column="1">
-           <widget class="QLineEdit" name="fechaCirugiaLineEdit">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="QDateEdit" name="dateEditSugeryDate"/>
           </item>
          </layout>
         </item>
