@@ -102,7 +102,7 @@ Patient initDB::readDB(QString queryId){
     QSqlQuery query;
 
     Patient readPaciente;
-    Person readPatient;
+    Person readPerson;
     Etiology readEtiology;
 
     query.prepare("select * from person where id = :id");
@@ -111,16 +111,19 @@ Patient initDB::readDB(QString queryId){
 
     if(query.exec()){
         if (query.next()){
-            readPatient.setNumeroHistoria(query.value(0).toString());
-            readPatient.setNombre(query.value(1).toString());
-            readPatient.setApellidos(query.value(2).toString());
-            readPatient.setGenero(query.value(3).toString());
+            readPerson.setNumeroHistoria(query.value(0).toString());
+            readPerson.setNombre(query.value(1).toString());
+            readPerson.setApellidos(query.value(2).toString());
+            readPerson.setGenero(query.value(3).toString());
+            readPerson.setFechaNacimiento(query.value(4).toString());
           //  readEtiology.setEtiologia(query.value(4).toString());
           //  readEtiology.setCausa(query.value(5).toString());
           //  readEtiology.setPatologiaValvular(query.value(6).toString());
         }
     }
 
+    readPaciente.setPersona(readPerson);
+    readPaciente.setEtiologia(readEtiology);
     return readPaciente;
 }
 

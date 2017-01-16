@@ -178,7 +178,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         disfuncionProtesica.setProtesis(ui->protesisComboBox->currentText());
         disfuncionProtesica.setModelo(ui->modeloLineEdit->text());
         disfuncionProtesica.setNumero(ui->nMeroLineEdit->text());
-        disfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->text());
+        disfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->date().toString());
 
         crearEtiologia.setDisfuncionProtesica(disfuncionProtesica);
     }
@@ -193,13 +193,13 @@ void MainWindow::on_pushButtonCreate_clicked()
     }
 
     clearUi();
-
 }
 
 void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
     Etiology insertarEtiologia;
+    ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
 
     QString queryId;
@@ -210,9 +210,13 @@ void MainWindow::on_pushButton_clicked()
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
+    insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
+
+    QDate fechaNAcimiennto = QDate::fromString(insertarPersona.getFechaNacimiento(),"dd/MM/yyyy");
 
     ui->lineEditNombre->setText(insertarPersona.getNombre());
     ui->lineEditApellidos->setText(insertarPersona.getApellidos());
+    ui->dateEditBirthDate->setDate(fechaNAcimiennto);
     if (insertarPersona.getGenero() == "Hombre"){
         ui->radioButtonHombre->setChecked(true);
     }
@@ -223,6 +227,7 @@ void MainWindow::on_pushButton_clicked()
     on_comboBox_activated(insertarEtiologia.getEtiologia());
     ui->comboBoxCausa->setCurrentText(insertarEtiologia.getCausa());
     ui->comboBoxPatologiaValvular->setCurrentText(insertarEtiologia.getPatlogiaValvular());
+    ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
 
 }
 
