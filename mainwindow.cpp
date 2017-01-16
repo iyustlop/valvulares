@@ -228,6 +228,14 @@ void MainWindow::on_pushButton_clicked()
     ui->comboBoxCausa->setCurrentText(insertarEtiologia.getCausa());
     ui->comboBoxPatologiaValvular->setCurrentText(insertarEtiologia.getPatlogiaValvular());
     ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
+    on_comboBoxPatologiaValvular_activated(insertarEtiologia.getPatlogiaValvular());
+    on_combinadaComboBox_activated(insertarEtiologia.getMixedVpatology());
+    ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
+    ui->causaComboBox->setCurrentText(insertarDisfucionProtesica.getCausa());
+    ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
+    ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
+    ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
+    ui->dateEditSugeryDate->setDate(QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy"));
 
 }
 

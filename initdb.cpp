@@ -104,8 +104,12 @@ Patient initDB::readDB(QString queryId){
     Patient readPaciente;
     Person readPerson;
     Etiology readEtiology;
+    ProtesicDisfunction readProtesicDisfunction;
 
-    query.prepare("select * from person where id = :id");
+    query.prepare("select * from person "
+                  "left join etiology on person.id = etiology.etiologyid "
+                  "left join protesicDisfunction on protesicDisfunction.disfuncionId = person.id "
+                  "where person.id = :id");
 
     query.bindValue(":id",queryId);
 
@@ -116,13 +120,24 @@ Patient initDB::readDB(QString queryId){
             readPerson.setApellidos(query.value(2).toString());
             readPerson.setGenero(query.value(3).toString());
             readPerson.setFechaNacimiento(query.value(4).toString());
-          //  readEtiology.setEtiologia(query.value(4).toString());
-          //  readEtiology.setCausa(query.value(5).toString());
-          //  readEtiology.setPatologiaValvular(query.value(6).toString());
+            readEtiology.setEtiologia(query.value(6).toString());
+            readEtiology.setCausa(query.value(7).toString());
+            readEtiology.setPatologiaValvular(query.value(8).toString());
+            readEtiology.setMixedVpatology(query.value(9).toString());
+            readEtiology.setValvularPatologySecondary(query.value(10).toString());
+
+            if (readEtiology.getPatlogiaValvular() == "Disfunción Protésica"){
+                readProtesicDisfunction.setCausa(query.value(12).toString());
+                readProtesicDisfunction.setProtesis(query.value(13).toString());
+                readProtesicDisfunction.setModelo(query.value(14).toString());
+                readProtesicDisfunction.setNumero(query.value(15).toString());
+                readProtesicDisfunction.setFechaCirugia(query.value(16).toString());
+            }
         }
     }
 
     readPaciente.setPersona(readPerson);
+    readEtiology.setDisfuncionProtesica(readProtesicDisfunction);
     readPaciente.setEtiologia(readEtiology);
     return readPaciente;
 }
