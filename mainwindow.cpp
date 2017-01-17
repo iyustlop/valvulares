@@ -178,7 +178,7 @@ void MainWindow::on_pushButtonCreate_clicked()
         disfuncionProtesica.setProtesis(ui->protesisComboBox->currentText());
         disfuncionProtesica.setModelo(ui->modeloLineEdit->text());
         disfuncionProtesica.setNumero(ui->nMeroLineEdit->text());
-        disfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->date().toString());
+        disfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->text());
 
         crearEtiologia.setDisfuncionProtesica(disfuncionProtesica);
     }
@@ -212,11 +212,12 @@ void MainWindow::on_pushButton_clicked()
     insertarEtiologia = insertarPaciente.getEtiologia();
     insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
 
-    QDate fechaNAcimiennto = QDate::fromString(insertarPersona.getFechaNacimiento(),"dd/MM/yyyy");
+    QDate fechaNacimiento = QDate::fromString(insertarPersona.getFechaNacimiento(),"dd/MM/yyyy");
+    QDate fechaCirugia    = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
 
     ui->lineEditNombre->setText(insertarPersona.getNombre());
     ui->lineEditApellidos->setText(insertarPersona.getApellidos());
-    ui->dateEditBirthDate->setDate(fechaNAcimiennto);
+    ui->dateEditBirthDate->setDate(fechaNacimiento);
     if (insertarPersona.getGenero() == "Hombre"){
         ui->radioButtonHombre->setChecked(true);
     }
@@ -235,7 +236,7 @@ void MainWindow::on_pushButton_clicked()
     ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
     ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
     ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
-    ui->dateEditSugeryDate->setDate(QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy"));
+    ui->dateEditSugeryDate->setDate(fechaCirugia);
 
 }
 
@@ -244,6 +245,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
     Patient updatePaciente;
     Person updatePersona;
     Etiology updateEtiologia;
+    ProtesicDisfunction updateDisfuncionProtesica;
 
     if (ui->lineEditNumeroHistoria->text().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -306,6 +308,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
     }
 
     updatePaciente.setPersona(updatePersona);
+    updateEtiologia.setDisfuncionProtesica(updateDisfuncionProtesica);
     updatePaciente.setEtiologia(updateEtiologia);
 
     QSqlError err = valvularesDB.updateDB(updatePaciente);
