@@ -147,20 +147,42 @@ QSqlError initDB::updateDB(Patient paciente){
 
     Person persona;
     Etiology etiologia;
+    ProtesicDisfunction disfuncionProtesica;
 
     persona = paciente.getPersona();
     etiologia = paciente.getEtiologia();
 
-    if (!query.prepare("update person set firstname=:name, lastname=:lastname, genre=:genre, etiology=:etiology, "
-                       "cause=:cause, valvularPatology=:valvularPatology"))
+    if (!query.prepare("update person set name=:name, lastname=:lastname, genre=:genre, birthdate=:nacimiento"))
         return query.lastError();
 
     query.bindValue(":name",persona.getNombre());
     query.bindValue(":lastname",persona.getApellidos());
     query.bindValue(":genre",persona.getGenero());
-    query.bindValue(":etiology",etiologia.getEtiologia());
-    query.bindValue(":cause",etiologia.getCausa());
-    query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
+    query.bindValue(":nacimiento",persona.getFechaNacimiento());
+
+    if (!query.exec())
+        return query.lastError();
+
+    if (!query.prepare("update etiology set etiology=:etiologia, cause=:causa, valvularPatology=:patologiaValvular, mixedVpatology=:combinada, valvularPatologySecondary=:secundaria"))
+        return query.lastError();
+
+    query.bindValue(":etiologia",etiologia.getEtiologia());
+    query.bindValue(":causa",etiologia.getCausa());
+    query.bindValue(":patologiaValvular",etiologia.getPatlogiaValvular());
+    query.bindValue(":combinada",etiologia.getMixedVpatology());
+    query.bindValue(":secundaria",etiologia.getValvularPatologySecondary());
+
+    if (!query.exec())
+        return query.lastError();
+
+    if (!query.prepare("update protesicDisfunction set causa=:cause, protesis=:myProtesis, modelo=:model, numero=:number, fechaCirugia=:surgueryDate"))
+        return query.lastError();
+
+    query.bindValue(":cause",disfuncionProtesica.getCausa());
+    query.bindValue(":myProtesis",disfuncionProtesica.getProtesis());
+    query.bindValue(":model",disfuncionProtesica.getModelo());
+    query.bindValue(":number",disfuncionProtesica.getNumero());
+    query.bindValue(":surgueryDate",disfuncionProtesica.getFechaCirugia());
 
     if (!query.exec())
         return query.lastError();

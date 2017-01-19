@@ -274,6 +274,8 @@ void MainWindow::on_pushButtonUpdate_clicked()
         updatePersona.setApellidos(ui->lineEditApellidos->text());
     }
 
+    updatePersona.setFechaNacimiento(ui->dateEditBirthDate->text());
+
     if (ui->radioButtonHombre->isChecked()){
         updatePersona.setGenero("Hombre");
     }
@@ -305,6 +307,29 @@ void MainWindow::on_pushButtonUpdate_clicked()
     }
     else{
         updateEtiologia.setPatologiaValvular(ui->comboBoxPatologiaValvular->currentText());
+    }
+    if (ui->combinadaComboBox->currentIndex() == 0){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Combinada ");
+        return;
+    }
+    else{
+        updateEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
+    }
+
+    updateEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
+
+    if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
+
+        updateDisfuncionProtesica = updateEtiologia.getDisfuncionProtesica();
+
+        updateDisfuncionProtesica.setCausa(ui->causaComboBox->currentText());
+        updateDisfuncionProtesica.setProtesis(ui->protesisComboBox->currentText());
+        updateDisfuncionProtesica.setModelo(ui->modeloLineEdit->text());
+        updateDisfuncionProtesica.setNumero(ui->nMeroLineEdit->text());
+        updateDisfuncionProtesica.setFechaCirugia(ui->dateEditSugeryDate->text());
+
+        updateEtiologia.setDisfuncionProtesica(updateDisfuncionProtesica);
     }
 
     updatePaciente.setPersona(updatePersona);
