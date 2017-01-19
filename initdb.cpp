@@ -151,10 +151,13 @@ QSqlError initDB::updateDB(Patient paciente){
 
     persona = paciente.getPersona();
     etiologia = paciente.getEtiologia();
+    disfuncionProtesica = etiologia.getDisfuncionProtesica();
 
-    if (!query.prepare("update person set name=:name, lastname=:lastname, genre=:genre, birthdate=:nacimiento"))
+    if (!query.prepare("update person "
+                       "set name=:name, lastname=:lastname, genre=:genre, birthdate=:nacimiento "
+                       "where id=:myId;"))
         return query.lastError();
-
+    query.bindValue(":myId",persona.getNumeroHistoria());
     query.bindValue(":name",persona.getNombre());
     query.bindValue(":lastname",persona.getApellidos());
     query.bindValue(":genre",persona.getGenero());
@@ -163,9 +166,12 @@ QSqlError initDB::updateDB(Patient paciente){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("update etiology set etiology=:etiologia, cause=:causa, valvularPatology=:patologiaValvular, mixedVpatology=:combinada, valvularPatologySecondary=:secundaria"))
+    if (!query.prepare("update etiology "
+                       "set etiology=:etiologia, cause=:causa, valvularPatology=:patologiaValvular, "
+                       "mixedVpatology=:combinada, valvularPatologySecondary=:secundaria "
+                       "where etiologyId=:myId;"))
         return query.lastError();
-
+    query.bindValue(":myId",persona.getNumeroHistoria());
     query.bindValue(":etiologia",etiologia.getEtiologia());
     query.bindValue(":causa",etiologia.getCausa());
     query.bindValue(":patologiaValvular",etiologia.getPatlogiaValvular());
@@ -175,17 +181,24 @@ QSqlError initDB::updateDB(Patient paciente){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("update protesicDisfunction set causa=:cause, protesis=:myProtesis, modelo=:model, numero=:number, fechaCirugia=:surgueryDate"))
-        return query.lastError();
+    if (etiologia.getPatlogiaValvular()=="Disfunción Protésica"){
 
-    query.bindValue(":cause",disfuncionProtesica.getCausa());
-    query.bindValue(":myProtesis",disfuncionProtesica.getProtesis());
-    query.bindValue(":model",disfuncionProtesica.getModelo());
-    query.bindValue(":number",disfuncionProtesica.getNumero());
-    query.bindValue(":surgueryDate",disfuncionProtesica.getFechaCirugia());
+        if (!query.prepare("update protesicDisfunction "
+                           "set causa=:cause, protesis=:myProtesis, modelo=:model, numero=:number, "
+                           "fechaCirugia=:surgueryDate "
+                           "where disfuncionId=:myId;"))
+            return query.lastError();
 
-    if (!query.exec())
-        return query.lastError();
+        query.bindValue(":myId",persona.getNumeroHistoria());
+        query.bindValue(":cause",disfuncionProtesica.getCausa());
+        query.bindValue(":myProtesis",disfuncionProtesica.getProtesis());
+        query.bindValue(":model",disfuncionProtesica.getModelo());
+        query.bindValue(":number",disfuncionProtesica.getNumero());
+        query.bindValue(":surgueryDate",disfuncionProtesica.getFechaCirugia());
+
+        if (!query.exec())
+            return query.lastError();
+    }
 
     return QSqlError();
 }
