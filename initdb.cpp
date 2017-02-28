@@ -17,10 +17,7 @@ QSqlError initDB::startDb(){
     if (!db.open())
         return db.lastError();
 
-    QSqlQuery query;
-    /*if(!query.exec("create table person (id int primary key, "
-                   "firstname varchar(20), lastname varchar(20))"))
-            return query.lastError();*/   
+    QSqlQuery query;      
     // Avoid error trying to create the table.
     query.exec("create table person (id int primary key, "
                "name varchar(20), "
@@ -41,7 +38,20 @@ QSqlError initDB::startDb(){
                "numero varchar(20), "
                "fechaCirugia varchar(20), "
                "FOREIGN KEY(disfuncionId) REFERENCES person(id))");
-
+    query.exec("create table cita (visitId int, "
+               "dateVisit varchar(20), "
+               "rhythm varchar(20), "
+               "functionalGrade varchar(20), "
+               "FRCV varchar(20), "
+               "FOREIGN KEY(visitId) REFERENCES person(id))");
+    query.exec("create table parametrosAnaliticos (analiticalParameter int, "
+               "HB varchar(20), "
+               "creatinina varchar(20), "
+               "FG varchar(20), "
+               "proBNP varchar(20), "
+               "potasio varchar(20), "
+               "tratamiento varchar(20), "
+               "FOREIGN KEY(analiticalParameter) REFERENCES person(id))");
     return QSqlError();
 }
 

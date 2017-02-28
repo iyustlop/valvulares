@@ -97,33 +97,12 @@ void MainWindow::on_pushButtonCreate_clicked()
     ProtesicDisfunction disfuncionProtesica;
     Patient crearPaciente;
 
-    if (ui->lineEditNumeroHistoria->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Numero Historia ");
-        return;
-    }
-    else{
-        crearPersona.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
-        crearEtiologia.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
-    }
+    crearPersona.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
+    crearEtiologia.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
 
-    if (ui->lineEditNombre->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Nombre ");
-        return;
-    }
-    else{
-        crearPersona.setNombre(ui->lineEditNombre->text());
-    }
+    crearPersona.setNombre(comprobarLineEdit(ui->lineEditNombre->text()));
 
-    if (ui->lineEditApellidos->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Apellidos ");
-        return;
-    }
-    else{
-        crearPersona.setApellidos(ui->lineEditApellidos->text());
-    }
+    crearPersona.setApellidos(comprobarLineEdit(ui->lineEditApellidos->text()));
 
     crearPersona.setFechaNacimiento(ui->dateEditBirthDate->text());
 
@@ -195,6 +174,11 @@ void MainWindow::on_pushButtonCreate_clicked()
     clearUi();
 }
 
+void MainWindow::on_createDatePushButton_clicked()
+{
+
+}
+
 void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
@@ -247,32 +231,12 @@ void MainWindow::on_pushButtonUpdate_clicked()
     Etiology updateEtiologia;
     ProtesicDisfunction updateDisfuncionProtesica;
 
-    if (ui->lineEditNumeroHistoria->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Numero Historia ");
-        return;
-    }
-    else{
-        updatePersona.setNumeroHistoria(ui->lineEditNumeroHistoria->text());
-    }
+    updatePersona.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
+    updateEtiologia.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
 
-    if (ui->lineEditNombre->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Nombre ");
-        return;
-    }
-    else{
-        updatePersona.setNombre(ui->lineEditNombre->text());
-    }
+    updatePersona.setNombre(comprobarLineEdit(ui->lineEditNombre->text()));
 
-    if (ui->lineEditApellidos->text().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Apellidos ");
-        return;
-    }
-    else{
-        updatePersona.setApellidos(ui->lineEditApellidos->text());
-    }
+    updatePersona.setApellidos(comprobarLineEdit(ui->lineEditApellidos->text()));
 
     updatePersona.setFechaNacimiento(ui->dateEditBirthDate->text());
 
@@ -372,3 +336,16 @@ void MainWindow::clearUi()
     ui->nMeroLineEdit->clear();
     ui->dateEditSugeryDate->setDate(QDate::currentDate());
 }
+
+QString MainWindow::comprobarLineEdit(QString lineEdit)
+{
+    if (lineEdit.isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database","Error insert in Nombre ");
+            return "Vacio";
+        }
+        else{
+            return lineEdit;
+        }
+}
+
+

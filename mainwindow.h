@@ -31,10 +31,13 @@ private slots:
 
     void on_combinadaComboBox_activated(const QString &arg1);
 
+    void on_createDatePushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     void clearUi();
+    QString comprobarLineEdit(QString lineEdit);
 };
 
 #endif // MAINWINDOW_H
