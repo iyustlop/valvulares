@@ -39,12 +39,13 @@ QString Etiology::getPatlogiaValvular(){
 
 QString Etiology::getValvularPatologySecondary()
 {
-    return valvularPatologySecondary;
+    //return valvularPatologySecondary;
+    return "TBDone";
 }
 
 void Etiology::setValvularPatologySecondary(QString valvularPatologiaSecundaria)
 {
-    valvularPatologySecondary = valvularPatologiaSecundaria;
+    valvularPatologySecondary.append(valvularPatologiaSecundaria);
 }
 
 QString Etiology::getMixedVpatology()

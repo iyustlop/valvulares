@@ -4,6 +4,7 @@
 #include "protesicdisfunction.h"
 
 #include<QString>
+#include<QList>
 
 class Etiology
 {
@@ -29,7 +30,7 @@ private:
     QString causa;
     QString patologiaValvular;
     QString mixedVpatology;
-    QString valvularPatologySecondary;
+    QList<QString> valvularPatologySecondary;
     ProtesicDisfunction disfuncionProtesica;
 };
 

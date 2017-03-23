@@ -75,18 +75,18 @@ void MainWindow::on_comboBoxPatologiaValvular_activated(const QString &arg1)
 void MainWindow::on_combinadaComboBox_activated(const QString &arg1)
 {
     if (arg1 == "Si") {
-        ui->comboBoxPatologiaValvularCombinada->clear();
-        ui->comboBoxPatologiaValvularCombinada->addItem("EM");
-        ui->comboBoxPatologiaValvularCombinada->addItem("IM");
-        ui->comboBoxPatologiaValvularCombinada->addItem("EAO");
-        ui->comboBoxPatologiaValvularCombinada->addItem("IAO");
-        ui->comboBoxPatologiaValvularCombinada->addItem("ET");
-        ui->comboBoxPatologiaValvularCombinada->addItem("IT");
-        ui->comboBoxPatologiaValvularCombinada->addItem("EP");
-        ui->comboBoxPatologiaValvularCombinada->addItem("IP");
+        ui->listWidgetPatologiaValvularCombinada->clear();
+        ui->listWidgetPatologiaValvularCombinada->addItem("EM");
+        ui->listWidgetPatologiaValvularCombinada->addItem("IM");
+        ui->listWidgetPatologiaValvularCombinada->addItem("EAO");
+        ui->listWidgetPatologiaValvularCombinada->addItem("IAO");
+        ui->listWidgetPatologiaValvularCombinada->addItem("ET");
+        ui->listWidgetPatologiaValvularCombinada->addItem("IT");
+        ui->listWidgetPatologiaValvularCombinada->addItem("EP");
+        ui->listWidgetPatologiaValvularCombinada->addItem("IP");
     }
     else{
-        ui->comboBoxPatologiaValvularCombinada->clear();
+        ui->listWidgetPatologiaValvularCombinada->clear();
     }
 }
 
@@ -147,7 +147,14 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
     }
 
-    crearEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
+    if (ui->listWidgetPatologiaValvularCombinada->selectedItems().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                "Error insert in Combinada ");
+        return;
+    }
+    else{
+        crearEtiologia.setValvularPatologySecondary(ui->listWidgetPatologiaValvularCombinada->currentItem()->text());
+    }
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
 
@@ -215,7 +222,7 @@ void MainWindow::on_pushButton_clicked()
     ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
     on_comboBoxPatologiaValvular_activated(insertarEtiologia.getPatlogiaValvular());
     on_combinadaComboBox_activated(insertarEtiologia.getMixedVpatology());
-    ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
+    //ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
     ui->causaComboBox->setCurrentText(insertarDisfucionProtesica.getCausa());
     ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
     ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
@@ -281,7 +288,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
         updateEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
     }
 
-    updateEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
+  //  updateEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
 
@@ -325,7 +332,7 @@ void MainWindow::clearUi()
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);
     ui->combinadaComboBox->setCurrentIndex(0);
-    ui->comboBoxPatologiaValvularCombinada->clear();
+    ui->listWidgetPatologiaValvularCombinada->clear();
     ui->radioButtonHombre->setAutoExclusive(false);
     ui->radioButtonHombre->setChecked(false);
     ui->radioButtonMujer->setAutoExclusive(false);
@@ -347,5 +354,3 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
             return lineEdit;
         }
 }
-
-
