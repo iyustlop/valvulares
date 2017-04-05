@@ -38,6 +38,7 @@ private:
     void showError(const QSqlError &err);
     void clearUi();
     QString comprobarLineEdit(QString lineEdit);
+
 };
 
 #endif // MAINWINDOW_H

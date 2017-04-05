@@ -96,6 +96,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     Etiology crearEtiologia;
     ProtesicDisfunction disfuncionProtesica;
     Patient crearPaciente;
+    QList<QListWidgetItem*> itemSelected;
 
     crearPersona.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
     crearEtiologia.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
@@ -153,7 +154,10 @@ void MainWindow::on_pushButtonCreate_clicked()
         return;
     }
     else{
-        crearEtiologia.setValvularPatologySecondary(ui->listWidgetPatologiaValvularCombinada->currentItem()->text());
+
+        itemSelected = ui->listWidgetPatologiaValvularCombinada->selectedItems();
+        qDebug()<<itemSelected;
+        //crearEtiologia.setValvularPatologySecondary(ui->listWidgetPatologiaValvularCombinada->currentItem()->text());
     }
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
