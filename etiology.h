@@ -30,7 +30,7 @@ private:
     QString causa;
     QString patologiaValvular;
     QString mixedVpatology;
-    QList<QString> valvularPatologySecondary;
+    QString valvularPatologySecondary;
     ProtesicDisfunction disfuncionProtesica;
 };
 

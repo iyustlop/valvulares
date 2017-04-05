@@ -156,8 +156,14 @@ void MainWindow::on_pushButtonCreate_clicked()
     else{
 
         itemSelected = ui->listWidgetPatologiaValvularCombinada->selectedItems();
-        qDebug()<<itemSelected;
-        //crearEtiologia.setValvularPatologySecondary(ui->listWidgetPatologiaValvularCombinada->currentItem()->text());
+
+        QString texts;
+        foreach (QListWidgetItem *item, itemSelected) {
+            texts.append(item->text());
+            texts.append(";");
+        }
+
+        crearEtiologia.setValvularPatologySecondary(texts);
     }
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
