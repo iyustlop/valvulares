@@ -29,13 +29,16 @@ SOURCES += main.cpp\
     etiology.cpp \
     patient.cpp \
     person.cpp \
-    protesicdisfunction.cpp
+    protesicdisfunction.cpp \
+    addvisit.cpp
 
 HEADERS  += mainwindow.h \
     initdb.h \
     etiology.h \
     patient.h \
     person.h \
-    protesicdisfunction.h
+    protesicdisfunction.h \
+    addvisit.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addvisit.ui

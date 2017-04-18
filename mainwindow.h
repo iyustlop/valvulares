@@ -35,6 +35,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
     void showError(const QSqlError &err);
     void clearUi();
     QString comprobarLineEdit(QString lineEdit);

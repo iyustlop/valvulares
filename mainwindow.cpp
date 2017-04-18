@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "initdb.h"
 #include "patient.h"
+#include "addvisit.h"
 
 #include <QMessageBox>
 
@@ -191,11 +192,6 @@ void MainWindow::on_pushButtonCreate_clicked()
     clearUi();
 }
 
-void MainWindow::on_createDatePushButton_clicked()
-{
-
-}
-
 void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
@@ -363,4 +359,11 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
         else{
             return lineEdit;
         }
+}
+
+void MainWindow::on_createDatePushButton_clicked()
+{
+    AddVisit myAddVisit;
+    myAddVisit.setModal(true);
+    myAddVisit.exec();
 }
