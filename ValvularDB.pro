@@ -30,7 +30,9 @@ SOURCES += main.cpp\
     patient.cpp \
     person.cpp \
     protesicdisfunction.cpp \
-    addvisit.cpp
+    addvisit.cpp \
+    cita.cpp \
+    parametrosanaliticos.cpp
 
 HEADERS  += mainwindow.h \
     initdb.h \
@@ -38,7 +40,9 @@ HEADERS  += mainwindow.h \
     patient.h \
     person.h \
     protesicdisfunction.h \
-    addvisit.h
+    addvisit.h \
+    cita.h \
+    parametrosanaliticos.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui

@@ -391,7 +391,7 @@
       <item row="7" column="0">
        <widget class="QLabel" name="indicacionQrLabel">
         <property name="text">
-         <string>Indicacion Qr</string>
+         <string>Indicacion Qx</string>
         </property>
        </widget>
       </item>
@@ -506,7 +506,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>

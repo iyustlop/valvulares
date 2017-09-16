@@ -35,6 +35,12 @@
       <height>151</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <column>
      <property name="text">
       <string>Fecha</string>
@@ -96,7 +102,15 @@
      </property>
     </column>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1525</width>
+      <height>227</height>
+     </rect>
+    </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <layout class="QFormLayout" name="formLayout">
@@ -692,7 +706,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>11</x>
