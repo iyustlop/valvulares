@@ -57,5 +57,23 @@ void AddVisit::on_pushButtonGuardar_clicked()
     parametrosAnaliticos.setProBNP(ui->potasioLineEdit->text());
     parametrosAnaliticos.setPotasio(ui->potasioLineEdit->text());
 
+    if (ui->listWidgetTratamiento->selectedItems().isEmpty()){
+        QMessageBox::critical(this, "Unable to insert in Database",
+                              "Error insert in Combinada ");
+        return;
+    }
+    else{
+
+        itemSelected = ui->listWidgetTratamiento->selectedItems();
+
+        QString texts;
+        foreach (QListWidgetItem *item, itemSelected) {
+            texts.append(item->text());
+            texts.append(";");
+        }
+
+        parametrosAnaliticos.setTratamiento(texts);
+    }
+
     close();
 }
