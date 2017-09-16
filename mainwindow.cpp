@@ -200,7 +200,6 @@ void MainWindow::on_pushButton_clicked()
     Person insertarPersona;
 
     QString queryId;
-    QStringList vPatoSecs;
 
     queryId = ui->lineEditNumeroHistoria->text();
 
@@ -229,14 +228,7 @@ void MainWindow::on_pushButton_clicked()
     ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
     on_comboBoxPatologiaValvular_activated(insertarEtiologia.getPatlogiaValvular());
     on_combinadaComboBox_activated(insertarEtiologia.getMixedVpatology());
-
-    vPatoSecs = insertarEtiologia.getValvularPatologySecondary().split(";");
-    QItemSelection selectedItems;
-    const int rowCount = vPatoSecs.count();
-    for(int i;i<rowCount;i++){
-       // const QModelIndex currIdx=vPatoSecs->model->index(i,0);
-    }
-
+    //ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
     ui->causaComboBox->setCurrentText(insertarDisfucionProtesica.getCausa());
     ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
     ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());

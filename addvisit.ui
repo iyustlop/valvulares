@@ -391,7 +391,7 @@
       <item row="7" column="0">
        <widget class="QLabel" name="indicacionQrLabel">
         <property name="text">
-         <string>Indicacion Qx</string>
+         <string>Indicacion Qr</string>
         </property>
        </widget>
       </item>
@@ -530,14 +530,14 @@
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButtonGuardar">
       <property name="text">
        <string>Guardar</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pushButtonCancelar">
       <property name="text">
        <string>Cancelar</string>
       </property>

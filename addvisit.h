@@ -16,9 +16,9 @@ public:
     ~AddVisit();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_pushButtonCancelar_clicked();
 
-    void on_pushButton_clicked();
+    void on_pushButtonGuardar_clicked();
 
 private:
     Ui::AddVisit *ui;
