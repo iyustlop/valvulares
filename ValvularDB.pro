@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     protesicdisfunction.cpp \
     addvisit.cpp \
     cita.cpp \
-    parametrosanaliticos.cpp
+    parametrosanaliticos.cpp \
+    initdbcita.cpp
 
 HEADERS  += mainwindow.h \
     initdb.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     protesicdisfunction.h \
     addvisit.h \
     cita.h \
-    parametrosanaliticos.h
+    parametrosanaliticos.h \
+    initdbcita.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui
