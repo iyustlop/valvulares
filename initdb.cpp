@@ -50,8 +50,84 @@ QSqlError initDB::startDb(){
                "FG varchar(20), "
                "proBNP varchar(20), "
                "potasio varchar(20), "
-               "tratamiento varchar(20), "
                "FOREIGN KEY(analiticalParameter) REFERENCES person(id))");
+    query.exec("create table tratamiento (tratamientoId int, "
+               "tratamiento varchar(20), "
+               "FOREIGN KEY(tratamientoId) REFERENCES person(id))");
+    query.exec("create table cirugia (cirugiaId int, "
+               "indicacionQuirurgica varchar(20), "
+               "euroScore varchar(20), "
+               "cirugia varchar(20), "
+               "causa varchar(20), "
+               "FOREIGN KEY(cirugiaId) REFERENCES person(id))");
+    query.exec("create table pruebasDiagnosticasEco (pruebasDiagnosticasEcoId int, "
+               "fecha varchar(20), "
+               "volumenAuriculaIzquierda varchar(20), "
+               "fevi varchar(20), "
+               "dilatacionVi varchar(20), "
+               "vtdVi varchar(20), "
+               "dilatacionVd varchar(20), "
+               "tapse varchar(20), "
+               "raizAortica varchar(20), "
+               "aortaAscecndente varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
+    query.exec("create table mitral (mitralId int, "
+               "gradienteMedioMitral varchar(20), "
+               "avmPorThp varchar(20), "
+               "vOndaE varchar(20), "
+               "ore varchar(20), "
+               "vtdVi varchar(20), "
+               "vrVc varchar(20), "
+               "inversionSistolicaVvpp varchar(20), "
+               "FOREIGN KEY(mitralId) REFERENCES person(id))");
+    query.exec("create table aorta (aortaId int, "
+               "gradientePicoAo varchar(20), "
+               "gradienteMedioAo varchar(20), "
+               "relacionDeIntegrales varchar(20), "
+               "areaAortica varchar(20), "
+               "ore varchar(20), "
+               "iao varchar(20), "
+               "vrIao varchar(20), "
+               "vcIao varchar(20), "
+               "relacionAlturaJetIaoItsvi varchar(20), "
+               "inversionIao varchar(20), "
+               "FOREIGN KEY(aortaId) REFERENCES person(id))");
+    query.exec("create table tricuspide (tricuspideId int, "
+               "psap varchar(20), "
+               "grado varchar(20), "
+               "FOREIGN KEY(tricuspideId) REFERENCES person(id))");
+    query.exec("create table pulmonar (pulmonarID int, "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "ip varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
+    query.exec("create table protesisBiologica (protesisBiologicaId int, "
+               "biologica varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "relacionIntegrales varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "avmXtHp varchar(20), "
+               "FOREIGN KEY(protesisBiologicaId) REFERENCES person(id))");
+    query.exec("create table protesisMecanica (protesisMecanicaId int, "
+               "mecanica varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "tAcao varchar(20), "
+               "FOREIGN KEY(protesisMecanicaId) REFERENCES person(id))");
+    query.exec("create table anillo (anilloId int, "
+               "posicion varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "FOREIGN KEY(anilloId) REFERENCES person(id))");
+    query.exec("create table resonancia (resonanciaId int, "
+               "nivelIao varchar(20), "
+               "raizAorta varchar(20), "
+               "aortaAscendente varchar(20), "
+               "realceTardio varchar(20), "
+               "descripcion varchar(20), "
+               "FOREIGN KEY(anilloId) REFERENCES person(id))");
     return QSqlError();
 }
 
@@ -212,3 +288,5 @@ QSqlError initDB::updateDB(Patient paciente){
 
     return QSqlError();
 }
+
+
