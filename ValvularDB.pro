@@ -26,25 +26,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     initdb.cpp \
-    etiology.cpp \
-    patient.cpp \
-    person.cpp \
     protesicdisfunction.cpp \
     addvisit.cpp \
     cita.cpp \
     parametrosanaliticos.cpp \
-    initdbcita.cpp
+    initdbcita.cpp \
+    bean/patient.cpp \
+    bean/person.cpp \
+    bean/etiology.cpp
 
 HEADERS  += mainwindow.h \
     initdb.h \
-    etiology.h \
-    patient.h \
-    person.h \
     protesicdisfunction.h \
     addvisit.h \
     cita.h \
     parametrosanaliticos.h \
-    initdbcita.h
+    initdbcita.h \
+    bean/patient.h \
+    bean/person.h \
+    bean/etiology.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui
