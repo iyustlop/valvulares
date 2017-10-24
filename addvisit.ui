@@ -63,7 +63,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="fechaConsultaDate">
+       <widget class="QLabel" name="fechaConsultaDateLabel">
         <property name="text">
          <string>Fecha Consulta</string>
         </property>

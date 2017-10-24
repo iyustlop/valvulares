@@ -1,7 +1,7 @@
 #include "addvisit.h"
 #include "ui_addvisit.h"
-#include "cita.h"
-#include "parametrosanaliticos.h"
+#include "cita/cita.h"
+#include "cita/parametrosanaliticos.h"
 
 #include <QMessageBox>
 
@@ -28,10 +28,9 @@ void AddVisit::on_pushButtonGuardar_clicked()
     ParametrosAnaliticos parametrosAnaliticos;
     QList<QListWidgetItem*> itemSelected;
 
-    crearCita.setFechaConsulta(ui->fechaConsultaDate->text());
+    crearCita.setFechaConsulta(ui->fechaConsultaDateEdit->text());
     crearCita.setRitmo(ui->ritmoComboBox->currentText());
-    crearCita.setFechaConsulta(ui->gradoFuncionalComboBox->currentText());
-    //crearCita.setFrcv(ui->);
+    crearCita.setGradoFuncional(ui->gradoFuncionalComboBox->currentText());
 
     if (ui->listWidgetFRCV->selectedItems().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
