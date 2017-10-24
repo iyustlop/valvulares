@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "initdb.h"
+#include "db/initdb.h"
 
 #include <QMainWindow>
 

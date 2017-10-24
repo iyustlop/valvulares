@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "initdb.h"
+#include "db/initdb.h"
 #include "bean/patient.h"
 #include "addvisit.h"
 
