@@ -74,5 +74,8 @@ void AddVisit::on_pushButtonGuardar_clicked()
         parametrosAnaliticos.setTratamiento(texts);
     }
 
+    parametrosAnaliticos.setIndicacionQr(ui->indicacionQrComboBox->currentText());
+    parametrosAnaliticos.setEuroScore(ui->euroScoreLineEdit->text());
+
     close();
 }
