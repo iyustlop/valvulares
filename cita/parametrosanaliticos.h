@@ -25,6 +25,12 @@ public:
     QString getTratamiento() const;
     void setTratamiento(const QString &value);
 
+    QString getIndicacionQr() const;
+    void setIndicacionQr(const QString &value);
+
+    QString getEuroScore() const;
+    void setEuroScore(const QString &value);
+
 private:
     QString HB;
     QString creatinina;
@@ -32,6 +38,10 @@ private:
     QString proBNP;
     QString potasio;
     QString tratamiento;
+    QString indicacionQr;
+    QString euroScore;
+
+
 };
 
 #endif // PARAMETROSANALITICOS_H

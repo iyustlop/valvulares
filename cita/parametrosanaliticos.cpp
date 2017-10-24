@@ -64,3 +64,23 @@ void ParametrosAnaliticos::setTratamiento(const QString &value)
 {
     tratamiento = value;
 }
+
+QString ParametrosAnaliticos::getIndicacionQr() const
+{
+    return indicacionQr;
+}
+
+void ParametrosAnaliticos::setIndicacionQr(const QString &value)
+{
+    indicacionQr = value;
+}
+
+QString ParametrosAnaliticos::getEuroScore() const
+{
+    return euroScore;
+}
+
+void ParametrosAnaliticos::setEuroScore(const QString &value)
+{
+    euroScore = value;
+}
