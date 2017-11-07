@@ -96,8 +96,8 @@ void MainWindow::on_pushButtonCreate_clicked()
     Person crearPersona;
     Etiology crearEtiologia;
     ProtesicDisfunction disfuncionProtesica;
-    Patient crearPaciente;
     QList<QListWidgetItem*> itemSelected;
+    Patient crearPaciente;
 
     crearPersona.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
     crearEtiologia.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
@@ -363,7 +363,14 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 
 void MainWindow::on_createDatePushButton_clicked()
 {
-    AddVisit myAddVisit;
-    myAddVisit.setModal(true);
+    QString numeroHistoria = ui->lineEditNumeroHistoria->text();
+    AddVisit myAddVisit(numeroHistoria);
+    //myAddVisit.setModal(true);
     myAddVisit.exec();
+}
+
+QString MainWindow::getNumeroHistoria(){
+    QString keyNumeroHistoria =  ui->lineEditNumeroHistoria->text();
+
+    return keyNumeroHistoria;
 }

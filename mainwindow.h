@@ -17,6 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     initDB valvularesDB;
+    QString getNumeroHistoria();
 
 private slots:
     void on_pushButtonCreate_clicked();

@@ -5,11 +5,15 @@
 
 #include <QMessageBox>
 
-AddVisit::AddVisit(QWidget *parent) :
+#include <cita/visit.h>
+
+AddVisit::AddVisit(QString numeroHistoria, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddVisit)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Numero de historia:"+numeroHistoria);
+    setNumeroHistoria(numeroHistoria);
 }
 
 AddVisit::~AddVisit()
@@ -24,8 +28,9 @@ void AddVisit::on_pushButtonCancelar_clicked()
 
 void AddVisit::on_pushButtonGuardar_clicked()
 {
+    visit visita;
     Cita crearCita;
-    ParametrosAnaliticos parametrosAnaliticos;
+    ParametrosAnaliticos crearParametrosAnaliticos;
     QList<QListWidgetItem*> itemSelected;
 
     crearCita.setFechaConsulta(ui->fechaConsultaDateEdit->text());
@@ -50,11 +55,11 @@ void AddVisit::on_pushButtonGuardar_clicked()
         crearCita.setFrcv(texts);
     }
 
-    parametrosAnaliticos.setHB(ui->hBLineEdit->text());
-    parametrosAnaliticos.setCreatinina(ui->creatininaLineEdit->text());
-    parametrosAnaliticos.setFG(ui->fGLineEdit->text());
-    parametrosAnaliticos.setProBNP(ui->potasioLineEdit->text());
-    parametrosAnaliticos.setPotasio(ui->potasioLineEdit->text());
+    crearParametrosAnaliticos.setHB(ui->hBLineEdit->text());
+    crearParametrosAnaliticos.setCreatinina(ui->creatininaLineEdit->text());
+    crearParametrosAnaliticos.setFG(ui->fGLineEdit->text());
+    crearParametrosAnaliticos.setProBNP(ui->potasioLineEdit->text());
+    crearParametrosAnaliticos.setPotasio(ui->potasioLineEdit->text());
 
     if (ui->listWidgetTratamiento->selectedItems().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
@@ -71,11 +76,36 @@ void AddVisit::on_pushButtonGuardar_clicked()
             texts.append(";");
         }
 
-        parametrosAnaliticos.setTratamiento(texts);
+        crearParametrosAnaliticos.setTratamiento(texts);
     }
 
-    parametrosAnaliticos.setIndicacionQr(ui->indicacionQrComboBox->currentText());
-    parametrosAnaliticos.setEuroScore(ui->euroScoreLineEdit->text());
+    crearParametrosAnaliticos.setIndicacionQr(ui->indicacionQrComboBox->currentText());
+    crearParametrosAnaliticos.setEuroScore(ui->euroScoreLineEdit->text());
+
+    visita.setCita(crearCita);
+    visita.setParametrosAnaliticos(crearParametrosAnaliticos);
+
+    QSqlError err = citaDB.insertCita(getNumeroHistoria(),visita);
+    if (err.type() != QSqlError::NoError) {
+        showError(err);
+        return;
+    }
 
     close();
+}
+
+void AddVisit::showError(const QSqlError &err)
+{
+    QMessageBox::critical(this, "Unable to initialize Database",
+                "Error initializing database: " + err.text());
+}
+
+QString AddVisit::getNumeroHistoria() const
+{
+    return numeroHistoria;
+}
+
+void AddVisit::setNumeroHistoria(const QString &value)
+{
+    numeroHistoria = value;
 }
