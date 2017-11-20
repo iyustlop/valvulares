@@ -367,6 +367,7 @@ void MainWindow::on_createDatePushButton_clicked()
     AddVisit myAddVisit(numeroHistoria);
     //myAddVisit.setModal(true);
     myAddVisit.exec();
+    clearUi();
 }
 
 QString MainWindow::getNumeroHistoria(){

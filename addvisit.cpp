@@ -2,6 +2,7 @@
 #include "ui_addvisit.h"
 #include "cita/cita.h"
 #include "cita/parametrosanaliticos.h"
+#include "mainwindow.h"
 
 #include <QMessageBox>
 
@@ -63,7 +64,7 @@ void AddVisit::on_pushButtonGuardar_clicked()
 
     if (ui->listWidgetTratamiento->selectedItems().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
-                              "Error insert in Combinada ");
+                              "Error insert in Parametros Analiticos");
         return;
     }
     else{
@@ -92,6 +93,7 @@ void AddVisit::on_pushButtonGuardar_clicked()
     }
 
     close();
+
 }
 
 void AddVisit::showError(const QSqlError &err)

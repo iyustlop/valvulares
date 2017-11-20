@@ -162,7 +162,6 @@ QSqlError initDB::insertDB(Patient paciente){
     query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
     query.bindValue(":mixedVpatology", etiologia.getMixedVpatology());
     query.bindValue(":valvularPatologySecondary",etiologia.getValvularPatologySecondary());
-
     if (!query.exec())
         return query.lastError();
 
