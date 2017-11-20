@@ -546,6 +546,22 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>pushButtonGuardar</tabstop>
+  <tabstop>pushButtonCancelar</tabstop>
+  <tabstop>fechaConsultaDateEdit</tabstop>
+  <tabstop>ritmoComboBox</tabstop>
+  <tabstop>gradoFuncionalComboBox</tabstop>
+  <tabstop>listWidgetFRCV</tabstop>
+  <tabstop>hBLineEdit</tabstop>
+  <tabstop>creatininaLineEdit</tabstop>
+  <tabstop>fGLineEdit</tabstop>
+  <tabstop>proBNPLineEdit</tabstop>
+  <tabstop>potasioLineEdit</tabstop>
+  <tabstop>indicacionQrComboBox</tabstop>
+  <tabstop>euroScoreLineEdit</tabstop>
+  <tabstop>listWidgetTratamiento</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
