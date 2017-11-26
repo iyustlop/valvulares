@@ -24,6 +24,7 @@ QSqlError initDB::startDb(){
                "lastname varchar(20), "
                "genre varchar(20), "
                "birthdate varchar(20))");
+    query.exec("CREATE UNIQUE INDEX idx_id ON person(id)");
     query.exec("create table etiology (etiologyId int, "
                "etiology varchar(20), "
                "cause varchar(20), "
