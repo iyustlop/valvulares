@@ -353,7 +353,7 @@ void MainWindow::clearUi()
 QString MainWindow::comprobarLineEdit(QString lineEdit)
 {
     if (lineEdit.isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database","Error insert in Nombre ");
+        QMessageBox::critical(this, "Unable to insert in Database","Fill all the fields ");
         return "Vacio";
     }
     else{
