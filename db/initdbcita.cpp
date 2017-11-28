@@ -27,9 +27,8 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("insert into parametrosAnaliticos values(:analiticalParameter,:HB,:creatinina,:FG,:proBNP,:potasio)"))
+    if (!query.prepare("insert into parametrosAnaliticos(HB,creatinina,FG,proBNP,potasio) values(:HB,:creatinina,:FG,:proBNP,:potasio)"))
         return query.lastError();
-    query.bindValue(":analiticalParameter",numeroHistoria.toInt());
     query.bindValue(":HB",parametrosAnaliticos.getHB());
     query.bindValue(":creatinina",parametrosAnaliticos.getCreatinina());
     query.bindValue(":FG",parametrosAnaliticos.getFG());
@@ -39,4 +38,28 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
         return query.lastError();
 
     return QSqlError();
+}
+
+QList<visit> initDBCita::readVisit(QString nHistoria){
+    QSqlQuery query;
+    QList<visit> listVisit;
+    visit visita;
+    Cita cita;
+
+    query.prepare("SELECT * FROM cita "
+                  "where cita.personId = :id");
+    query.bindValue(":id",nHistoria);
+
+    if(query.exec()){
+        while(query.next()) {
+            cita.setFechaConsulta(query.value(2).toString());
+            cita.setRitmo(query.value(3).toString());
+            cita.setGradoFuncional(query.value(4).toString());
+            cita.setFrcv(query.value(5).toString());
+            visita.setCita(cita);
+            listVisit.append(visita);
+        }
+    }
+
+    return listVisit;
 }
