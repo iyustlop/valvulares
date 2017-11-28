@@ -96,6 +96,11 @@ void AddVisit::on_pushButtonGuardar_clicked()
 
 }
 
+QList<visit>  AddVisit::returnVisits(QString nHistoria){
+    QList<visit> myVisits = citaDB.readVisit(nHistoria);
+    return myVisits;
+}
+
 void AddVisit::showError(const QSqlError &err)
 {
     QMessageBox::critical(this, "Unable to initialize Database",

@@ -17,6 +17,7 @@ public:
     explicit AddVisit(QString numeroHistoria, QWidget *parent = 0);
     ~AddVisit();
     initDBCita citaDB;
+    QList<visit> returnVisits(QString nHistoria);
 
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);

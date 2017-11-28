@@ -363,17 +363,20 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 
 void MainWindow::on_createDatePushButton_clicked()
 { 
+    QList<visit> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    AddVisit myAddVisit(numeroHistoria);
 
     int x = QString::compare(numeroHistoria,"Vacio");
     if (x == 0){
 
     } else{
-        AddVisit myAddVisit(numeroHistoria);
         //myAddVisit.setModal(true);
         myAddVisit.exec();
         clearUi();
     }
+
+    listVist = myAddVisit.returnVisits(numeroHistoria);
 }
 
 QString MainWindow::getNumeroHistoria(){

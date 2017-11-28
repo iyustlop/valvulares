@@ -10,6 +10,7 @@ class initDBCita
 public:
     initDBCita();
     QSqlError insertCita(QString numeroHistoria, visit visita);
+    QList<visit> readVisit(QString nHistoria);
 };
 
 #endif // INITDBCITA_H
