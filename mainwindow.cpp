@@ -13,14 +13,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     if (!QSqlDatabase::drivers().contains("QSQLITE"))
-            QMessageBox::critical(this, "Unable to load database", "This demo needs the SQLITE driver");
+        QMessageBox::critical(this, "Unable to load database", "This demo needs the SQLITE driver");
 
-        // initialize the database
-        QSqlError err = valvularesDB.startDb();
-        if (err.type() != QSqlError::NoError) {
-            showError(err);
-            return;
-        }
+    // initialize the database
+    QSqlError err = valvularesDB.startDb();
+    if (err.type() != QSqlError::NoError) {
+        showError(err);
+        return;
+    }
 }
 
 MainWindow::~MainWindow()
@@ -116,7 +116,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     }
     if (ui->comboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Etiologia ");
+                              "Error insert in Etiologia ");
         return;
     }
     else{
@@ -125,7 +125,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     if (ui->comboBoxCausa->currentIndex() == -1){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Causa ");
+                              "Error insert in Causa ");
         return;
     }
     else{
@@ -134,7 +134,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Patologia Valvular ");
+                              "Error insert in Patologia Valvular ");
         return;
     }
     else{
@@ -142,7 +142,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     }
     if (ui->combinadaComboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Combinada ");
+                              "Error insert in Combinada ");
         return;
     }
     else{
@@ -151,7 +151,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     if (ui->listWidgetPatologiaValvularCombinada->selectedItems().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Combinada ");
+                              "Error insert in Combinada ");
         return;
     }
     else{
@@ -261,7 +261,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
     }
     if (ui->comboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Etiologia ");
+                              "Error insert in Etiologia ");
         return;
     }
     else{
@@ -270,7 +270,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
 
     if (ui->comboBoxCausa->currentIndex() == -1){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Causa ");
+                              "Error insert in Causa ");
         return;
     }
     else{
@@ -279,7 +279,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
 
     if (ui->comboBoxPatologiaValvular->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Patologia Valvular ");
+                              "Error insert in Patologia Valvular ");
         return;
     }
     else{
@@ -287,14 +287,14 @@ void MainWindow::on_pushButtonUpdate_clicked()
     }
     if (ui->combinadaComboBox->currentIndex() == 0){
         QMessageBox::critical(this, "Unable to insert in Database",
-                "Error insert in Combinada ");
+                              "Error insert in Combinada ");
         return;
     }
     else{
         updateEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
     }
 
-  //  updateEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
+    //  updateEtiologia.setValvularPatologySecondary(ui->comboBoxPatologiaValvularCombinada->currentText());
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){
 
@@ -325,7 +325,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
 void MainWindow::showError(const QSqlError &err)
 {
     QMessageBox::critical(this, "Unable to initialize Database",
-                "Error initializing database: " + err.text());
+                          "Error initializing database: " + err.text());
 }
 
 void MainWindow::clearUi()
@@ -354,20 +354,26 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 {
     if (lineEdit.isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database","Error insert in Nombre ");
-            return "Vacio";
-        }
-        else{
-            return lineEdit;
-        }
+        return "Vacio";
+    }
+    else{
+        return lineEdit;
+    }
 }
 
 void MainWindow::on_createDatePushButton_clicked()
-{
-    QString numeroHistoria = ui->lineEditNumeroHistoria->text();
-    AddVisit myAddVisit(numeroHistoria);
-    //myAddVisit.setModal(true);
-    myAddVisit.exec();
-    clearUi();
+{ 
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        AddVisit myAddVisit(numeroHistoria);
+        //myAddVisit.setModal(true);
+        myAddVisit.exec();
+        clearUi();
+    }
 }
 
 QString MainWindow::getNumeroHistoria(){
