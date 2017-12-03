@@ -19,39 +19,117 @@ QSqlError initDB::startDb(){
 
     QSqlQuery query;      
     // Avoid error trying to create the table.
-    query.exec("create table person (id int primary key, "
+    query.exec("CREATE TABLE person (id INTEGER PRIMARY KEY, "
                "name varchar(20), "
                "lastname varchar(20), "
                "genre varchar(20), "
                "birthdate varchar(20))");
-    query.exec("create table etiology (etiologyId int, "
+    query.exec("CREATE UNIQUE INDEX idx_id ON person(id)");
+    query.exec("CREATE TABLE etiology (etiologyId int, "
                "etiology varchar(20), "
                "cause varchar(20), "
                "valvularPatology varchar(20), "
                "mixedVpatology varchar(5), "
                "valvularPatologySecondary varchar(20),"
                "FOREIGN KEY(etiologyId) REFERENCES person(id))");
-    query.exec("create table protesicDisfunction (disfuncionId int, "
+    query.exec("CREATE TABLE protesicDisfunction (disfuncionId int, "
                "causa varchar(20), "
                "protesis varchar(20), "
                "modelo varchar(20), "
                "numero varchar(20), "
                "fechaCirugia varchar(20), "
                "FOREIGN KEY(disfuncionId) REFERENCES person(id))");
-    query.exec("create table cita (visitId int, "
+    query.exec("CREATE TABLE cita (visitId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
                "dateVisit varchar(20), "
                "rhythm varchar(20), "
                "functionalGrade varchar(20), "
                "FRCV varchar(20), "
-               "FOREIGN KEY(visitId) REFERENCES person(id))");
-    query.exec("create table parametrosAnaliticos (analiticalParameter int, "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+    query.exec("CREATE TABLE parametrosAnaliticos (dateVisitParam varchar(20), "
                "HB varchar(20), "
                "creatinina varchar(20), "
                "FG varchar(20), "
                "proBNP varchar(20), "
                "potasio varchar(20), "
+               "FOREIGN KEY(dateVisitParam) REFERENCES cita(dateVisit))");
+    query.exec("CREATE TABLE tratamiento (tratamientoId int, "
                "tratamiento varchar(20), "
-               "FOREIGN KEY(analiticalParameter) REFERENCES person(id))");
+               "FOREIGN KEY(tratamientoId) REFERENCES cita(visitId))");
+    query.exec("CREATE TABLE cirugia (cirugiaId int, "
+               "indicacionQuirurgica varchar(20), "
+               "euroScore varchar(20), "
+               "cirugia varchar(20), "
+               "causa varchar(20), "
+               "FOREIGN KEY(cirugiaId) REFERENCES cita(visitId))");
+    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId int, "
+               "fecha varchar(20), "
+               "volumenAuriculaIzquierda varchar(20), "
+               "fevi varchar(20), "
+               "dilatacionVi varchar(20), "
+               "vtdVi varchar(20), "
+               "dilatacionVd varchar(20), "
+               "tapse varchar(20), "
+               "raizAortica varchar(20), "
+               "aortaAscecndente varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
+    query.exec("CREATE TABLE mitral (mitralId int, "
+               "gradienteMedioMitral varchar(20), "
+               "avmPorThp varchar(20), "
+               "vOndaE varchar(20), "
+               "ore varchar(20), "
+               "vtdVi varchar(20), "
+               "vrVc varchar(20), "
+               "inversionSistolicaVvpp varchar(20), "
+               "FOREIGN KEY(mitralId) REFERENCES person(id))");
+    query.exec("CREATE TABLE aorta (aortaId int, "
+               "gradientePicoAo varchar(20), "
+               "gradienteMedioAo varchar(20), "
+               "relacionDeIntegrales varchar(20), "
+               "areaAortica varchar(20), "
+               "ore varchar(20), "
+               "iao varchar(20), "
+               "vrIao varchar(20), "
+               "vcIao varchar(20), "
+               "relacionAlturaJetIaoItsvi varchar(20), "
+               "inversionIao varchar(20), "
+               "FOREIGN KEY(aortaId) REFERENCES person(id))");
+    query.exec("CREATE TABLE tricuspide (tricuspideId int, "
+               "psap varchar(20), "
+               "grado varchar(20), "
+               "FOREIGN KEY(tricuspideId) REFERENCES person(id))");
+    query.exec("CREATE TABLE pulmonar (pulmonarID int, "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "ip varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
+    query.exec("CREATE TABLE protesisBiologica (protesisBiologicaId int, "
+               "biologica varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "relacionIntegrales varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "avmXtHp varchar(20), "
+               "FOREIGN KEY(protesisBiologicaId) REFERENCES person(id))");
+    query.exec("CREATE TABLE protesisMecanica (protesisMecanicaId int, "
+               "mecanica varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "tAcao varchar(20), "
+               "FOREIGN KEY(protesisMecanicaId) REFERENCES person(id))");
+    query.exec("CREATE TABLE anillo (anilloId int, "
+               "posicion varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "FOREIGN KEY(anilloId) REFERENCES person(id))");
+    query.exec("CREATE TABLE resonancia (resonanciaId int, "
+               "nivelIao varchar(20), "
+               "raizAorta varchar(20), "
+               "aortaAscendente varchar(20), "
+               "realceTardio varchar(20), "
+               "descripcion varchar(20), "
+               "FOREIGN KEY(anilloId) REFERENCES person(id))");
     return QSqlError();
 }
 
@@ -86,7 +164,6 @@ QSqlError initDB::insertDB(Patient paciente){
     query.bindValue(":valvularPatology",etiologia.getPatlogiaValvular());
     query.bindValue(":mixedVpatology", etiologia.getMixedVpatology());
     query.bindValue(":valvularPatologySecondary",etiologia.getValvularPatologySecondary());
-
     if (!query.exec())
         return query.lastError();
 
@@ -212,3 +289,5 @@ QSqlError initDB::updateDB(Patient paciente){
 
     return QSqlError();
 }
+
+

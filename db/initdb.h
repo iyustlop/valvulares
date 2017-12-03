@@ -1,9 +1,9 @@
 #ifndef INITDB_H
 #define INITDB_H
 
-#include "patient.h"
-#include "person.h"
-#include "etiology.h"
+#include "bean/patient.h"
+#include "bean/person.h"
+#include "bean/etiology.h"
 
 #include <QtSql>
 
