@@ -46,13 +46,13 @@ QSqlError initDB::startDb(){
                "functionalGrade varchar(20), "
                "FRCV varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE parametrosAnaliticos (analiticalParameter int, "
+    query.exec("CREATE TABLE parametrosAnaliticos (dateVisitParam varchar(20), "
                "HB varchar(20), "
                "creatinina varchar(20), "
                "FG varchar(20), "
                "proBNP varchar(20), "
                "potasio varchar(20), "
-               "FOREIGN KEY(analiticalParameter) REFERENCES cita(visitId))");
+               "FOREIGN KEY(dateVisitParam) REFERENCES cita(dateVisit))");
     query.exec("CREATE TABLE tratamiento (tratamientoId int, "
                "tratamiento varchar(20), "
                "FOREIGN KEY(tratamientoId) REFERENCES cita(visitId))");

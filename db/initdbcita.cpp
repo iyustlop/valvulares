@@ -17,7 +17,8 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
 
     QSqlQuery query;
 
-    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV) values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV)"))
+    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV) "
+                       "values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV)"))
         return query.lastError();
     query.bindValue(":personId",numeroHistoria.toInt());
     query.bindValue(":dateVisit",cita.getFechaConsulta());
@@ -27,8 +28,10 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
     if (!query.exec())
         return query.lastError();
 
-    if (!query.prepare("insert into parametrosAnaliticos(HB,creatinina,FG,proBNP,potasio) values(:HB,:creatinina,:FG,:proBNP,:potasio)"))
+    if (!query.prepare("insert into parametrosAnaliticos(dateVisitParam,HB,creatinina,FG,proBNP,potasio) "
+                       "values(:dateVisitParam,:HB,:creatinina,:FG,:proBNP,:potasio)"))
         return query.lastError();
+    query.bindValue(":dateVisitParam",cita.getFechaConsulta());
     query.bindValue(":HB",parametrosAnaliticos.getHB());
     query.bindValue(":creatinina",parametrosAnaliticos.getCreatinina());
     query.bindValue(":FG",parametrosAnaliticos.getFG());
