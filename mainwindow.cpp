@@ -199,12 +199,14 @@ void MainWindow::on_pushButton_clicked()
     Etiology insertarEtiologia;
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
+    visit insertarVisita;
 
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
 
     insertarPaciente = valvularesDB.readDB(queryId);
+    insertarVisita = valvularesDB.readVisitaDB(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();

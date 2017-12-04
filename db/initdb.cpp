@@ -229,6 +229,39 @@ Patient initDB::readDB(QString queryId){
     return readPaciente;
 }
 
+visit initDB::readVisitaDB(QString queryId){
+    QSqlQuery query;
+
+    visit readVisita;
+    Cita readCita;
+    ParametrosAnaliticos readParametrosAnaliticos;
+
+    query.prepare("select c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, pa.dateVisitParam, pa.HB, pa.creatinina, pa.FG, pa.proBNP, pa.potasio "
+                  "FROM cita c, parametrosAnaliticos pa "
+                  "left join parametrosAnaliticos on c.dateVisit = pa.dateVisitParam "
+                  "WHERE c.visitId  = :id");
+    query.bindValue(":id",queryId);
+
+    if(query.exec()){
+        if (query.next()){
+            readCita.setFechaConsulta(query.value(0).toString());
+            readCita.setRitmo(query.value(1).toString());
+            readCita.setGradoFuncional(query.value(2).toString());
+            readCita.setFrcv(query.value(3).toString());
+            readParametrosAnaliticos.setHB(query.value(5).toString());
+            readParametrosAnaliticos.setCreatinina(query.value(6).toString());
+            readParametrosAnaliticos.setFG(query.value(7).toString());
+            readParametrosAnaliticos.setProBNP(query.value(8).toString());
+            readParametrosAnaliticos.setPotasio(query.value(9).toString());
+        }
+    }
+
+    readVisita.setCita(readCita);
+    readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
+
+    return readVisita;
+}
+
 QSqlError initDB::updateDB(Patient paciente){
     QSqlQuery query;
 
