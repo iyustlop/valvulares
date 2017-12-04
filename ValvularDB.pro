@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-01-09T13:52:50
+# Project created by QtCreator 2017-12-04T22:58:11
 #
 #-------------------------------------------------
 
@@ -25,28 +25,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    protesicdisfunction.cpp \
-    addvisit.cpp \
-    bean/patient.cpp \
-    bean/person.cpp \
-    bean/etiology.cpp \
-    bean/foo.cpp \
     db/initdb.cpp \
     db/initdbcita.cpp \
     cita/cita.cpp \
-    cita/parametrosanaliticos.cpp
+    cita/parametrosanaliticos.cpp \
+    cita/visit.cpp \
+    bean/etiology.cpp \
+    bean/patient.cpp \
+    bean/person.cpp \
+    bean/protesicdisfunction.cpp \
+    addvisit.cpp
 
 HEADERS  += mainwindow.h \
-    protesicdisfunction.h \
-    addvisit.h \
-    bean/patient.h \
-    bean/person.h \
-    bean/etiology.h \
-    bean/foo.h \
     db/initdb.h \
     db/initdbcita.h \
     cita/cita.h \
-    cita/parametrosanaliticos.h
+    cita/parametrosanaliticos.h \
+    cita/visit.h \
+    bean/etiology.h \
+    bean/patient.h \
+    bean/person.h \
+    bean/protesicdisfunction.h \
+    addvisit.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui

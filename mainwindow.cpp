@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "db/initdb.h"
 #include "bean/patient.h"
 #include "addvisit.h"
@@ -362,7 +363,7 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 }
 
 void MainWindow::on_createDatePushButton_clicked()
-{ 
+{
     QList<visit> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
     AddVisit myAddVisit(numeroHistoria);

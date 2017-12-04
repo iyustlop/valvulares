@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1350</width>
+    <width>1498</width>
     <height>766</height>
    </rect>
   </property>
@@ -96,7 +96,15 @@
      </property>
     </column>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1525</width>
+      <height>227</height>
+     </rect>
+    </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <layout class="QFormLayout" name="formLayout">
@@ -692,7 +700,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>11</x>
@@ -744,7 +752,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1350</width>
+     <width>1498</width>
      <height>26</height>
     </rect>
    </property>
