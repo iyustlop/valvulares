@@ -229,10 +229,11 @@ Patient initDB::readDB(QString queryId){
     return readPaciente;
 }
 
-visit initDB::readVisitaDB(QString queryId){
+QList<visit> initDB::readVisitaDB(QString queryId){
     QSqlQuery query;
 
     visit readVisita;
+    QList<visit> readVisitas;
     Cita readCita;
     ParametrosAnaliticos readParametrosAnaliticos;
 
@@ -253,13 +254,15 @@ visit initDB::readVisitaDB(QString queryId){
             readParametrosAnaliticos.setFG(query.value(7).toString());
             readParametrosAnaliticos.setProBNP(query.value(8).toString());
             readParametrosAnaliticos.setPotasio(query.value(9).toString());
+
+            readVisita.setCita(readCita);
+            readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
+
+            readVisitas.append(readVisita);
         }
     }
 
-    readVisita.setCita(readCita);
-    readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
-
-    return readVisita;
+    return readVisitas;
 }
 
 QSqlError initDB::updateDB(Patient paciente){

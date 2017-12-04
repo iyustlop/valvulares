@@ -199,7 +199,7 @@ void MainWindow::on_pushButton_clicked()
     Etiology insertarEtiologia;
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
-    visit insertarVisita;
+    QList<visit> insertarVisita;
 
     QString queryId;
 

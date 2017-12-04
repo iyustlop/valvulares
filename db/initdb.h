@@ -15,7 +15,7 @@ public:
     QSqlError startDb();
     QSqlError insertDB(Patient paciente);
     Patient readDB(QString queryId);
-    visit readVisitaDB(QString queryId);
+    QList<visit> readVisitaDB(QString queryId);
     QSqlError updateDB(Patient paciente);
 };
 
