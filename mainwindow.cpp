@@ -200,6 +200,8 @@ void MainWindow::on_pushButton_clicked()
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
     QList<visit> insertarVisita;
+    Cita insertarCita;
+    ParametrosAnaliticos insertarParametros;
 
     QString queryId;
 
@@ -237,6 +239,23 @@ void MainWindow::on_pushButton_clicked()
     ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
     ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
     ui->dateEditSugeryDate->setDate(fechaCirugia);
+
+    ui->citasTableWidget->setRowCount((insertarVisita.length()));
+
+    QList<visit>::iterator i;
+    for (i = insertarVisita.begin(); i != insertarVisita.end();i++){
+
+        insertarCita = (*i).getCita();
+        insertarParametros = (*i).getParametrosAnaliticos();
+
+        ui->citasTableWidget->setItem(0,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
+        ui->citasTableWidget->setItem(0,1,new QTableWidgetItem(insertarCita.getRitmo()));
+        ui->citasTableWidget->setItem(0,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
+        ui->citasTableWidget->setItem(0,3,new QTableWidgetItem(insertarCita.getFrcv()));
+        ui->citasTableWidget->setItem(0,4,new QTableWidgetItem(insertarParametros.getHB()));
+        ui->citasTableWidget->setItem(0,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
+        ui->citasTableWidget->setItem(0,6,new QTableWidgetItem(insertarParametros.getFG()));
+    }
 
 }
 
@@ -387,3 +406,10 @@ QString MainWindow::getNumeroHistoria(){
 
     return keyNumeroHistoria;
 }
+
+
+void MainWindow::on_pushButtonClear_clicked()
+{
+    clearUi();
+}
+
