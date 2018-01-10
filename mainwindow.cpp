@@ -242,21 +242,20 @@ void MainWindow::on_pushButton_clicked()
 
     ui->citasTableWidget->setRowCount((insertarVisita.length()));
 
-    QList<visit>::iterator i;
-    for (i = insertarVisita.begin(); i != insertarVisita.end();i++){
+    for (int i = 0; i < insertarVisita.length();i++){
 
-        insertarCita = (*i).getCita();
-        insertarParametros = (*i).getParametrosAnaliticos();
+        visit visitaIter = insertarVisita[i];
+        insertarCita = visitaIter.getCita();
+        insertarParametros = visitaIter.getParametrosAnaliticos();
 
-        ui->citasTableWidget->setItem(0,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
-        ui->citasTableWidget->setItem(0,1,new QTableWidgetItem(insertarCita.getRitmo()));
-        ui->citasTableWidget->setItem(0,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
-        ui->citasTableWidget->setItem(0,3,new QTableWidgetItem(insertarCita.getFrcv()));
-        ui->citasTableWidget->setItem(0,4,new QTableWidgetItem(insertarParametros.getHB()));
-        ui->citasTableWidget->setItem(0,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
-        ui->citasTableWidget->setItem(0,6,new QTableWidgetItem(insertarParametros.getFG()));
+        ui->citasTableWidget->setItem(i,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
+        ui->citasTableWidget->setItem(i,1,new QTableWidgetItem(insertarCita.getRitmo()));
+        ui->citasTableWidget->setItem(i,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
+        ui->citasTableWidget->setItem(i,3,new QTableWidgetItem(insertarCita.getFrcv()));
+        ui->citasTableWidget->setItem(i,4,new QTableWidgetItem(insertarParametros.getHB()));
+        ui->citasTableWidget->setItem(i,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
+        ui->citasTableWidget->setItem(i,6,new QTableWidgetItem(insertarParametros.getFG()));
     }
-
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()

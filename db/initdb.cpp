@@ -238,13 +238,13 @@ QList<visit> initDB::readVisitaDB(QString queryId){
     ParametrosAnaliticos readParametrosAnaliticos;
 
     query.prepare("select c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, pa.dateVisitParam, pa.HB, pa.creatinina, pa.FG, pa.proBNP, pa.potasio "
-                  "FROM cita c, parametrosAnaliticos pa "
-                  "left join parametrosAnaliticos on c.dateVisit = pa.dateVisitParam "
-                  "WHERE c.visitId  = :id");
+                  "FROM cita c "
+                  "INNER join parametrosAnaliticos pa on c.dateVisit = pa.dateVisitParam "
+                  "WHERE c.personId = :id");
     query.bindValue(":id",queryId);
 
     if(query.exec()){
-        if (query.next()){
+        while (query.next()){
             readCita.setFechaConsulta(query.value(0).toString());
             readCita.setRitmo(query.value(1).toString());
             readCita.setGradoFuncional(query.value(2).toString());

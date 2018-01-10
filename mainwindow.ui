@@ -739,7 +739,7 @@
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>410</y>
+      <y>670</y>
       <width>1331</width>
       <height>30</height>
      </rect>
@@ -781,6 +781,10 @@
      </item>
     </layout>
    </widget>
+   <zorder>citasTableWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>horizontalSpacer_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
