@@ -410,5 +410,7 @@ QString MainWindow::getNumeroHistoria(){
 void MainWindow::on_pushButtonClear_clicked()
 {
     clearUi();
+
+    ui->citasTableWidget->setRowCount(0);
 }
 
