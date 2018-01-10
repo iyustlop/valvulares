@@ -31,7 +31,7 @@
      <rect>
       <x>11</x>
       <y>250</y>
-      <width>1481</width>
+      <width>1550</width>
       <height>151</height>
      </rect>
     </property>
@@ -781,10 +781,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>citasTableWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>horizontalSpacer_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
