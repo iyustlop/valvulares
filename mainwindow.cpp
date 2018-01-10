@@ -256,6 +256,11 @@ void MainWindow::on_pushButton_clicked()
         ui->citasTableWidget->setItem(i,4,new QTableWidgetItem(insertarParametros.getHB()));
         ui->citasTableWidget->setItem(i,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
         ui->citasTableWidget->setItem(i,6,new QTableWidgetItem(insertarParametros.getFG()));
+        ui->citasTableWidget->setItem(i,7,new QTableWidgetItem(insertarParametros.getProBNP()));
+        ui->citasTableWidget->setItem(i,8,new QTableWidgetItem(insertarParametros.getPotasio()));
+        ui->citasTableWidget->setItem(i,9,new QTableWidgetItem(insertarParametros.getIndicacionQr()));
+        ui->citasTableWidget->setItem(i,10,new QTableWidgetItem(insertarParametros.getEuroScore()));
+        ui->citasTableWidget->setItem(i,11,new QTableWidgetItem(insertarParametros.getTratamiento()));
     }
 }
 

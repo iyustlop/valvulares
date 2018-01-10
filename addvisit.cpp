@@ -59,7 +59,7 @@ void AddVisit::on_pushButtonGuardar_clicked()
     crearParametrosAnaliticos.setHB(ui->hBLineEdit->text());
     crearParametrosAnaliticos.setCreatinina(ui->creatininaLineEdit->text());
     crearParametrosAnaliticos.setFG(ui->fGLineEdit->text());
-    crearParametrosAnaliticos.setProBNP(ui->potasioLineEdit->text());
+    crearParametrosAnaliticos.setProBNP(ui->proBNPLineEdit->text());
     crearParametrosAnaliticos.setPotasio(ui->potasioLineEdit->text());
 
     if (ui->listWidgetTratamiento->selectedItems().isEmpty()){

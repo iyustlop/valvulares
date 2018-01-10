@@ -17,26 +17,22 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
 
     QSqlQuery query;
 
-    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV) "
-                       "values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV)"))
+    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV,HB,creatinina,FG,proBNP,potasio,indicacionQuirurgica,euroScore)"
+                       "values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV,:HB,:creatinina,:FG,:proBNP,:potasio,:indicacionQuirurgica,:euroScore)"))
         return query.lastError();
     query.bindValue(":personId",numeroHistoria.toInt());
     query.bindValue(":dateVisit",cita.getFechaConsulta());
     query.bindValue(":rhythm",cita.getRitmo());
     query.bindValue(":functionalGrade",cita.getGradoFuncional());
     query.bindValue(":FRCV",cita.getFrcv());
-    if (!query.exec())
-        return query.lastError();
-
-    if (!query.prepare("insert into parametrosAnaliticos(dateVisitParam,HB,creatinina,FG,proBNP,potasio) "
-                       "values(:dateVisitParam,:HB,:creatinina,:FG,:proBNP,:potasio)"))
-        return query.lastError();
-    query.bindValue(":dateVisitParam",cita.getFechaConsulta());
     query.bindValue(":HB",parametrosAnaliticos.getHB());
     query.bindValue(":creatinina",parametrosAnaliticos.getCreatinina());
     query.bindValue(":FG",parametrosAnaliticos.getFG());
     query.bindValue(":proBNP",parametrosAnaliticos.getProBNP());
     query.bindValue(":potasio",parametrosAnaliticos.getPotasio());
+    query.bindValue(":indicacionQuirurgica",parametrosAnaliticos.getIndicacionQr());
+    query.bindValue(":euroScore",parametrosAnaliticos.getEuroScore());
+
     if (!query.exec())
         return query.lastError();
 
