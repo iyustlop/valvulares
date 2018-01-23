@@ -54,8 +54,9 @@ QSqlError initDB::startDb(){
                "euroScore varchar(20), "
                "tratamiento varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId int, "
-               "fecha varchar(20), "
+    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateEco varchar(20), "
                "volumenAuriculaIzquierda varchar(20), "
                "fevi varchar(20), "
                "dilatacionVi varchar(20), "

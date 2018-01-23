@@ -35,8 +35,9 @@ SOURCES += main.cpp\
     bean/person.cpp \
     bean/protesicdisfunction.cpp \
     addvisit.cpp \
-    eco/eco.cpp \
-    ecodialog.cpp
+    ecodialog.cpp \
+    eco/ecobean.cpp \
+    db/ecodb.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -49,8 +50,9 @@ HEADERS  += mainwindow.h \
     bean/person.h \
     bean/protesicdisfunction.h \
     addvisit.h \
-    eco/eco.h \
-    ecodialog.h
+    ecodialog.h \
+    eco/ecobean.h \
+    db/ecodb.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
