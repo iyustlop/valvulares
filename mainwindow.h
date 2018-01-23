@@ -30,6 +30,8 @@ private slots:
     void on_createDatePushButton_clicked();
     void on_pushButtonClear_clicked();
 
+    void on_createEcoPushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);

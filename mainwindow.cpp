@@ -4,6 +4,7 @@
 #include "db/initdb.h"
 #include "bean/patient.h"
 #include "addvisit.h"
+#include "ecodialog.h"
 
 #include <QMessageBox>
 
@@ -375,6 +376,8 @@ void MainWindow::clearUi()
     ui->modeloLineEdit->clear();
     ui->nMeroLineEdit->clear();
     ui->dateEditSugeryDate->setDate(QDate::currentDate());
+
+    ui->citasTableWidget->setRowCount(0);
 }
 
 QString MainWindow::comprobarLineEdit(QString lineEdit)
@@ -406,12 +409,20 @@ void MainWindow::on_createDatePushButton_clicked()
     listVist = myAddVisit.returnVisits(numeroHistoria);
 }
 
-QString MainWindow::getNumeroHistoria(){
-    QString keyNumeroHistoria =  ui->lineEditNumeroHistoria->text();
+void MainWindow::on_createEcoPushButton_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    EcoDialog ecoDialog(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
 
-    return keyNumeroHistoria;
+    } else{
+        //myAddVisit.setModal(true);
+        ecoDialog.exec();
+        clearUi();
+    }
+
 }
-
 
 void MainWindow::on_pushButtonClear_clicked()
 {
@@ -420,3 +431,8 @@ void MainWindow::on_pushButtonClear_clicked()
     ui->citasTableWidget->setRowCount(0);
 }
 
+QString MainWindow::getNumeroHistoria(){
+    QString keyNumeroHistoria =  ui->lineEditNumeroHistoria->text();
+
+    return keyNumeroHistoria;
+}
