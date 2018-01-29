@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "db/initdb.h"
+#include "db/ecodb.h"
 
 #include <QMainWindow>
 
@@ -17,6 +18,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     initDB valvularesDB;
+    ecoDb myEcoDB;
     QString getNumeroHistoria();
     void clearUi();
 
@@ -28,6 +30,9 @@ private slots:
     void on_comboBoxPatologiaValvular_activated(const QString &arg1);
     void on_combinadaComboBox_activated(const QString &arg1);
     void on_createDatePushButton_clicked();
+    void on_pushButtonClear_clicked();
+
+    void on_createEcoPushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

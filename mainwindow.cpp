@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "db/initdb.h"
 #include "bean/patient.h"
 #include "addvisit.h"
+#include "ecodialog.h"
 
 #include <QMessageBox>
 
@@ -11,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QWidget::showMaximized();
 
     if (!QSqlDatabase::drivers().contains("QSQLITE"))
         QMessageBox::critical(this, "Unable to load database", "This demo needs the SQLITE driver");
@@ -195,15 +198,23 @@ void MainWindow::on_pushButtonCreate_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     Patient insertarPaciente;
-    Etiology insertarEtiologia;
+    Etiology insertarEtiologia;    
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
+    // lista de la vista.
+    QList<visit> insertarVisita;
+    Cita insertarCita;
+    ParametrosAnaliticos insertarParametros;
+    // Lista del Eco.
+    QList<ecoBean> insertarEcoBean;
 
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
 
     insertarPaciente = valvularesDB.readDB(queryId);
+    insertarVisita = valvularesDB.readVisitaDB(queryId);
+    insertarEcoBean = myEcoDB.readEcoBeanDB(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -235,6 +246,42 @@ void MainWindow::on_pushButton_clicked()
     ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
     ui->dateEditSugeryDate->setDate(fechaCirugia);
 
+    ui->citasTableWidget->setRowCount(insertarVisita.length());
+
+    for (int i = 0; i < insertarVisita.length();i++){
+
+        visit visitaIter = insertarVisita[i];
+        insertarCita = visitaIter.getCita();
+        insertarParametros = visitaIter.getParametrosAnaliticos();
+
+        ui->citasTableWidget->setItem(i,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
+        ui->citasTableWidget->setItem(i,1,new QTableWidgetItem(insertarCita.getRitmo()));
+        ui->citasTableWidget->setItem(i,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
+        ui->citasTableWidget->setItem(i,3,new QTableWidgetItem(insertarCita.getFrcv()));
+        ui->citasTableWidget->setItem(i,4,new QTableWidgetItem(insertarParametros.getHB()));
+        ui->citasTableWidget->setItem(i,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
+        ui->citasTableWidget->setItem(i,6,new QTableWidgetItem(insertarParametros.getFG()));
+        ui->citasTableWidget->setItem(i,7,new QTableWidgetItem(insertarParametros.getProBNP()));
+        ui->citasTableWidget->setItem(i,8,new QTableWidgetItem(insertarParametros.getPotasio()));
+        ui->citasTableWidget->setItem(i,9,new QTableWidgetItem(insertarParametros.getIndicacionQr()));
+        ui->citasTableWidget->setItem(i,10,new QTableWidgetItem(insertarParametros.getEuroScore()));
+        ui->citasTableWidget->setItem(i,11,new QTableWidgetItem(insertarParametros.getTratamiento()));
+    }
+
+    ui->ecoTableWidget->setRowCount(insertarEcoBean.length());
+
+    for (int i = 0; i < insertarEcoBean.length(); i++){
+        ecoBean myEcoBean = insertarEcoBean[i];
+
+        ui->ecoTableWidget->setItem(i,0,new QTableWidgetItem(myEcoBean.getFechaEco()));
+        ui->ecoTableWidget->setItem(i,1,new QTableWidgetItem(myEcoBean.getVolAi()));
+        ui->ecoTableWidget->setItem(i,2,new QTableWidgetItem(myEcoBean.getFevi()));
+        ui->ecoTableWidget->setItem(i,3,new QTableWidgetItem(myEcoBean.getDilataVi()));
+        ui->ecoTableWidget->setItem(i,4,new QTableWidgetItem(myEcoBean.getVtdVi()));
+        ui->ecoTableWidget->setItem(i,5,new QTableWidgetItem(myEcoBean.getDilataVd()));
+        ui->ecoTableWidget->setItem(i,6,new QTableWidgetItem(myEcoBean.getTapse()));
+        ui->ecoTableWidget->setItem(i,7,new QTableWidgetItem(myEcoBean.getAoAscend()));
+    }
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
@@ -348,6 +395,10 @@ void MainWindow::clearUi()
     ui->modeloLineEdit->clear();
     ui->nMeroLineEdit->clear();
     ui->dateEditSugeryDate->setDate(QDate::currentDate());
+
+    ui->citasTableWidget->setRowCount(0);
+
+    ui->ecoTableWidget->setRowCount(0);
 }
 
 QString MainWindow::comprobarLineEdit(QString lineEdit)
@@ -362,7 +413,7 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 }
 
 void MainWindow::on_createDatePushButton_clicked()
-{ 
+{
     QList<visit> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
     AddVisit myAddVisit(numeroHistoria);
@@ -377,6 +428,28 @@ void MainWindow::on_createDatePushButton_clicked()
     }
 
     listVist = myAddVisit.returnVisits(numeroHistoria);
+}
+
+void MainWindow::on_createEcoPushButton_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    EcoDialog ecoDialog(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        ecoDialog.exec();
+        clearUi();
+    }
+
+}
+
+void MainWindow::on_pushButtonClear_clicked()
+{
+    clearUi();
+
+    ui->citasTableWidget->setRowCount(0);
 }
 
 QString MainWindow::getNumeroHistoria(){

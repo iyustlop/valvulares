@@ -4,6 +4,7 @@
 #include "bean/patient.h"
 #include "bean/person.h"
 #include "bean/etiology.h"
+#include "cita/visit.h"
 
 #include <QtSql>
 
@@ -14,6 +15,7 @@ public:
     QSqlError startDb();
     QSqlError insertDB(Patient paciente);
     Patient readDB(QString queryId);
+    QList<visit> readVisitaDB(QString queryId);
     QSqlError updateDB(Patient paciente);
 };
 

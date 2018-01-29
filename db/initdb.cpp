@@ -44,26 +44,19 @@ QSqlError initDB::startDb(){
                "dateVisit varchar(20), "
                "rhythm varchar(20), "
                "functionalGrade varchar(20), "
-               "FRCV varchar(20), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE parametrosAnaliticos (dateVisitParam varchar(20), "
+               "FRCV varchar(20), "               
                "HB varchar(20), "
                "creatinina varchar(20), "
                "FG varchar(20), "
                "proBNP varchar(20), "
-               "potasio varchar(20), "
-               "FOREIGN KEY(dateVisitParam) REFERENCES cita(dateVisit))");
-    query.exec("CREATE TABLE tratamiento (tratamientoId int, "
-               "tratamiento varchar(20), "
-               "FOREIGN KEY(tratamientoId) REFERENCES cita(visitId))");
-    query.exec("CREATE TABLE cirugia (cirugiaId int, "
+               "potasio varchar(20), "                                 
                "indicacionQuirurgica varchar(20), "
                "euroScore varchar(20), "
-               "cirugia varchar(20), "
-               "causa varchar(20), "
-               "FOREIGN KEY(cirugiaId) REFERENCES cita(visitId))");
-    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId int, "
-               "fecha varchar(20), "
+               "tratamiento varchar(20), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateEco varchar(20), "
                "volumenAuriculaIzquierda varchar(20), "
                "fevi varchar(20), "
                "dilatacionVi varchar(20), "
@@ -227,6 +220,43 @@ Patient initDB::readDB(QString queryId){
     readEtiology.setDisfuncionProtesica(readProtesicDisfunction);
     readPaciente.setEtiologia(readEtiology);
     return readPaciente;
+}
+
+QList<visit> initDB::readVisitaDB(QString queryId){
+    QSqlQuery query;
+
+    visit readVisita;
+    QList<visit> readVisitas;
+    Cita readCita;
+    ParametrosAnaliticos readParametrosAnaliticos;
+
+    query.prepare("SELECT c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, c.HB, c.creatinina, c.FG, c.proBNP, c.potasio, c.indicacionQuirurgica, c.euroScore "
+                  "FROM cita c "                  
+                  "WHERE c.personId = :id");
+    query.bindValue(":id",queryId);
+
+    if(query.exec()){
+        while (query.next()){
+            readCita.setFechaConsulta(query.value(0).toString());
+            readCita.setRitmo(query.value(1).toString());
+            readCita.setGradoFuncional(query.value(2).toString());
+            readCita.setFrcv(query.value(3).toString());
+            readParametrosAnaliticos.setHB(query.value(4).toString());
+            readParametrosAnaliticos.setCreatinina(query.value(5).toString());
+            readParametrosAnaliticos.setFG(query.value(6).toString());
+            readParametrosAnaliticos.setProBNP(query.value(7).toString());
+            readParametrosAnaliticos.setPotasio(query.value(8).toString());
+            readParametrosAnaliticos.setIndicacionQr(query.value(9).toString());
+            readParametrosAnaliticos.setEuroScore(query.value(10).toString());
+
+            readVisita.setCita(readCita);
+            readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
+
+            readVisitas.append(readVisita);
+        }
+    }
+
+    return readVisitas;
 }
 
 QSqlError initDB::updateDB(Patient paciente){
