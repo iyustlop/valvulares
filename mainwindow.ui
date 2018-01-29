@@ -785,7 +785,7 @@
      <string>Consultas</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidgetValvulares">
+   <widget class="QTabWidget" name="valvularesTabWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -801,7 +801,7 @@
      <attribute name="title">
       <string>ECO</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="ecoTableWidget">
       <property name="geometry">
        <rect>
         <x>0</x>

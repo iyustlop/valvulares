@@ -84,3 +84,13 @@ void ecoBean::setFechaEco(const QString &value)
 {
     fechaEco = value;
 }
+
+QString ecoBean::getVtdVi() const
+{
+    return vtdVi;
+}
+
+void ecoBean::setVtdVi(const QString &value)
+{
+    vtdVi = value;
+}

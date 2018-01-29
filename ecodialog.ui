@@ -6,39 +6,89 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>278</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <widget class="QLabel" name="labelFevi">
+   <item row="6" column="0">
+    <widget class="QLabel" name="labelDilatVi">
      <property name="text">
-      <string>Fevi</string>
+      <string>Dilatacion Vi</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="10" column="0">
+    <widget class="QLabel" name="labelDilatVd">
+     <property name="text">
+      <string>Dilatacion Vd</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="lineEditAoAsc"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="lineEditRaizAo"/>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLineEdit" name="lineEditDilataVd"/>
+   </item>
+   <item row="12" column="1">
+    <widget class="QPushButton" name="pushButtonGuardar">
+     <property name="text">
+      <string>Guardar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="lineEditTapse"/>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="labelRaizAo">
      <property name="text">
       <string>Raiz Ao</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="3" column="1">
     <widget class="QLineEdit" name="lineEditFevi"/>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_3">
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelVolAuIzq">
+     <property name="text">
+      <string>Volumen Auric. Izq.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelFevi">
+     <property name="text">
+      <string>Fevi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QDateEdit" name="dateEditFechaEco"/>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="labelTapse">
+     <property name="text">
+      <string>Tapse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelAoAsc">
      <property name="text">
       <string>Ao Ascend</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
+   <item row="12" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -52,51 +102,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QDateEdit" name="dateEditFechaEco"/>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Tapse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Dilatacion Vi</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Dilatacion Vd</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="lineEditRaizAo"/>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="lineEditAoAsc"/>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="lineEditDilatVi"/>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="lineEditDilataVd"/>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="lineEditTapse"/>
-   </item>
-   <item row="8" column="1">
-    <widget class="QPushButton" name="pushButtonGuardar">
-     <property name="text">
-      <string>Guardar</string>
-     </property>
-    </widget>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEditVolAuIz"/>
    </item>
   </layout>
  </widget>
@@ -135,4 +142,7 @@
    </hints>
   </connection>
  </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>

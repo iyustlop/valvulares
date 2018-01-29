@@ -31,6 +31,9 @@ public:
     QString getFechaEco() const;
     void setFechaEco(const QString &value);
 
+    QString getVtdVi() const;
+    void setVtdVi(const QString &value);
+
 private:
     QString fechaEco;
     QString volAi;
@@ -40,6 +43,7 @@ private:
     QString dilataVi;
     QString dilataVd;
     QString tapse;
+    QString vtdVi;
 };
 
 #endif // ECO_H

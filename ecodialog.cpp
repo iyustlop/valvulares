@@ -34,6 +34,7 @@ void EcoDialog::on_pushButtonGuardar_clicked()
 
     myEcoBean.setFechaEco(ui->dateEditFechaEco->text());
     myEcoBean.setFevi(ui->lineEditFevi->text());
+    myEcoBean.setVolAi(ui->lineEditVolAuIz->text());
     myEcoBean.setRaizAo(ui->lineEditRaizAo->text());
     myEcoBean.setAoAscend(ui->lineEditAoAsc->text());
     myEcoBean.setDilataVi(ui->lineEditDilatVi->text());
