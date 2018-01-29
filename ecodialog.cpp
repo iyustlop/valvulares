@@ -37,9 +37,20 @@ void EcoDialog::on_pushButtonGuardar_clicked()
     myEcoBean.setVolAi(ui->lineEditVolAuIz->text());
     myEcoBean.setRaizAo(ui->lineEditRaizAo->text());
     myEcoBean.setAoAscend(ui->lineEditAoAsc->text());
-    //myEcoBean.setDilataVi(ui->line->text());
-    myEcoBean.setDilataVd(ui->lineEditDilataVd->text());
     myEcoBean.setTapse(ui->lineEditTapse->text());
+
+    if (ui->radioButtonDiViSi->isChecked()){
+        myEcoBean.setDilataVi("Si");
+    }
+    else{
+        myEcoBean.setDilataVi("No");
+    }
+    if (ui->radioButtonDiVdSi->isChecked()){
+        myEcoBean.setDilataVd("Si");
+    }
+    else{
+        myEcoBean.setDilataVd("No");
+    }
 
     QSqlError err = insertEcoDb.insertEco(getNumeroHistoria(),myEcoBean);
     if (err.type() != QSqlError::NoError) {
