@@ -7,62 +7,31 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>330</height>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="6" column="0">
-    <widget class="QLabel" name="labelDilatVi">
-     <property name="text">
-      <string>Dilatacion Vi</string>
-     </property>
-    </widget>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEditVolAuIz"/>
    </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="labelDilatVd">
-     <property name="text">
-      <string>Dilatacion Vd</string>
-     </property>
-    </widget>
+   <item row="14" column="1">
+    <widget class="QLineEdit" name="lineEditTapse"/>
    </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="lineEditAoAsc"/>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="lineEditRaizAo"/>
-   </item>
-   <item row="10" column="1">
-    <widget class="QLineEdit" name="lineEditDilataVd"/>
-   </item>
-   <item row="12" column="1">
+   <item row="17" column="1">
     <widget class="QPushButton" name="pushButtonGuardar">
      <property name="text">
       <string>Guardar</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="1">
-    <widget class="QLineEdit" name="lineEditTapse"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="labelRaizAo">
-     <property name="text">
-      <string>Raiz Ao</string>
-     </property>
-    </widget>
+   <item row="1" column="1">
+    <widget class="QDateEdit" name="dateEditFechaEco"/>
    </item>
    <item row="3" column="1">
     <widget class="QLineEdit" name="lineEditFevi"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="labelVolAuIzq">
-     <property name="text">
-      <string>Volumen Auric. Izq.</string>
-     </property>
-    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="labelFevi">
@@ -71,27 +40,10 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QDateEdit" name="dateEditFechaEco"/>
-   </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="labelTapse">
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelVolAuIzq">
      <property name="text">
-      <string>Tapse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="labelAoAsc">
-     <property name="text">
-      <string>Ao Ascend</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <string>Volumen Auric. Izq.</string>
      </property>
     </widget>
    </item>
@@ -102,8 +54,99 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="lineEditVolAuIz"/>
+   <item row="14" column="0">
+    <widget class="QLabel" name="labelTapse">
+     <property name="text">
+      <string>TAPSE</string>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="labelVTDVI">
+     <property name="text">
+      <string>VTDVI</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0">
+    <widget class="QLabel" name="labelRaizAo">
+     <property name="text">
+      <string>Raiz Ao</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelDilatVi">
+     <property name="text">
+      <string>Dilatacion Vi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="lineEditVTDVI"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="labelDilatVd">
+     <property name="text">
+      <string>Dilatacion Vd</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1">
+    <widget class="QLineEdit" name="lineEditRaizAo"/>
+   </item>
+   <item row="5" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonDiViSi">
+       <property name="text">
+        <string>Si</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonDiViNo">
+       <property name="text">
+        <string>No</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonDiVdSi">
+       <property name="text">
+        <string>Si</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonDiVdNo">
+       <property name="text">
+        <string>No</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="16" column="0">
+    <widget class="QLabel" name="labelAoAsc">
+     <property name="text">
+      <string>Ao Ascend</string>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="1">
+    <widget class="QLineEdit" name="lineEditAoAsc"/>
    </item>
   </layout>
  </widget>
@@ -142,7 +185,4 @@
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>
