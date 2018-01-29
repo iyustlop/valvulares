@@ -37,7 +37,7 @@ void EcoDialog::on_pushButtonGuardar_clicked()
     myEcoBean.setVolAi(ui->lineEditVolAuIz->text());
     myEcoBean.setRaizAo(ui->lineEditRaizAo->text());
     myEcoBean.setAoAscend(ui->lineEditAoAsc->text());
-    myEcoBean.setDilataVi(ui->lineEditDilatVi->text());
+    //myEcoBean.setDilataVi(ui->line->text());
     myEcoBean.setDilataVd(ui->lineEditDilataVd->text());
     myEcoBean.setTapse(ui->lineEditTapse->text());
 
