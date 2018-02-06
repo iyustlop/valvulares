@@ -186,7 +186,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     crearPaciente.setPersona(crearPersona);
     crearPaciente.setEtiologia(crearEtiologia);
 
-    QSqlError err = valvularesDB.insertDB(crearPaciente);
+    QSqlError err = myPacienteDB.insertDB(crearPaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -212,8 +212,8 @@ void MainWindow::on_pushButton_clicked()
 
     queryId = ui->lineEditNumeroHistoria->text();
 
-    insertarPaciente = valvularesDB.readDB(queryId);
-    insertarVisita = valvularesDB.readVisitaDB(queryId);
+    insertarPaciente = myPacienteDB.readDB(queryId);
+    insertarVisita = myVisitaDB.readVisitaDB(queryId);
     insertarEcoBean = myEcoDB.readEcoBeanDB(queryId);
 
     insertarPersona = insertarPaciente.getPersona();

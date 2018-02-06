@@ -13,9 +13,7 @@ class initDB
 public:
     initDB();
     QSqlError startDb();
-    QSqlError insertDB(Patient paciente);
-    Patient readDB(QString queryId);
-    QList<visit> readVisitaDB(QString queryId);
+
     QSqlError updateDB(Patient paciente);
 };
 

@@ -62,3 +62,40 @@ QList<visit> initDBCita::readVisit(QString nHistoria){
 
     return listVisit;
 }
+
+QList<visit> initDBCita::readVisitaDB(QString queryId){
+    QSqlQuery query;
+
+    visit readVisita;
+    QList<visit> readVisitas;
+    Cita readCita;
+    ParametrosAnaliticos readParametrosAnaliticos;
+
+    query.prepare("SELECT c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, c.HB, c.creatinina, c.FG, c.proBNP, c.potasio, c.indicacionQuirurgica, c.euroScore "
+                  "FROM cita c "
+                  "WHERE c.personId = :id");
+    query.bindValue(":id",queryId);
+
+    if(query.exec()){
+        while (query.next()){
+            readCita.setFechaConsulta(query.value(0).toString());
+            readCita.setRitmo(query.value(1).toString());
+            readCita.setGradoFuncional(query.value(2).toString());
+            readCita.setFrcv(query.value(3).toString());
+            readParametrosAnaliticos.setHB(query.value(4).toString());
+            readParametrosAnaliticos.setCreatinina(query.value(5).toString());
+            readParametrosAnaliticos.setFG(query.value(6).toString());
+            readParametrosAnaliticos.setProBNP(query.value(7).toString());
+            readParametrosAnaliticos.setPotasio(query.value(8).toString());
+            readParametrosAnaliticos.setIndicacionQr(query.value(9).toString());
+            readParametrosAnaliticos.setEuroScore(query.value(10).toString());
+
+            readVisita.setCita(readCita);
+            readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
+
+            readVisitas.append(readVisita);
+        }
+    }
+
+    return readVisitas;
+}
