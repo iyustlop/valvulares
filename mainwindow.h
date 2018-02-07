@@ -4,7 +4,7 @@
 #include "db/initdb.h"
 #include "db/ecodb.h"
 #include "db/pacientedb.h"
-#include "db/initdbcita.h"
+#include "db/citadb.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -20,7 +20,7 @@ public:
     ~MainWindow();
     initDB valvularesDB;
     PacienteDB myPacienteDB;
-    initDBCita myVisitaDB;
+    CitaDB myVisitaDB;
     ecoDb myEcoDB;
     QString getNumeroHistoria();
     void clearUi();

@@ -1,12 +1,12 @@
-#include "db/initdbcita.h"
+#include "db/citadb.h"
 #include "mainwindow.h"
 
-initDBCita::initDBCita()
+CitaDB::CitaDB()
 {
 
 }
 
-QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
+QSqlError CitaDB::insertCita(QString nHistoria, visit visita){
     QString numeroHistoria;
     Cita cita;
     ParametrosAnaliticos parametrosAnaliticos;
@@ -39,31 +39,7 @@ QSqlError initDBCita::insertCita(QString nHistoria, visit visita){
     return QSqlError();
 }
 
-QList<visit> initDBCita::readVisit(QString nHistoria){
-    QSqlQuery query;
-    QList<visit> listVisit;
-    visit visita;
-    Cita cita;
-
-    query.prepare("SELECT * FROM cita "
-                  "where cita.personId = :id");
-    query.bindValue(":id",nHistoria);
-
-    if(query.exec()){
-        while(query.next()) {
-            cita.setFechaConsulta(query.value(2).toString());
-            cita.setRitmo(query.value(3).toString());
-            cita.setGradoFuncional(query.value(4).toString());
-            cita.setFrcv(query.value(5).toString());
-            visita.setCita(cita);
-            listVisit.append(visita);
-        }
-    }
-
-    return listVisit;
-}
-
-QList<visit> initDBCita::readVisitaDB(QString queryId){
+QList<visit> CitaDB::readCita(QString queryId){
     QSqlQuery query;
 
     visit readVisita;

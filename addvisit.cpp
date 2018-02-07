@@ -97,7 +97,7 @@ void AddVisit::on_pushButtonGuardar_clicked()
 }
 
 QList<visit>  AddVisit::returnVisits(QString nHistoria){
-    QList<visit> myVisits = citaDB.readVisit(nHistoria);
+    QList<visit> myVisits = citaDB.readCita(nHistoria);
     return myVisits;
 }
 

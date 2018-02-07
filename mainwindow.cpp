@@ -213,7 +213,7 @@ void MainWindow::on_pushButton_clicked()
     queryId = ui->lineEditNumeroHistoria->text();
 
     insertarPaciente = myPacienteDB.readDB(queryId);
-    insertarVisita = myVisitaDB.readVisitaDB(queryId);
+    insertarVisita = myVisitaDB.readCita(queryId);
     insertarEcoBean = myEcoDB.readEcoBeanDB(queryId);
 
     insertarPersona = insertarPaciente.getPersona();

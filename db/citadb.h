@@ -5,13 +5,12 @@
 #include "cita/visit.h"
 #include <QtSql>
 
-class initDBCita
+class CitaDB
 {
 public:
-    initDBCita();
+    CitaDB();
     QSqlError insertCita(QString numeroHistoria, visit visita);
-    QList<visit> readVisit(QString nHistoria);
-    QList<visit> readVisitaDB(QString queryId);
+    QList<visit> readCita(QString queryId);
 };
 
 #endif // INITDBCITA_H
