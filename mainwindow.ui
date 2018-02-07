@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1604</width>
-    <height>820</height>
+    <height>839</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -554,7 +554,7 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButtonRead">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -592,7 +592,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <spacer name="horizontalSpacer">
+        <spacer name="spacerRead">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -608,7 +608,7 @@
         </spacer>
        </item>
        <item row="4" column="0">
-        <spacer name="horizontalSpacer_3">
+        <spacer name="spacerClear">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -670,8 +670,8 @@
      <rect>
       <x>10</x>
       <y>530</y>
-      <width>1171</width>
-      <height>231</height>
+      <width>1041</width>
+      <height>246</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -681,6 +681,80 @@
      <attribute name="title">
       <string>Mitral</string>
      </attribute>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTableWidget" name="tableWidget">
+          <column>
+           <property name="text">
+            <string>Fecha</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Grad Medio</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>AVMxTMP</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>V. Media</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ORE</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>VR</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>VC</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Inv. Sist. VVPP</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <spacer name="spacerMitral">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonMitral">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
     <widget class="QWidget" name="tabAortica">
      <attribute name="title">
@@ -716,7 +790,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -803,7 +877,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <spacer name="horizontalSpacer_2">
+        <spacer name="spacerDate">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -816,7 +890,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="createDatePushButton">
+        <widget class="QPushButton" name="pushButtonCita">
          <property name="text">
           <string>Create Cita</string>
          </property>
@@ -902,7 +976,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <spacer name="horizontalSpacer_4">
+        <spacer name="spacerEco">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -915,7 +989,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="createEcoPushButton">
+        <widget class="QPushButton" name="pushButtonEco">
          <property name="text">
           <string>Create Eco</string>
          </property>
