@@ -4,7 +4,8 @@
 #include "db/initdb.h"
 #include "bean/patientbean.h"
 #include "addvisit.h"
-#include "ecodialog.h"
+#include "dialogeco.h"
+#include "dialogmitral.h"
 
 #include <QMessageBox>
 
@@ -195,7 +196,8 @@ void MainWindow::on_pushButtonCreate_clicked()
     clearUi();
 }
 
-void MainWindow::on_pushButton_clicked()
+
+void MainWindow::on_pushButtonRead_clicked()
 {
     PatientBean insertarPaciente;
     Etiology insertarEtiologia;    
@@ -412,7 +414,7 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
     }
 }
 
-void MainWindow::on_createDatePushButton_clicked()
+void MainWindow::on_pushButtonCita_clicked()
 {
     QList<VisitBean> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
@@ -430,10 +432,10 @@ void MainWindow::on_createDatePushButton_clicked()
     listVist = myAddVisit.returnVisits(numeroHistoria);
 }
 
-void MainWindow::on_createEcoPushButton_clicked()
+void MainWindow::on_pushButtonEco_clicked()
 {
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
-    EcoDialog ecoDialog(numeroHistoria);
+    DialogEco ecoDialog(numeroHistoria);
     int x = QString::compare(numeroHistoria,"Vacio");
     if (x == 0){
 
@@ -456,4 +458,10 @@ QString MainWindow::getNumeroHistoria(){
     QString keyNumeroHistoria =  ui->lineEditNumeroHistoria->text();
 
     return keyNumeroHistoria;
+}
+
+void MainWindow::on_pushButtonMitral_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogMitral dialogMitral(numeroHistoria);
 }

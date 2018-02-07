@@ -23,15 +23,16 @@ public:
 
 private slots:
     void on_pushButtonCreate_clicked();
-    void on_comboBox_activated(const QString &arg1);
-    void on_pushButton_clicked();
+    void on_pushButtonRead_clicked();
+    void on_pushButtonCita_clicked();
+    void on_pushButtonEco_clicked();
+    void on_pushButtonClear_clicked();
     void on_pushButtonUpdate_clicked();
+    void on_comboBox_activated(const QString &arg1);
     void on_comboBoxPatologiaValvular_activated(const QString &arg1);
     void on_combinadaComboBox_activated(const QString &arg1);
-    void on_createDatePushButton_clicked();
-    void on_pushButtonClear_clicked();
 
-    void on_createEcoPushButton_clicked();
+    void on_pushButtonMitral_clicked();
 
 private:
     initDB valvularesDB;

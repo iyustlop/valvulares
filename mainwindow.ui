@@ -746,7 +746,7 @@
           <item>
            <widget class="QPushButton" name="pushButtonMitral">
             <property name="text">
-             <string>PushButton</string>
+             <string>Create Mitral</string>
             </property>
            </widget>
           </item>
@@ -790,7 +790,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">

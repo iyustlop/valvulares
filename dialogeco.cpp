@@ -1,34 +1,34 @@
-#include "ecodialog.h"
+#include "dialogeco.h"
 #include "ui_ecodialog.h"
 #include "bean/eco/ecobean.h"
 
 #include <QMessageBox>
 
-EcoDialog::EcoDialog(QString numeroHistoria,QWidget *parent) :
+DialogEco::DialogEco(QString numeroHistoria,QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::EcoDialog)
+    ui(new Ui::DialogEco)
 {
     ui->setupUi(this);
     this->setWindowTitle("Numero de historia:"+numeroHistoria);
     setNumeroHistoria(numeroHistoria);
 }
 
-EcoDialog::~EcoDialog()
+DialogEco::~DialogEco()
 {
     delete ui;
 }
 
-QString EcoDialog::getNumeroHistoria() const
+QString DialogEco::getNumeroHistoria() const
 {
     return numeroHistoria;
 }
 
-void EcoDialog::setNumeroHistoria(const QString &value)
+void DialogEco::setNumeroHistoria(const QString &value)
 {
     numeroHistoria = value;
 }
 
-void EcoDialog::on_pushButtonGuardar_clicked()
+void DialogEco::on_pushButtonGuardar_clicked()
 {
     ecoBean myEcoBean;
 
@@ -61,34 +61,34 @@ void EcoDialog::on_pushButtonGuardar_clicked()
     close();
 }
 
-void EcoDialog::showError(const QSqlError &err)
+void DialogEco::showError(const QSqlError &err)
 {
     QMessageBox::critical(this, "Unable to initialize Database",
                 "Error initializing database: " + err.text());
 }
 
-void EcoDialog::on_radioButtonDiVdNo_clicked()
+void DialogEco::on_radioButtonDiVdNo_clicked()
 {
     if(ui->radioButtonDiVdSi->isChecked()){
         ui->radioButtonDiVdSi->setChecked(false);
     }
 }
 
-void EcoDialog::on_radioButtonDiVdSi_clicked()
+void DialogEco::on_radioButtonDiVdSi_clicked()
 {
     if(ui->radioButtonDiVdNo->isCheckable()){
         ui->radioButtonDiVdNo->setChecked(false);
     }
 }
 
-void EcoDialog::on_radioButtonDiViNo_clicked()
+void DialogEco::on_radioButtonDiViNo_clicked()
 {
     if(ui->radioButtonDiViSi->isChecked()){
         ui->radioButtonDiViSi->setChecked(false);
     }
 }
 
-void EcoDialog::on_radioButtonDiViSi_clicked()
+void DialogEco::on_radioButtonDiViSi_clicked()
 {
     if(ui->radioButtonDiViNo->isCheckable()){
         ui->radioButtonDiViNo->setChecked(false);

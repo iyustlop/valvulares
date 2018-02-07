@@ -5,16 +5,16 @@
 #include <db/ecodb.h>
 
 namespace Ui {
-class EcoDialog;
+class DialogEco;
 }
 
-class EcoDialog : public QDialog
+class DialogEco : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit EcoDialog(QString numeroHistoria, QWidget *parent = 0);
-    ~EcoDialog();    
+    explicit DialogEco(QString numeroHistoria, QWidget *parent = 0);
+    ~DialogEco();
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 
@@ -28,7 +28,7 @@ private slots:
 
 private:
     EcoDb insertEcoDb;
-    Ui::EcoDialog *ui;
+    Ui::DialogEco *ui;
     QString numeroHistoria;
     void showError(const QSqlError &err);
 };

@@ -30,7 +30,6 @@ SOURCES += main.cpp\
     bean/person.cpp \
     bean/protesicdisfunction.cpp \
     addvisit.cpp \
-    ecodialog.cpp \
     db/ecodb.cpp \
     db/pacientedb.cpp \
     db/citadb.cpp \
@@ -40,7 +39,9 @@ SOURCES += main.cpp\
     bean/cita/parametrosanaliticos.cpp \
     bean/cita/visitbean.cpp \
     bean/mitral/mitralbean.cpp \
-    db/mitraldb.cpp
+    db/mitraldb.cpp \
+    dialogmitral.cpp \
+    dialogeco.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -48,7 +49,6 @@ HEADERS  += mainwindow.h \
     bean/person.h \
     bean/protesicdisfunction.h \
     addvisit.h \
-    ecodialog.h \
     db/ecodb.h \
     db/pacientedb.h \
     db/citadb.h \
@@ -58,8 +58,11 @@ HEADERS  += mainwindow.h \
     bean/cita/parametrosanaliticos.h \
     bean/cita/visitbean.h \
     bean/mitral/mitralbean.h \
-    db/mitraldb.h
+    db/mitraldb.h \
+    dialogmitral.h \
+    dialogeco.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
-    ecodialog.ui
+    dialogmitral.ui \
+    dialogeco.ui
