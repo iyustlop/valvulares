@@ -6,10 +6,10 @@
 #include "etiology.h"
 
 
-class Patient
+class PatientBean
 {
 public:
-    Patient();
+    PatientBean();
     Person getPersona();
     void setPersona(Person person);
     Etiology getEtiologia();

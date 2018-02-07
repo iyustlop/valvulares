@@ -1,11 +1,11 @@
 #include "ecodb.h"
 
-ecoDb::ecoDb()
+EcoDb::EcoDb()
 {
 
 }
 
-QSqlError ecoDb::insertEco(QString numeroHistoria, ecoBean ecoBean){
+QSqlError EcoDb::insertEco(QString numeroHistoria, ecoBean ecoBean){
 
     QSqlQuery query;
 
@@ -29,7 +29,7 @@ QSqlError ecoDb::insertEco(QString numeroHistoria, ecoBean ecoBean){
     return QSqlError();
 }
 
-QList<ecoBean> ecoDb::readEcoBeanDB(QString queryId)
+QList<ecoBean> EcoDb::readEco(QString queryId)
 {
     QSqlQuery query;
 

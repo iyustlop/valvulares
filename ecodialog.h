@@ -14,9 +14,7 @@ class EcoDialog : public QDialog
 
 public:
     explicit EcoDialog(QString numeroHistoria, QWidget *parent = 0);
-    ~EcoDialog();
-    ecoDb insertEcoDb;
-
+    ~EcoDialog();    
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 
@@ -24,6 +22,7 @@ private slots:
     void on_pushButtonGuardar_clicked();
 
 private:
+    EcoDb insertEcoDb;
     Ui::EcoDialog *ui;
     QString numeroHistoria;
     void showError(const QSqlError &err);

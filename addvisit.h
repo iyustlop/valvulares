@@ -22,7 +22,6 @@ public:
 
 private slots:
     void on_pushButtonCancelar_clicked();
-
     void on_pushButtonGuardar_clicked();
 
 private:

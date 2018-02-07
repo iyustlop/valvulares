@@ -126,7 +126,7 @@ QSqlError initDB::startDb(){
     return QSqlError();
 }
 
-QSqlError initDB::updateDB(Patient paciente){
+QSqlError initDB::updateDB(PatientBean paciente){
     QSqlQuery query;
 
     Person persona;

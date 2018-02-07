@@ -3,13 +3,12 @@
 #include "eco/ecobean.h"
 #include <QtSql>
 
-
-class ecoDb
+class EcoDb
 {
 public:
-    ecoDb();
+    EcoDb();
     QSqlError insertEco(QString numeroHistoria, ecoBean ecoBean);
-    QList<ecoBean> readEcoBeanDB(QString queryId);
+    QList<ecoBean> readEco(QString queryId);
 };
 
 #endif // ECODB_H

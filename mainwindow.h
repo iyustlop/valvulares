@@ -18,10 +18,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    initDB valvularesDB;
-    PacienteDB myPacienteDB;
-    CitaDB myVisitaDB;
-    ecoDb myEcoDB;
     QString getNumeroHistoria();
     void clearUi();
 
@@ -38,6 +34,10 @@ private slots:
     void on_createEcoPushButton_clicked();
 
 private:
+    initDB valvularesDB;
+    PacienteDB myPacienteDB;
+    CitaDB myVisitaDB;
+    EcoDb myEcoDB;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

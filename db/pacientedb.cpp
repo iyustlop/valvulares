@@ -5,7 +5,7 @@ PacienteDB::PacienteDB()
 
 }
 
-QSqlError PacienteDB::insertDB(Patient paciente){
+QSqlError PacienteDB::insertDB(PatientBean paciente){
 
     Person persona;
     Etiology etiologia;
@@ -57,10 +57,10 @@ QSqlError PacienteDB::insertDB(Patient paciente){
     return QSqlError();
 }
 
-Patient PacienteDB::readDB(QString queryId){
+PatientBean PacienteDB::readDB(QString queryId){
     QSqlQuery query;
 
-    Patient readPaciente;
+    PatientBean readPaciente;
     Person readPerson;
     Etiology readEtiology;
     ProtesicDisfunction readProtesicDisfunction;

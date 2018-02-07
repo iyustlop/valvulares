@@ -30,7 +30,6 @@ SOURCES += main.cpp\
     cita/parametrosanaliticos.cpp \
     cita/visit.cpp \
     bean/etiology.cpp \
-    bean/patient.cpp \
     bean/person.cpp \
     bean/protesicdisfunction.cpp \
     addvisit.cpp \
@@ -38,7 +37,8 @@ SOURCES += main.cpp\
     eco/ecobean.cpp \
     db/ecodb.cpp \
     db/pacientedb.cpp \
-    db/citadb.cpp
+    db/citadb.cpp \
+    bean/patientbean.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -46,7 +46,6 @@ HEADERS  += mainwindow.h \
     cita/parametrosanaliticos.h \
     cita/visit.h \
     bean/etiology.h \
-    bean/patient.h \
     bean/person.h \
     bean/protesicdisfunction.h \
     addvisit.h \
@@ -54,7 +53,8 @@ HEADERS  += mainwindow.h \
     eco/ecobean.h \
     db/ecodb.h \
     db/pacientedb.h \
-    db/citadb.h
+    db/citadb.h \
+    bean/patientbean.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
