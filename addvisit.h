@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include <db/initdbcita.h>
+#include <db/citadb.h>
 
 namespace Ui {
 class AddVisit;
@@ -15,19 +15,17 @@ class AddVisit : public QDialog
 
 public:
     explicit AddVisit(QString numeroHistoria, QWidget *parent = 0);
-    ~AddVisit();
-    initDBCita citaDB;
-    QList<visit> returnVisits(QString nHistoria);
-
+    ~AddVisit();    
+    QList<VisitBean> returnVisits(QString nHistoria);
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 
 private slots:
     void on_pushButtonCancelar_clicked();
-
     void on_pushButtonGuardar_clicked();
 
 private:
+    CitaDB citaDB;
     Ui::AddVisit *ui;
     QString numeroHistoria;
     void showError(const QSqlError &err);

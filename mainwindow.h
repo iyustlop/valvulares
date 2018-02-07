@@ -3,7 +3,8 @@
 
 #include "db/initdb.h"
 #include "db/ecodb.h"
-
+#include "db/pacientedb.h"
+#include "db/citadb.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -17,8 +18,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    initDB valvularesDB;
-    ecoDb myEcoDB;
     QString getNumeroHistoria();
     void clearUi();
 
@@ -35,6 +34,10 @@ private slots:
     void on_createEcoPushButton_clicked();
 
 private:
+    initDB valvularesDB;
+    PacienteDB myPacienteDB;
+    CitaDB myVisitaDB;
+    EcoDb myEcoDB;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

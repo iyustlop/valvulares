@@ -1,10 +1,10 @@
 #ifndef INITDB_H
 #define INITDB_H
 
-#include "bean/patient.h"
+#include "bean/patientbean.h"
 #include "bean/person.h"
 #include "bean/etiology.h"
-#include "cita/visit.h"
+#include "bean/cita/visitbean.h"
 
 #include <QtSql>
 
@@ -13,10 +13,8 @@ class initDB
 public:
     initDB();
     QSqlError startDb();
-    QSqlError insertDB(Patient paciente);
-    Patient readDB(QString queryId);
-    QList<visit> readVisitaDB(QString queryId);
-    QSqlError updateDB(Patient paciente);
+
+    QSqlError updateDB(PatientBean paciente);
 };
 
 #endif // INITDB_H

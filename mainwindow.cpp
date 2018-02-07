@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "db/initdb.h"
-#include "bean/patient.h"
+#include "bean/patientbean.h"
 #include "addvisit.h"
 #include "ecodialog.h"
 
@@ -100,7 +100,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     Etiology crearEtiologia;
     ProtesicDisfunction disfuncionProtesica;
     QList<QListWidgetItem*> itemSelected;
-    Patient crearPaciente;
+    PatientBean crearPaciente;
 
     crearPersona.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
     crearEtiologia.setNumeroHistoria(comprobarLineEdit(ui->lineEditNumeroHistoria->text()));
@@ -186,7 +186,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     crearPaciente.setPersona(crearPersona);
     crearPaciente.setEtiologia(crearEtiologia);
 
-    QSqlError err = valvularesDB.insertDB(crearPaciente);
+    QSqlError err = myPacienteDB.insertDB(crearPaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -197,12 +197,12 @@ void MainWindow::on_pushButtonCreate_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    Patient insertarPaciente;
+    PatientBean insertarPaciente;
     Etiology insertarEtiologia;    
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
     // lista de la vista.
-    QList<visit> insertarVisita;
+    QList<VisitBean> insertarVisita;
     Cita insertarCita;
     ParametrosAnaliticos insertarParametros;
     // Lista del Eco.
@@ -212,9 +212,9 @@ void MainWindow::on_pushButton_clicked()
 
     queryId = ui->lineEditNumeroHistoria->text();
 
-    insertarPaciente = valvularesDB.readDB(queryId);
-    insertarVisita = valvularesDB.readVisitaDB(queryId);
-    insertarEcoBean = myEcoDB.readEcoBeanDB(queryId);
+    insertarPaciente = myPacienteDB.readDB(queryId);
+    insertarVisita = myVisitaDB.readCita(queryId);
+    insertarEcoBean = myEcoDB.readEco(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -250,7 +250,7 @@ void MainWindow::on_pushButton_clicked()
 
     for (int i = 0; i < insertarVisita.length();i++){
 
-        visit visitaIter = insertarVisita[i];
+        VisitBean visitaIter = insertarVisita[i];
         insertarCita = visitaIter.getCita();
         insertarParametros = visitaIter.getParametrosAnaliticos();
 
@@ -286,7 +286,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButtonUpdate_clicked()
 {
-    Patient updatePaciente;
+    PatientBean updatePaciente;
     Person updatePersona;
     Etiology updateEtiologia;
     ProtesicDisfunction updateDisfuncionProtesica;
@@ -414,7 +414,7 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 
 void MainWindow::on_createDatePushButton_clicked()
 {
-    QList<visit> listVist;
+    QList<VisitBean> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
     AddVisit myAddVisit(numeroHistoria);
 

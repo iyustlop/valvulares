@@ -1,12 +1,11 @@
 #include "addvisit.h"
 #include "ui_addvisit.h"
-#include "cita/cita.h"
-#include "cita/parametrosanaliticos.h"
+#include "bean/cita/cita.h"
+#include "bean/cita/parametrosanaliticos.h"
+#include "bean/cita/visitbean.h"
 #include "mainwindow.h"
 
 #include <QMessageBox>
-
-#include <cita/visit.h>
 
 AddVisit::AddVisit(QString numeroHistoria, QWidget *parent) :
     QDialog(parent),
@@ -29,7 +28,7 @@ void AddVisit::on_pushButtonCancelar_clicked()
 
 void AddVisit::on_pushButtonGuardar_clicked()
 {
-    visit visita;
+    VisitBean visita;
     Cita crearCita;
     ParametrosAnaliticos crearParametrosAnaliticos;
     QList<QListWidgetItem*> itemSelected;
@@ -96,8 +95,8 @@ void AddVisit::on_pushButtonGuardar_clicked()
 
 }
 
-QList<visit>  AddVisit::returnVisits(QString nHistoria){
-    QList<visit> myVisits = citaDB.readVisit(nHistoria);
+QList<VisitBean>  AddVisit::returnVisits(QString nHistoria){
+    QList<VisitBean> myVisits = citaDB.readCita(nHistoria);
     return myVisits;
 }
 

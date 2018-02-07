@@ -26,33 +26,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     db/initdb.cpp \
-    db/initdbcita.cpp \
-    cita/cita.cpp \
-    cita/parametrosanaliticos.cpp \
-    cita/visit.cpp \
     bean/etiology.cpp \
-    bean/patient.cpp \
     bean/person.cpp \
     bean/protesicdisfunction.cpp \
     addvisit.cpp \
     ecodialog.cpp \
-    eco/ecobean.cpp \
-    db/ecodb.cpp
+    db/ecodb.cpp \
+    db/pacientedb.cpp \
+    db/citadb.cpp \
+    bean/patientbean.cpp \
+    bean/eco/ecobean.cpp \
+    bean/cita/cita.cpp \
+    bean/cita/parametrosanaliticos.cpp \
+    bean/cita/visitbean.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
-    db/initdbcita.h \
-    cita/cita.h \
-    cita/parametrosanaliticos.h \
-    cita/visit.h \
     bean/etiology.h \
-    bean/patient.h \
     bean/person.h \
     bean/protesicdisfunction.h \
     addvisit.h \
     ecodialog.h \
-    eco/ecobean.h \
-    db/ecodb.h
+    db/ecodb.h \
+    db/pacientedb.h \
+    db/citadb.h \
+    bean/patientbean.h \
+    bean/eco/ecobean.h \
+    bean/cita/cita.h \
+    bean/cita/parametrosanaliticos.h \
+    bean/cita/visitbean.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
