@@ -73,8 +73,8 @@ QSqlError initDB::startDb(){
                "avmPorThp varchar(20), "
                "vOndaE varchar(20), "
                "ore varchar(20), "
-               "vtdVi varchar(20), "
-               "vrVc varchar(20), "
+               "vR varchar(20), "
+               "vC varchar(20), "
                "inversionSistolicaVvpp varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
     query.exec("CREATE TABLE aorta (aortaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "

@@ -5,6 +5,7 @@
 #include "db/ecodb.h"
 #include "db/pacientedb.h"
 #include "db/citadb.h"
+#include "db/mitraldb.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -39,6 +40,7 @@ private:
     PacienteDB myPacienteDB;
     CitaDB myVisitaDB;
     EcoDb myEcoDB;
+    MitralDB myMitralDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

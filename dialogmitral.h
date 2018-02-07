@@ -19,10 +19,15 @@ public:
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 
+private slots:
+    void on_pushButtonMitral_clicked();
+
 private:
     Ui::DialogMitral *ui;
+    MitralDB mitralDb;
     QString numeroHistoria;
     void showError(const QSqlError &err);
+
 };
 
 #endif // DIALOGMITRAL_H

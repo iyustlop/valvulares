@@ -209,6 +209,8 @@ void MainWindow::on_pushButtonRead_clicked()
     ParametrosAnaliticos insertarParametros;
     // Lista del Eco.
     QList<ecoBean> insertarEcoBean;
+    // Lista de Mitral
+    QList<MitralBean> insertarMitral;
 
     QString queryId;
 
@@ -217,6 +219,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarPaciente = myPacienteDB.readDB(queryId);
     insertarVisita = myVisitaDB.readCita(queryId);
     insertarEcoBean = myEcoDB.readEco(queryId);
+    insertarMitral = myMitralDb.readMitral(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -283,6 +286,19 @@ void MainWindow::on_pushButtonRead_clicked()
         ui->ecoTableWidget->setItem(i,5,new QTableWidgetItem(myEcoBean.getDilataVd()));
         ui->ecoTableWidget->setItem(i,6,new QTableWidgetItem(myEcoBean.getTapse()));
         ui->ecoTableWidget->setItem(i,7,new QTableWidgetItem(myEcoBean.getAoAscend()));
+    }
+
+    ui->tableWidgetMitral->setRowCount(insertarMitral.length());
+    for (int i = 0; i < insertarMitral.length(); i++){
+        MitralBean myMitralBean = insertarMitral[i];
+        ui->tableWidgetMitral->setItem(i,0,new QTableWidgetItem(myMitralBean.getFecha()));
+        ui->tableWidgetMitral->setItem(i,1,new QTableWidgetItem(myMitralBean.getGrdMedio()));
+        ui->tableWidgetMitral->setItem(i,2,new QTableWidgetItem(myMitralBean.getAvmXtmp()));
+        ui->tableWidgetMitral->setItem(i,3,new QTableWidgetItem(myMitralBean.getVOndaE()));
+        ui->tableWidgetMitral->setItem(i,4,new QTableWidgetItem(myMitralBean.getORe()));
+        ui->tableWidgetMitral->setItem(i,5,new QTableWidgetItem(myMitralBean.getVR()));
+        ui->tableWidgetMitral->setItem(i,6,new QTableWidgetItem(myMitralBean.getVC()));
+        ui->tableWidgetMitral->setItem(i,7,new QTableWidgetItem(myMitralBean.getInvSistolicaVvpp()));
     }
 }
 
@@ -401,6 +417,8 @@ void MainWindow::clearUi()
     ui->citasTableWidget->setRowCount(0);
 
     ui->ecoTableWidget->setRowCount(0);
+
+    ui->tableWidgetMitral->setRowCount(0);
 }
 
 QString MainWindow::comprobarLineEdit(QString lineEdit)
@@ -464,4 +482,13 @@ void MainWindow::on_pushButtonMitral_clicked()
 {
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
     DialogMitral dialogMitral(numeroHistoria);
+
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogMitral.exec();
+        clearUi();
+    }
 }

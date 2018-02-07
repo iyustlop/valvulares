@@ -685,7 +685,7 @@
       <item row="0" column="0">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableWidget" name="tableWidget">
+         <widget class="QTableWidget" name="tableWidgetMitral">
           <column>
            <property name="text">
             <string>Fecha</string>
@@ -790,7 +790,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
