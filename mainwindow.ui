@@ -675,13 +675,8 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="tabEco">
-     <attribute name="title">
-      <string>ECO</string>
-     </attribute>
-    </widget>
     <widget class="QWidget" name="tabMitral">
      <attribute name="title">
       <string>Mitral</string>
@@ -716,6 +711,9 @@
       <width>1521</width>
       <height>261</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="currentIndex">
      <number>1</number>
@@ -925,6 +923,8 @@
        </item>
       </layout>
      </widget>
+     <zorder>layoutWidget_2</zorder>
+     <zorder>ecoTableWidget</zorder>
     </widget>
    </widget>
    <zorder>tabWidget</zorder>

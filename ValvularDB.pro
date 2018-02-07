@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     bean/eco/ecobean.cpp \
     bean/cita/cita.cpp \
     bean/cita/parametrosanaliticos.cpp \
-    bean/cita/visitbean.cpp
+    bean/cita/visitbean.cpp \
+    bean/mitral/mitralbean.cpp \
+    db/mitraldb.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -54,7 +56,9 @@ HEADERS  += mainwindow.h \
     bean/eco/ecobean.h \
     bean/cita/cita.h \
     bean/cita/parametrosanaliticos.h \
-    bean/cita/visitbean.h
+    bean/cita/visitbean.h \
+    bean/mitral/mitralbean.h \
+    db/mitraldb.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
