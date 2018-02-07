@@ -21,6 +21,11 @@ public:
 private slots:
     void on_pushButtonGuardar_clicked();
 
+    void on_radioButtonDiVdNo_clicked();
+    void on_radioButtonDiVdSi_clicked();
+    void on_radioButtonDiViNo_clicked();
+    void on_radioButtonDiViSi_clicked();
+
 private:
     EcoDb insertEcoDb;
     Ui::EcoDialog *ui;

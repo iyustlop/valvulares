@@ -66,3 +66,31 @@ void EcoDialog::showError(const QSqlError &err)
     QMessageBox::critical(this, "Unable to initialize Database",
                 "Error initializing database: " + err.text());
 }
+
+void EcoDialog::on_radioButtonDiVdNo_clicked()
+{
+    if(ui->radioButtonDiVdSi->isChecked()){
+        ui->radioButtonDiVdSi->setChecked(false);
+    }
+}
+
+void EcoDialog::on_radioButtonDiVdSi_clicked()
+{
+    if(ui->radioButtonDiVdNo->isCheckable()){
+        ui->radioButtonDiVdNo->setChecked(false);
+    }
+}
+
+void EcoDialog::on_radioButtonDiViNo_clicked()
+{
+    if(ui->radioButtonDiViSi->isChecked()){
+        ui->radioButtonDiViSi->setChecked(false);
+    }
+}
+
+void EcoDialog::on_radioButtonDiViSi_clicked()
+{
+    if(ui->radioButtonDiViNo->isCheckable()){
+        ui->radioButtonDiViNo->setChecked(false);
+    }
+}

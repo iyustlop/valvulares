@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>282</height>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -109,12 +109,21 @@
        <property name="text">
         <string>Si</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
       <widget class="QRadioButton" name="radioButtonDiViNo">
        <property name="text">
         <string>No</string>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -127,12 +136,21 @@
        <property name="text">
         <string>Si</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
       <widget class="QRadioButton" name="radioButtonDiVdNo">
        <property name="text">
         <string>No</string>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
