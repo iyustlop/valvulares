@@ -6,7 +6,7 @@ CitaDB::CitaDB()
 
 }
 
-QSqlError CitaDB::insertCita(QString nHistoria, visit visita){
+QSqlError CitaDB::insertCita(QString nHistoria, VisitBean visita){
     QString numeroHistoria;
     Cita cita;
     ParametrosAnaliticos parametrosAnaliticos;
@@ -39,11 +39,11 @@ QSqlError CitaDB::insertCita(QString nHistoria, visit visita){
     return QSqlError();
 }
 
-QList<visit> CitaDB::readCita(QString queryId){
+QList<VisitBean> CitaDB::readCita(QString queryId){
     QSqlQuery query;
 
-    visit readVisita;
-    QList<visit> readVisitas;
+    VisitBean readVisita;
+    QList<VisitBean> readVisitas;
     Cita readCita;
     ParametrosAnaliticos readParametrosAnaliticos;
 

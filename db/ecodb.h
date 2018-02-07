@@ -1,6 +1,6 @@
 #ifndef ECODB_H
 #define ECODB_H
-#include "eco/ecobean.h"
+#include "bean/eco/ecobean.h"
 #include <QtSql>
 
 class EcoDb

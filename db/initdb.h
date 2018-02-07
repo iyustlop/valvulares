@@ -4,7 +4,7 @@
 #include "bean/patientbean.h"
 #include "bean/person.h"
 #include "bean/etiology.h"
-#include "cita/visit.h"
+#include "bean/cita/visitbean.h"
 
 #include <QtSql>
 

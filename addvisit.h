@@ -16,7 +16,7 @@ class AddVisit : public QDialog
 public:
     explicit AddVisit(QString numeroHistoria, QWidget *parent = 0);
     ~AddVisit();    
-    QList<visit> returnVisits(QString nHistoria);
+    QList<VisitBean> returnVisits(QString nHistoria);
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 

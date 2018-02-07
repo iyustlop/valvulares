@@ -202,7 +202,7 @@ void MainWindow::on_pushButton_clicked()
     ProtesicDisfunction insertarDisfucionProtesica;
     Person insertarPersona;
     // lista de la vista.
-    QList<visit> insertarVisita;
+    QList<VisitBean> insertarVisita;
     Cita insertarCita;
     ParametrosAnaliticos insertarParametros;
     // Lista del Eco.
@@ -250,7 +250,7 @@ void MainWindow::on_pushButton_clicked()
 
     for (int i = 0; i < insertarVisita.length();i++){
 
-        visit visitaIter = insertarVisita[i];
+        VisitBean visitaIter = insertarVisita[i];
         insertarCita = visitaIter.getCita();
         insertarParametros = visitaIter.getParametrosAnaliticos();
 
@@ -414,7 +414,7 @@ QString MainWindow::comprobarLineEdit(QString lineEdit)
 
 void MainWindow::on_createDatePushButton_clicked()
 {
-    QList<visit> listVist;
+    QList<VisitBean> listVist;
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
     AddVisit myAddVisit(numeroHistoria);
 

@@ -5,10 +5,10 @@
 #include "parametrosanaliticos.h"
 
 
-class visit
+class VisitBean
 {
 public:
-    visit();
+    VisitBean();
     Cita getCita() const;
     void setCita(const Cita &value);
 

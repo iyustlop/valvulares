@@ -1,6 +1,6 @@
 #include "ecodialog.h"
 #include "ui_ecodialog.h"
-#include "eco/ecobean.h"
+#include "bean/eco/ecobean.h"
 
 #include <QMessageBox>
 
