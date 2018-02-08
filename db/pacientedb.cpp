@@ -1,11 +1,11 @@
 #include "pacientedb.h"
 
-PacienteDB::PacienteDB()
+PacienteDb::PacienteDb()
 {
 
 }
 
-QSqlError PacienteDB::insertDB(PatientBean paciente){
+QSqlError PacienteDb::insertDB(PatientBean paciente){
 
     Person persona;
     Etiology etiologia;
@@ -57,7 +57,7 @@ QSqlError PacienteDB::insertDB(PatientBean paciente){
     return QSqlError();
 }
 
-PatientBean PacienteDB::readDB(QString queryId){
+PatientBean PacienteDb::readDB(QString queryId){
     QSqlQuery query;
 
     PatientBean readPaciente;

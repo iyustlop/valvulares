@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::critical(this, "Unable to load database", "This demo needs the SQLITE driver");
 
     // initialize the database
-    QSqlError err = valvularesDB.startDb();
+    QSqlError err = valvularesDb.startDb();
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -187,7 +187,7 @@ void MainWindow::on_pushButtonCreate_clicked()
     crearPaciente.setPersona(crearPersona);
     crearPaciente.setEtiologia(crearEtiologia);
 
-    QSqlError err = myPacienteDB.insertDB(crearPaciente);
+    QSqlError err = myPacienteDb.insertDB(crearPaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;
@@ -211,15 +211,18 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<ecoBean> insertarEcoBean;
     // Lista de Mitral
     QList<MitralBean> insertarMitral;
+    // Lista de Aorta
+    QList<AortaBean> insertarArta;
 
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
 
-    insertarPaciente = myPacienteDB.readDB(queryId);
-    insertarVisita = myVisitaDB.readCita(queryId);
-    insertarEcoBean = myEcoDB.readEco(queryId);
+    insertarPaciente = myPacienteDb.readDB(queryId);
+    insertarVisita = myVisitaDb.readCita(queryId);
+    insertarEcoBean = myEcoDb.readEco(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
+    inse
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -300,6 +303,8 @@ void MainWindow::on_pushButtonRead_clicked()
         ui->tableWidgetMitral->setItem(i,6,new QTableWidgetItem(myMitralBean.getVC()));
         ui->tableWidgetMitral->setItem(i,7,new QTableWidgetItem(myMitralBean.getInvSistolicaVvpp()));
     }
+
+    ui->tableWidgetAorta->setRowCount();
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
@@ -378,7 +383,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
     updateEtiologia.setDisfuncionProtesica(updateDisfuncionProtesica);
     updatePaciente.setEtiologia(updateEtiologia);
 
-    QSqlError err = valvularesDB.updateDB(updatePaciente);
+    QSqlError err = valvularesDb.updateDB(updatePaciente);
     if (err.type() != QSqlError::NoError) {
         showError(err);
         return;

@@ -1,11 +1,11 @@
 #include "mitraldb.h"
 
-MitralDB::MitralDB()
+MitralDb::MitralDb()
 {
 
 }
 
- QSqlError MitralDB::insertMitral(QString numeroHistoria, MitralBean mitralBean){
+ QSqlError MitralDb::insertMitral(QString numeroHistoria, MitralBean mitralBean){
      QSqlQuery query;
 
      if (!query.prepare("insert into mitral (personId,dateMitral,gradienteMedioMitral,avmPorThp,vOndaE,ore,vR,vC,inversionSistolicaVvpp)"
@@ -28,7 +28,7 @@ MitralDB::MitralDB()
      return QSqlError();
  }
 
- QList<MitralBean> MitralDB::readMitral(QString queryId){
+ QList<MitralBean> MitralDb::readMitral(QString queryId){
      QSqlQuery query;
 
      MitralBean mitralBean;

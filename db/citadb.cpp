@@ -1,12 +1,12 @@
 #include "db/citadb.h"
 #include "mainwindow.h"
 
-CitaDB::CitaDB()
+CitaDb::CitaDb()
 {
 
 }
 
-QSqlError CitaDB::insertCita(QString nHistoria, VisitBean visita){
+QSqlError CitaDb::insertCita(QString nHistoria, VisitBean visita){
     QString numeroHistoria;
     Cita cita;
     ParametrosAnaliticos parametrosAnaliticos;
@@ -39,7 +39,7 @@ QSqlError CitaDB::insertCita(QString nHistoria, VisitBean visita){
     return QSqlError();
 }
 
-QList<VisitBean> CitaDB::readCita(QString queryId){
+QList<VisitBean> CitaDb::readCita(QString queryId){
     QSqlQuery query;
 
     VisitBean readVisita;

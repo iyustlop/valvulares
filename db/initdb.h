@@ -8,10 +8,10 @@
 
 #include <QtSql>
 
-class initDB
+class InitDb
 {
 public:
-    initDB();
+    InitDb();
     QSqlError startDb();
 
     QSqlError updateDB(PatientBean paciente);

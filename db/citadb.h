@@ -5,10 +5,10 @@
 #include "bean/cita/visitbean.h"
 #include <QtSql>
 
-class CitaDB
+class CitaDb
 {
 public:
-    CitaDB();
+    CitaDb();
     QSqlError insertCita(QString numeroHistoria, VisitBean visita);
     QList<VisitBean> readCita(QString queryId);
 };

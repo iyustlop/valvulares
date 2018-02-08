@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::DialogMitral *ui;
-    MitralDB mitralDb;
+    MitralDb mitralDb;
     QString numeroHistoria;
     void showError(const QSqlError &err);
 

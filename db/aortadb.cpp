@@ -1,11 +1,11 @@
 #include "aortadb.h"
 
-AortaDB::AortaDB()
+AortaDb::AortaDb()
 {
 
 }
 
-QSqlError AortaDB::insertAorta(QString numeroHistoria, AortaBean aortaBean)
+QSqlError AortaDb::insertAorta(QString numeroHistoria, AortaBean aortaBean)
 {
     QSqlQuery query;
 
@@ -32,7 +32,7 @@ QSqlError AortaDB::insertAorta(QString numeroHistoria, AortaBean aortaBean)
 
 }
 
-QList<AortaBean> AortaDB::readAorta(QString queryId)
+QList<AortaBean> AortaDb::readAorta(QString queryId)
 {
 
 }

@@ -25,7 +25,7 @@ private slots:
     void on_pushButtonGuardar_clicked();
 
 private:
-    CitaDB citaDB;
+    CitaDb citaDB;
     Ui::AddVisit *ui;
     QString numeroHistoria;
     void showError(const QSqlError &err);

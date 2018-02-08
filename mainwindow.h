@@ -6,6 +6,7 @@
 #include "db/pacientedb.h"
 #include "db/citadb.h"
 #include "db/mitraldb.h"
+#include "db/aortadb.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -38,11 +39,12 @@ private slots:
     void on_pushButtonAorta_clicked();
 
 private:
-    initDB valvularesDB;
-    PacienteDB myPacienteDB;
-    CitaDB myVisitaDB;
-    EcoDb myEcoDB;
-    MitralDB myMitralDb;
+    InitDb valvularesDb;
+    PacienteDb myPacienteDb;
+    CitaDb myVisitaDb;
+    EcoDb myEcoDb;
+    MitralDb myMitralDb;
+    AortaDb myAortaDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

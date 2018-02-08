@@ -771,7 +771,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="tableWidgetAorta">
          <column>
           <property name="text">
            <string>Fecha</string>

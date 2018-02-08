@@ -5,10 +5,10 @@
 #include <QtSql>
 
 
-class PacienteDB
+class PacienteDb
 {
 public:
-    PacienteDB();
+    PacienteDb();
     QSqlError insertDB(PatientBean paciente);
     PatientBean readDB(QString queryId);
 };

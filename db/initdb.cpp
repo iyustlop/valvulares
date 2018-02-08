@@ -2,12 +2,12 @@
 
 #include <QMessageBox>
 
-initDB::initDB()
+InitDb::InitDb()
 {
 
 }
 
-QSqlError initDB::startDb(){
+QSqlError InitDb::startDb(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     QString dataBaseLocation = QDir::currentPath();
@@ -141,7 +141,7 @@ QSqlError initDB::startDb(){
     return QSqlError();
 }
 
-QSqlError initDB::updateDB(PatientBean paciente){
+QSqlError InitDb::updateDB(PatientBean paciente){
     QSqlQuery query;
 
     Person persona;

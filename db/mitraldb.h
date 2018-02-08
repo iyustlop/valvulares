@@ -4,10 +4,10 @@
 #include <QtSql>
 #include "bean/mitral/mitralbean.h"
 
-class MitralDB
+class MitralDb
 {
 public:
-    MitralDB();
+    MitralDb();
     QSqlError insertMitral(QString numeroHistoria, MitralBean mitralBean);
     QList<MitralBean> readMitral(QString queryId);
 };

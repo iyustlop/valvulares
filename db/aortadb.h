@@ -4,10 +4,10 @@
 #include <QtSql>
 #include "bean/aorta/aortabean.h"
 
-class AortaDB
+class AortaDb
 {
 public:
-    AortaDB();
+    AortaDb();
     QSqlError insertAorta(QString numeroHistoria, AortaBean aortaBean);
     QList<AortaBean> readAorta(QString queryId);
 };
