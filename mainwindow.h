@@ -35,6 +35,8 @@ private slots:
 
     void on_pushButtonMitral_clicked();
 
+    void on_pushButtonAorta_clicked();
+
 private:
     initDB valvularesDB;
     PacienteDB myPacienteDB;

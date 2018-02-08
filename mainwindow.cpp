@@ -492,3 +492,17 @@ void MainWindow::on_pushButtonMitral_clicked()
         clearUi();
     }
 }
+
+void MainWindow::on_pushButtonAorta_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogMitral dialogMitral(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogMitral.exec();
+        clearUi();
+    }
+}

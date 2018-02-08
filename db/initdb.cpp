@@ -85,7 +85,6 @@ QSqlError initDB::startDb(){
                "relacionDeIntegrales varchar(20), "
                "areaAortica varchar(20), "
                "ore varchar(20), "
-               "iao varchar(20), "
                "vrIao varchar(20), "
                "vcIao varchar(20), "
                "relacionAlturaJetIaoItsvi varchar(20), "

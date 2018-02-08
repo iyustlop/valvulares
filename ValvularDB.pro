@@ -41,7 +41,10 @@ SOURCES += main.cpp\
     bean/mitral/mitralbean.cpp \
     db/mitraldb.cpp \
     dialogmitral.cpp \
-    dialogeco.cpp
+    dialogeco.cpp \
+    dialogaorta.cpp \
+    bean/aorta/aortabean.cpp \
+    db/aortadb.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -60,9 +63,13 @@ HEADERS  += mainwindow.h \
     bean/mitral/mitralbean.h \
     db/mitraldb.h \
     dialogmitral.h \
-    dialogeco.h
+    dialogeco.h \
+    dialogaorta.h \
+    bean/aorta/aortabean.h \
+    db/aortadb.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
     dialogmitral.ui \
-    dialogeco.ui
+    dialogeco.ui \
+    dialogaorta.ui
