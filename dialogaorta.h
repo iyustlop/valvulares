@@ -2,6 +2,7 @@
 #define DIALOGAORTA_H
 
 #include <QDialog>
+#include "db/aortadb.h"
 
 namespace Ui {
 class DialogAorta;
@@ -18,9 +19,14 @@ public:
     QString getNumeroHistoria() const;
     void setNumeroHistoria(const QString &value);
 
+private slots:
+    void on_pushButtonAorta_clicked();
+
 private:
+    AortaDb inserAortaDb;
     Ui::DialogAorta *ui;
     QString numeroHistoria;
+    void showError(const QSqlError &err);
 };
 
 #endif // DIALOGAORTA_H

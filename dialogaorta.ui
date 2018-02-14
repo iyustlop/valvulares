@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>224</width>
-    <height>357</height>
+    <width>324</width>
+    <height>342</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,26 +17,26 @@
    <item row="0" column="0">
     <layout class="QFormLayout" name="formLayout">
      <item row="1" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelGradientePicoAo">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Gradiente Pico Ao</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEditGradientePicoAo"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Gradiente Medio Ao</string>
        </property>
       </widget>
      </item>
      <item row="9" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Inversion Iao</string>
        </property>
       </widget>
      </item>
@@ -53,84 +53,84 @@
      <item row="8" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Relacion Altura Jet Iao Itsvi</string>
        </property>
       </widget>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>TextLabel</string>
+        <string>VR</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Relacion De Integrales</string>
        </property>
       </widget>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>TextLabel</string>
+        <string>ORE</string>
        </property>
       </widget>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Area Aortica</string>
        </property>
       </widget>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>TextLabel</string>
+        <string>VC</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="lineEditGradienteMedioAo"/>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_3"/>
+      <widget class="QLineEdit" name="lineEditRelacionDeIntegrales"/>
      </item>
      <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit_4"/>
+      <widget class="QLineEdit" name="lineEditAreaAortica"/>
      </item>
      <item row="5" column="1">
-      <widget class="QLineEdit" name="lineEdit_5"/>
+      <widget class="QLineEdit" name="lineEditOreIao"/>
      </item>
      <item row="6" column="1">
-      <widget class="QLineEdit" name="lineEdit_6"/>
+      <widget class="QLineEdit" name="lineEditVcIao"/>
      </item>
      <item row="7" column="1">
-      <widget class="QLineEdit" name="lineEdit_7"/>
+      <widget class="QLineEdit" name="lineEditVrIao"/>
      </item>
      <item row="8" column="1">
-      <widget class="QLineEdit" name="lineEdit_8"/>
+      <widget class="QLineEdit" name="lineEditRelacionAlturaJetIaoItsvi"/>
      </item>
      <item row="9" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="radioButtonInversionIaoSi">
          <property name="text">
           <string>Si</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="radioButtonInversionIaoNo">
          <property name="text">
           <string>No</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QRadioButton" name="radioButtonInversionIaoNa">
          <property name="text">
           <string>Na</string>
          </property>
@@ -139,9 +139,9 @@
       </layout>
      </item>
      <item row="10" column="1">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButtonAorta">
        <property name="text">
-        <string>PushButton</string>
+        <string>Create Aorta</string>
        </property>
       </widget>
      </item>
