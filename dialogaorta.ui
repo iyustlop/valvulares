@@ -33,13 +33,6 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Inversion Iao</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
@@ -49,20 +42,6 @@
      </item>
      <item row="0" column="1">
       <widget class="QDateEdit" name="dateEditAorta"/>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Relacion Altura Jet Iao Itsvi</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>VR</string>
-       </property>
-      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_7">
@@ -85,13 +64,6 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>VC</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="lineEditGradienteMedioAo"/>
      </item>
@@ -104,14 +76,42 @@
      <item row="5" column="1">
       <widget class="QLineEdit" name="lineEditOreIao"/>
      </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>VR</string>
+       </property>
+      </widget>
+     </item>
      <item row="6" column="1">
-      <widget class="QLineEdit" name="lineEditVcIao"/>
+      <widget class="QLineEdit" name="lineEditVrIao"/>
      </item>
      <item row="7" column="1">
-      <widget class="QLineEdit" name="lineEditVrIao"/>
+      <widget class="QLineEdit" name="lineEditVcIao"/>
      </item>
      <item row="8" column="1">
       <widget class="QLineEdit" name="lineEditRelacionAlturaJetIaoItsvi"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>VC</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Relacion Altura Jet Iao Itsvi</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Inversion Iao</string>
+       </property>
+      </widget>
      </item>
      <item row="9" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">

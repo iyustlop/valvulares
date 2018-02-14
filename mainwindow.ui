@@ -799,17 +799,17 @@
          </column>
          <column>
           <property name="text">
-           <string>New Column</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
            <string>ORE</string>
           </property>
          </column>
          <column>
           <property name="text">
            <string>VR</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>VC</string>
           </property>
          </column>
          <column>

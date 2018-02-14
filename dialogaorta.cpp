@@ -38,8 +38,8 @@ void DialogAorta::on_pushButtonAorta_clicked()
     myAortaBean.setRelacionDeInl(ui->lineEditRelacionDeIntegrales->text());
     myAortaBean.setAreaAo(ui->lineEditAreaAortica->text());
     myAortaBean.setOReIaO(ui->lineEditOreIao->text());
-    myAortaBean.setVRiAo(ui->lineEditOreIao->text());
-    myAortaBean.setVCiAo(ui->lineEditOreIao->text());
+    myAortaBean.setVRiAo(ui->lineEditVrIao->text());
+    myAortaBean.setVCiAo(ui->lineEditVcIao->text());
     myAortaBean.setRelAltJetIao(ui->lineEditRelacionAlturaJetIaoItsvi->text());
 
     if (ui->radioButtonInversionIaoSi->isChecked()){
