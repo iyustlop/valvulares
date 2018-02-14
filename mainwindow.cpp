@@ -6,6 +6,7 @@
 #include "addvisit.h"
 #include "dialogeco.h"
 #include "dialogmitral.h"
+#include "dialogaorta.h"
 
 #include <QMessageBox>
 
@@ -516,13 +517,13 @@ void MainWindow::on_pushButtonMitral_clicked()
 void MainWindow::on_pushButtonAorta_clicked()
 {
     QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
-    DialogMitral dialogMitral(numeroHistoria);
+    DialogAorta dialogAorta(numeroHistoria);
     int x = QString::compare(numeroHistoria,"Vacio");
     if (x == 0){
 
     } else{
         //myAddVisit.setModal(true);
-        dialogMitral.exec();
+        dialogAorta.exec();
         clearUi();
     }
 }
