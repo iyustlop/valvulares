@@ -44,7 +44,10 @@ SOURCES += main.cpp\
     dialogeco.cpp \
     dialogaorta.cpp \
     bean/aorta/aortabean.cpp \
-    db/aortadb.cpp
+    db/aortadb.cpp \
+    dialogtri.cpp \
+    db/tridb.cpp \
+    bean/tri/tribean.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -66,10 +69,14 @@ HEADERS  += mainwindow.h \
     dialogeco.h \
     dialogaorta.h \
     bean/aorta/aortabean.h \
-    db/aortadb.h
+    db/aortadb.h \
+    dialogtri.h \
+    db/tridb.h \
+    bean/tri/tribean.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
     dialogmitral.ui \
     dialogeco.ui \
-    dialogaorta.ui
+    dialogaorta.ui \
+    dialogtri.ui
