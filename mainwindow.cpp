@@ -212,7 +212,7 @@ void MainWindow::on_pushButtonRead_clicked()
     // Lista de Mitral
     QList<MitralBean> insertarMitral;
     // Lista de Aorta
-    QList<AortaBean> insertarArta;
+    QList<AortaBean> insertarAorta;
 
     QString queryId;
 
@@ -222,7 +222,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarVisita = myVisitaDb.readCita(queryId);
     insertarEcoBean = myEcoDb.readEco(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
-    inse
+    insertarAorta = myAortaDb.readAorta(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -304,7 +304,20 @@ void MainWindow::on_pushButtonRead_clicked()
         ui->tableWidgetMitral->setItem(i,7,new QTableWidgetItem(myMitralBean.getInvSistolicaVvpp()));
     }
 
-    ui->tableWidgetAorta->setRowCount();
+    ui->tableWidgetAorta->setRowCount(insertarAorta.length());
+    for (int i = 0; i < insertarAorta.length(); i++){
+        AortaBean myAortaBean = insertarAorta[i];
+        ui->tableWidgetAorta->setItem(i,0,new QTableWidgetItem(myAortaBean.getDate()));
+        ui->tableWidgetAorta->setItem(i,1,new QTableWidgetItem(myAortaBean.getGradAo()));
+        ui->tableWidgetAorta->setItem(i,2,new QTableWidgetItem(myAortaBean.getGradMedioAo()));
+        ui->tableWidgetAorta->setItem(i,3,new QTableWidgetItem(myAortaBean.getRelacionDeInl()));
+        ui->tableWidgetAorta->setItem(i,4,new QTableWidgetItem(myAortaBean.getAreaAo()));
+        ui->tableWidgetAorta->setItem(i,5,new QTableWidgetItem(myAortaBean.getOReIaO()));
+        ui->tableWidgetAorta->setItem(i,6,new QTableWidgetItem(myAortaBean.getVRiAo()));
+        ui->tableWidgetAorta->setItem(i,7,new QTableWidgetItem(myAortaBean.getVCiAo()));
+        ui->tableWidgetAorta->setItem(i,8,new QTableWidgetItem(myAortaBean.getRelAltJetIao()));
+        ui->tableWidgetAorta->setItem(i,9,new QTableWidgetItem(myAortaBean.getInversionIao()));
+    }
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
@@ -424,6 +437,8 @@ void MainWindow::clearUi()
     ui->ecoTableWidget->setRowCount(0);
 
     ui->tableWidgetMitral->setRowCount(0);
+
+    ui->tableWidgetAorta->setRowCount(0);
 }
 
 QString MainWindow::comprobarLineEdit(QString lineEdit)
