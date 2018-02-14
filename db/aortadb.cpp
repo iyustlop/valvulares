@@ -9,7 +9,7 @@ QSqlError AortaDb::insertAorta(QString numeroHistoria, AortaBean aortaBean)
 {
     QSqlQuery query;
 
-    if (!query.prepare("insert into mitral (personId,dateAorta,gradientePicoAo,gradienteMedioAo,relacionDeIntegrales,areaAortica,ore,vrIao,vcIao,relacionAlturaJetIaoItsvi,inversionIao)"
+    if (!query.prepare("insert into aorta (personId,dateAorta,gradientePicoAo,gradienteMedioAo,relacionDeIntegrales,areaAortica,ore,vrIao,vcIao,relacionAlturaJetIaoItsvi,inversionIao)"
                        "values (:personId,:dateAorta,:gradientePicoAo,:gradienteMedioAo,:relacionDeIntegrales,:areaAortica,:ore,:vrIao,:vcIao,:relacionAlturaJetIaoItsvi,:inversionIao)"))
         return query.lastError();
 
