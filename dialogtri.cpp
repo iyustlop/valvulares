@@ -31,7 +31,7 @@ void DialogTri::setNumeroHistoria(const QString &value)
 void DialogTri::on_pushButtonTri_clicked()
 {
     TriBean myTriBean;
-
+    myTriBean.setDateTri(ui->dateEdit->text());
     myTriBean.setPsap(ui->lineEditPsap->text());
     myTriBean.setGrado(ui->comboBoxGrado->currentText());
 

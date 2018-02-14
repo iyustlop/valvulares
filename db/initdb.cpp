@@ -92,7 +92,7 @@ QSqlError InitDb::startDb(){
                "FOREIGN KEY(personId) REFERENCES person(id))");
     query.exec("CREATE TABLE tricuspide (tricuspideId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
-               "dateAorta varchar(20), "
+               "dateTri varchar(20), "
                "psap varchar(20), "
                "grado varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");

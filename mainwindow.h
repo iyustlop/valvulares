@@ -7,6 +7,7 @@
 #include "db/citadb.h"
 #include "db/mitraldb.h"
 #include "db/aortadb.h"
+#include "db/tridb.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -38,6 +39,8 @@ private slots:
 
     void on_pushButtonAorta_clicked();
 
+    void on_pushButtonTri_clicked();
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;
@@ -45,6 +48,7 @@ private:
     EcoDb myEcoDb;
     MitralDb myMitralDb;
     AortaDb myAortaDb;
+    TriDb myTriDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

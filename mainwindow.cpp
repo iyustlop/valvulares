@@ -7,6 +7,7 @@
 #include "dialogeco.h"
 #include "dialogmitral.h"
 #include "dialogaorta.h"
+#include "dialogtri.h"
 
 #include <QMessageBox>
 
@@ -214,6 +215,8 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<MitralBean> insertarMitral;
     // Lista de Aorta
     QList<AortaBean> insertarAorta;
+    //Lista de tricuspide
+    QList<TriBean> insertarTri;
 
     QString queryId;
 
@@ -224,6 +227,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarEcoBean = myEcoDb.readEco(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
     insertarAorta = myAortaDb.readAorta(queryId);
+    insertarTri = myTriDb.readTri(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
@@ -318,6 +322,14 @@ void MainWindow::on_pushButtonRead_clicked()
         ui->tableWidgetAorta->setItem(i,7,new QTableWidgetItem(myAortaBean.getVCiAo()));
         ui->tableWidgetAorta->setItem(i,8,new QTableWidgetItem(myAortaBean.getRelAltJetIao()));
         ui->tableWidgetAorta->setItem(i,9,new QTableWidgetItem(myAortaBean.getInversionIao()));
+    }
+
+    ui->tableWidgetTri->setRowCount(insertarTri.length());
+    for (int i = 0; i < insertarTri.length(); i++){
+        TriBean myTriBean = insertarTri[i];
+        ui->tableWidgetTri->setItem(i,0,new QTableWidgetItem(myTriBean.getDateTri()));
+        ui->tableWidgetTri->setItem(i,1,new QTableWidgetItem(myTriBean.getPsap()));
+        ui->tableWidgetTri->setItem(i,2,new QTableWidgetItem(myTriBean.getGrado()));
     }
 }
 
@@ -440,6 +452,8 @@ void MainWindow::clearUi()
     ui->tableWidgetMitral->setRowCount(0);
 
     ui->tableWidgetAorta->setRowCount(0);
+
+    ui->tableWidgetTri->setRowCount(0);
 }
 
 QString MainWindow::comprobarLineEdit(QString lineEdit)
@@ -524,6 +538,20 @@ void MainWindow::on_pushButtonAorta_clicked()
     } else{
         //myAddVisit.setModal(true);
         dialogAorta.exec();
+        clearUi();
+    }
+}
+
+void MainWindow::on_pushButtonTri_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogTri dialogTri(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogTri.exec();
         clearUi();
     }
 }

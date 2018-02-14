@@ -14,7 +14,11 @@ public:
     QString getGrado() const;
     void setGrado(const QString &value);
 
+    QString getDateTri() const;
+    void setDateTri(const QString &value);
+
 private:
+    QString dateTri;
     QString psap;
     QString grado;
 };

@@ -24,3 +24,13 @@ void TriBean::setGrado(const QString &value)
 {
     grado = value;
 }
+
+QString TriBean::getDateTri() const
+{
+    return dateTri;
+}
+
+void TriBean::setDateTri(const QString &value)
+{
+    dateTri = value;
+}
