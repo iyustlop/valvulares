@@ -160,7 +160,7 @@ QSqlError InitDb::updateDB(PatientBean paciente){
     query.bindValue(":name",persona.getNombre());
     query.bindValue(":lastname",persona.getApellidos());
     query.bindValue(":genre",persona.getGenero());
-    query.bindValue(":nacimiento",persona.getFechaNacimiento());
+    query.bindValue(":nacimiento",persona.getEdad());
 
     if (!query.exec())
         return query.lastError();

@@ -15,15 +15,15 @@ public:
     QString getApellidos();
     void setGenero(QString genre);
     QString getGenero();
-    void setFechaNacimiento(QString birthdate);
-    QString getFechaNacimiento();
+    void setEdad(QString age);
+    QString getEdad();
 
 private:
     QString numeroHistoria;
     QString nombre;
     QString apellidos;
     QString genero;
-    QString fechaNacimiento;
+    QString edad;
 };
 
 #endif // PERSON_H

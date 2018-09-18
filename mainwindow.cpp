@@ -112,7 +112,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 
     crearPersona.setApellidos(comprobarLineEdit(ui->lineEditApellidos->text()));
 
-    crearPersona.setFechaNacimiento(ui->dateEditBirthDate->text());
+    crearPersona.setEdad(ui->lineEditAge->text());
 
     if (ui->radioButtonHombre->isChecked()){
         crearPersona.setGenero("Hombre");
@@ -235,12 +235,11 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarEtiologia = insertarPaciente.getEtiologia();
     insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
 
-    QDate fechaNacimiento = QDate::fromString(insertarPersona.getFechaNacimiento(),"dd/MM/yyyy");
     QDate fechaCirugia    = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
 
     ui->lineEditNombre->setText(insertarPersona.getNombre());
     ui->lineEditApellidos->setText(insertarPersona.getApellidos());
-    ui->dateEditBirthDate->setDate(fechaNacimiento);
+    ui->lineEditAge->setText(insertarPersona.getEdad());
     if (insertarPersona.getGenero() == "Hombre"){
         ui->radioButtonHombre->setChecked(true);
     }
@@ -349,7 +348,7 @@ void MainWindow::on_pushButtonUpdate_clicked()
 
     updatePersona.setApellidos(comprobarLineEdit(ui->lineEditApellidos->text()));
 
-    updatePersona.setFechaNacimiento(ui->dateEditBirthDate->text());
+    updatePersona.setEdad(ui->lineEditAge->text());
 
     if (ui->radioButtonHombre->isChecked()){
         updatePersona.setGenero("Hombre");
@@ -431,7 +430,7 @@ void MainWindow::clearUi()
     ui->lineEditNombre->clear();
     ui->lineEditApellidos->clear();
     ui->lineEditNumeroHistoria->clear();
-    ui->dateEditBirthDate->setDate(QDate::currentDate());
+    ui->lineEditAge->clear();
     ui->comboBox->setCurrentIndex(0);
     ui->comboBoxCausa->clear();
     ui->comboBoxPatologiaValvular->setCurrentIndex(0);

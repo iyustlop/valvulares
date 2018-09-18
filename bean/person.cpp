@@ -36,13 +36,13 @@ QString Person::getGenero(){
     return genero;
 }
 
-QString Person::getFechaNacimiento()
+QString Person::getEdad()
 {
-    return fechaNacimiento;
+    return edad;
 }
 
-void Person::setFechaNacimiento(QString birthdate)
+void Person::setEdad(QString age)
 {
-    fechaNacimiento = birthdate;
+    edad = age;
 }
 
