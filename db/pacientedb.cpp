@@ -23,7 +23,7 @@ QSqlError PacienteDb::insertDB(PatientBean paciente){
     query.bindValue(":name",persona.getNombre());
     query.bindValue(":lastname",persona.getApellidos());
     query.bindValue(":genre",persona.getGenero());
-    query.bindValue(":birthdate",persona.getFechaNacimiento());
+    query.bindValue(":birthdate",persona.getEdad());
     if (!query.exec())
         return query.lastError();
 
@@ -78,7 +78,7 @@ PatientBean PacienteDb::readDB(QString queryId){
             readPerson.setNombre(query.value(1).toString());
             readPerson.setApellidos(query.value(2).toString());
             readPerson.setGenero(query.value(3).toString());
-            readPerson.setFechaNacimiento(query.value(4).toString());
+            readPerson.setEdad(query.value(4).toString());
             readEtiology.setEtiologia(query.value(6).toString());
             readEtiology.setCausa(query.value(7).toString());
             readEtiology.setPatologiaValvular(query.value(8).toString());
