@@ -39,7 +39,7 @@ void AddVisit::on_pushButtonGuardar_clicked()
 
     if (ui->listWidgetFRCV->selectedItems().isEmpty()){
         QMessageBox::critical(this, "Unable to insert in Database",
-                              "Error insert in Combinada ");
+                              "Error insert in FRCV ");
         return;
     }
     else{

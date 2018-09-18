@@ -155,22 +155,24 @@ void MainWindow::on_pushButtonCreate_clicked()
         crearEtiologia.setMixedVpatology(ui->combinadaComboBox->currentText());
     }
 
-    if (ui->listWidgetPatologiaValvularCombinada->selectedItems().isEmpty()){
-        QMessageBox::critical(this, "Unable to insert in Database",
-                              "Error insert in Combinada ");
-        return;
-    }
-    else{
-
-        itemSelected = ui->listWidgetPatologiaValvularCombinada->selectedItems();
-
-        QString texts;
-        foreach (QListWidgetItem *item, itemSelected) {
-            texts.append(item->text());
-            texts.append(";");
+    if (crearEtiologia.getMixedVpatology().compare("Si") == 0){
+        if (ui->listWidgetPatologiaValvularCombinada->selectedItems().isEmpty()){
+            QMessageBox::critical(this, "Unable to insert in Database",
+                                  "Error insert in Patologia Valvular Combinada ");
+            return;
         }
+        else{
 
-        crearEtiologia.setValvularPatologySecondary(texts);
+            itemSelected = ui->listWidgetPatologiaValvularCombinada->selectedItems();
+
+            QString texts;
+            foreach (QListWidgetItem *item, itemSelected) {
+                texts.append(item->text());
+                texts.append(";");
+            }
+
+            crearEtiologia.setValvularPatologySecondary(texts);
+        }
     }
 
     if (ui->comboBoxPatologiaValvular->currentText() == "Disfunción Protésica"){

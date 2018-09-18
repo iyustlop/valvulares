@@ -47,7 +47,10 @@ SOURCES += main.cpp\
     db/aortadb.cpp \
     dialogtri.cpp \
     db/tridb.cpp \
-    bean/tri/tribean.cpp
+    bean/tri/tribean.cpp \
+    db/pulmonardb.cpp \
+    bean/pulmonar/pulmonarbean.cpp \
+    dialogpulmonar.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -72,11 +75,15 @@ HEADERS  += mainwindow.h \
     db/aortadb.h \
     dialogtri.h \
     db/tridb.h \
-    bean/tri/tribean.h
+    bean/tri/tribean.h \
+    db/pulmonardb.h \
+    bean/pulmonar/pulmonarbean.h \
+    dialogpulmonar.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
     dialogmitral.ui \
     dialogeco.ui \
     dialogaorta.ui \
-    dialogtri.ui
+    dialogtri.ui \
+    dialogpulmonar.ui

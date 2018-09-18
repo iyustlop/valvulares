@@ -675,7 +675,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tabMitral">
      <attribute name="title">
@@ -898,17 +898,26 @@
        </layout>
       </item>
      </layout>
-     <zorder>layoutWidget_3</zorder>
-     <zorder>tableWidgetTri</zorder>
     </widget>
     <widget class="QWidget" name="tabPulmonar">
      <attribute name="title">
       <string>Pulmonar</string>
      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>40</y>
+        <width>160</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4"/>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tabProtesis">
      <attribute name="title">
-      <string>Page</string>
+      <string>Protesis</string>
      </attribute>
     </widget>
    </widget>
@@ -925,7 +934,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -1134,6 +1143,108 @@
      </widget>
      <zorder>layoutWidget_2</zorder>
      <zorder>ecoTableWidget</zorder>
+    </widget>
+    <widget class="QWidget" name="rmTab">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QTableWidget" name="rmTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1371</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>FEVI</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>VTVDI</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Dilatacion ventriculo derecho</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>V. Mitral</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>F. Reg. Mitral</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>V. Aortica.</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>F. Reg. Aortica</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Realce tardio</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Raiz Aortica</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Aorta Ascendente</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Varios</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>190</y>
+        <width>1371</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
    <zorder>tabWidget</zorder>

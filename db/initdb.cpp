@@ -98,7 +98,7 @@ QSqlError InitDb::startDb(){
                "FOREIGN KEY(personId) REFERENCES person(id))");
     query.exec("CREATE TABLE pulmonar (pulmonarID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
-               "dateAorta varchar(20), "
+               "datePulmonar varchar(20), "
                "gradienteMaximo varchar(20), "
                "gradienteMedio varchar(20), "
                "ip varchar(20), "
