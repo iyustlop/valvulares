@@ -1,5 +1,5 @@
 #include "dialogeco.h"
-#include "ui_ecodialog.h"
+#include "ui_dialogeco.h"
 #include "bean/eco/ecobean.h"
 
 #include <QMessageBox>

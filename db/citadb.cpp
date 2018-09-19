@@ -17,8 +17,8 @@ QSqlError CitaDb::insertCita(QString nHistoria, VisitBean visita){
 
     QSqlQuery query;
 
-    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV,HB,creatinina,FG,proBNP,potasio,indicacionQuirurgica,euroScore)"
-                       "values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV,:HB,:creatinina,:FG,:proBNP,:potasio,:indicacionQuirurgica,:euroScore)"))
+    if (!query.prepare("insert into cita (personId,dateVisit,rhythm,functionalGrade,FRCV,HB,creatinina,FG,proBNP,potasio,indicacionQuirurgica,euroScore,tratamiento)"
+                       "values (:personId,:dateVisit,:rhythm,:functionalGrade,:FRCV,:HB,:creatinina,:FG,:proBNP,:potasio,:indicacionQuirurgica,:euroScore,:tratamiento)"))
         return query.lastError();
     query.bindValue(":personId",numeroHistoria.toInt());
     query.bindValue(":dateVisit",cita.getFechaConsulta());
@@ -32,7 +32,7 @@ QSqlError CitaDb::insertCita(QString nHistoria, VisitBean visita){
     query.bindValue(":potasio",parametrosAnaliticos.getPotasio());
     query.bindValue(":indicacionQuirurgica",parametrosAnaliticos.getIndicacionQr());
     query.bindValue(":euroScore",parametrosAnaliticos.getEuroScore());
-
+    query.bindValue(":tratamiento",parametrosAnaliticos.getTratamiento());
     if (!query.exec())
         return query.lastError();
 
@@ -47,7 +47,7 @@ QList<VisitBean> CitaDb::readCita(QString queryId){
     Cita readCita;
     ParametrosAnaliticos readParametrosAnaliticos;
 
-    query.prepare("SELECT c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, c.HB, c.creatinina, c.FG, c.proBNP, c.potasio, c.indicacionQuirurgica, c.euroScore "
+    query.prepare("SELECT c.dateVisit, c.rhythm, c.functionalGrade, c.FRCV, c.HB, c.creatinina, c.FG, c.proBNP, c.potasio, c.indicacionQuirurgica, c.euroScore, c.tratamiento "
                   "FROM cita c "
                   "WHERE c.personId = :id");
     query.bindValue(":id",queryId);
@@ -65,7 +65,7 @@ QList<VisitBean> CitaDb::readCita(QString queryId){
             readParametrosAnaliticos.setPotasio(query.value(8).toString());
             readParametrosAnaliticos.setIndicacionQr(query.value(9).toString());
             readParametrosAnaliticos.setEuroScore(query.value(10).toString());
-
+            readParametrosAnaliticos.setTratamiento(query.value(11).toString());
             readVisita.setCita(readCita);
             readVisita.setParametrosAnaliticos(readParametrosAnaliticos);
 
