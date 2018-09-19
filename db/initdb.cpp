@@ -52,7 +52,7 @@ QSqlError InitDb::startDb(){
                "potasio varchar(20), "                                 
                "indicacionQuirurgica varchar(20), "
                "euroScore varchar(20), "
-               "tratamiento varchar(20), "
+               "tratamiento varchar(40), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
     query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
