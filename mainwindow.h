@@ -41,6 +41,8 @@ private slots:
 
     void on_pushButtonTri_clicked();
 
+    void on_comboBoxCausa_activated(const QString &arg1);
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;

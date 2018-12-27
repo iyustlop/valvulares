@@ -921,7 +921,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -1133,7 +1133,7 @@
     </widget>
     <widget class="QWidget" name="rmTab">
      <attribute name="title">
-      <string>Page</string>
+      <string>Resonancia</string>
      </attribute>
      <widget class="QTableWidget" name="rmTableWidget">
       <property name="geometry">
