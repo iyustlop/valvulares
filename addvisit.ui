@@ -500,6 +500,11 @@
           <string>Anticoagulantes</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Ninguno</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>

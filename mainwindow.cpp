@@ -46,6 +46,7 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
         ui->comboBoxCausa->addItem("Traumática");
         ui->comboBoxCausa->addItem("Farmacos");
         ui->comboBoxCausa->addItem("Radioterapia");
+        ui->comboBoxCausa->addItem("Prolapso Idio");
     }
     if (arg1 == "Secundaria"){
         ui->comboBoxCausa->clear();
