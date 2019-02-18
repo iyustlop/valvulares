@@ -204,6 +204,13 @@
        <item row="3" column="1">
         <widget class="QLineEdit" name="lineEditAge"/>
        </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -247,6 +254,11 @@
            <item>
             <property name="text">
              <string>Secundaria</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>N/A</string>
             </property>
            </item>
           </widget>
@@ -921,7 +933,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -1146,6 +1158,11 @@
       </property>
       <column>
        <property name="text">
+        <string>Fecha</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>FEVI</string>
        </property>
       </column>
@@ -1156,22 +1173,17 @@
       </column>
       <column>
        <property name="text">
-        <string>Dilatacion ventriculo derecho</string>
+        <string>DilatacionVI</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>V. Mitral</string>
+        <string>DilatacionVD</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>F. Reg. Mitral</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>V. Aortica.</string>
        </property>
       </column>
       <column>
@@ -1224,14 +1236,24 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButtonResonancia">
          <property name="text">
-          <string>PushButton</string>
+          <string>Create Resonancia</string>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
+    </widget>
+    <widget class="QWidget" name="ergoTab">
+     <attribute name="title">
+      <string>Ergometria</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="cicloTab">
+     <attribute name="title">
+      <string>Cicloergometro</string>
+     </attribute>
     </widget>
    </widget>
    <zorder>tabWidget</zorder>

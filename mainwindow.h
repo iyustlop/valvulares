@@ -3,6 +3,7 @@
 
 #include "db/initdb.h"
 #include "db/ecodb.h"
+#include "db/resonanciadb.h"
 #include "db/pacientedb.h"
 #include "db/citadb.h"
 #include "db/mitraldb.h"
@@ -43,11 +44,16 @@ private slots:
 
     void on_comboBoxCausa_activated(const QString &arg1);
 
+    void on_CreateResonancia_clicked();
+
+    void on_pushButtonResonancia_clicked();
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;
     CitaDb myVisitaDb;
     EcoDb myEcoDb;
+    ResonanciaDb myResonanciaDb;
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;
