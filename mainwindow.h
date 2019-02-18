@@ -43,6 +43,10 @@ private slots:
 
     void on_comboBoxCausa_activated(const QString &arg1);
 
+    void on_CreateResonancia_clicked();
+
+    void on_pushButtonResonancia_clicked();
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;

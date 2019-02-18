@@ -8,6 +8,7 @@
 #include "dialogmitral.h"
 #include "dialogaorta.h"
 #include "dialogtri.h"
+#include "dialogresonancia.h"
 
 #include <QMessageBox>
 
@@ -502,6 +503,20 @@ void MainWindow::on_pushButtonEco_clicked()
 
 }
 
+void MainWindow::on_pushButtonResonancia_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogResonancia resoDialog(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        resoDialog.exec();
+        clearUi();
+    }
+}
+
 void MainWindow::on_pushButtonClear_clicked()
 {
     clearUi();
@@ -562,3 +577,11 @@ void MainWindow::on_comboBoxCausa_activated(const QString &arg1)
 {
 
 }
+
+void MainWindow::on_CreateResonancia_clicked()
+{
+
+}
+
+
+
