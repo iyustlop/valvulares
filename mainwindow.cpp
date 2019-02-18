@@ -557,3 +557,8 @@ void MainWindow::on_pushButtonTri_clicked()
         clearUi();
     }
 }
+
+void MainWindow::on_comboBoxCausa_activated(const QString &arg1)
+{
+
+}
