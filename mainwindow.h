@@ -3,6 +3,7 @@
 
 #include "db/initdb.h"
 #include "db/ecodb.h"
+#include "db/resonanciadb.h"
 #include "db/pacientedb.h"
 #include "db/citadb.h"
 #include "db/mitraldb.h"
@@ -52,6 +53,7 @@ private:
     PacienteDb myPacienteDb;
     CitaDb myVisitaDb;
     EcoDb myEcoDb;
+    ResonanciaDb myResonanciaDb;
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;

@@ -933,7 +933,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -1158,6 +1158,11 @@
       </property>
       <column>
        <property name="text">
+        <string>Fecha</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>FEVI</string>
        </property>
       </column>
@@ -1168,22 +1173,17 @@
       </column>
       <column>
        <property name="text">
-        <string>Dilatacion ventriculo derecho</string>
+        <string>DilatacionVI</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>V. Mitral</string>
+        <string>DilatacionVD</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>F. Reg. Mitral</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>V. Aortica.</string>
        </property>
       </column>
       <column>

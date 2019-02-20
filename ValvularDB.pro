@@ -52,7 +52,8 @@ SOURCES += main.cpp\
     bean/pulmonar/pulmonarbean.cpp \
     dialogpulmonar.cpp \
     dialogresonancia.cpp \
-    db/resonanciadb.cpp
+    db/resonanciadb.cpp \
+    bean/reso/resonancia.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -82,7 +83,8 @@ HEADERS  += mainwindow.h \
     bean/pulmonar/pulmonarbean.h \
     dialogpulmonar.h \
     dialogresonancia.h \
-    db/resonanciadb.h
+    db/resonanciadb.h \
+    bean/reso/resonanciabean.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \

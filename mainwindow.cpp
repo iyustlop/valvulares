@@ -217,6 +217,8 @@ void MainWindow::on_pushButtonRead_clicked()
     ParametrosAnaliticos insertarParametros;
     // Lista del Eco.
     QList<ecoBean> insertarEcoBean;
+    // Lista de la reso.
+    QList<ResonanciaBean> insertarResoBean;
     // Lista de Mitral
     QList<MitralBean> insertarMitral;
     // Lista de Aorta
@@ -231,6 +233,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarPaciente = myPacienteDb.readDB(queryId);
     insertarVisita = myVisitaDb.readCita(queryId);
     insertarEcoBean = myEcoDb.readEco(queryId);
+    insertarResoBean = myResonanciaDb.readResonancia(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
     insertarAorta = myAortaDb.readAorta(queryId);
     insertarTri = myTriDb.readTri(queryId);
@@ -287,7 +290,6 @@ void MainWindow::on_pushButtonRead_clicked()
     }
 
     ui->ecoTableWidget->setRowCount(insertarEcoBean.length());
-
     for (int i = 0; i < insertarEcoBean.length(); i++){
         ecoBean myEcoBean = insertarEcoBean[i];
 
@@ -299,6 +301,23 @@ void MainWindow::on_pushButtonRead_clicked()
         ui->ecoTableWidget->setItem(i,5,new QTableWidgetItem(myEcoBean.getDilataVd()));
         ui->ecoTableWidget->setItem(i,6,new QTableWidgetItem(myEcoBean.getTapse()));
         ui->ecoTableWidget->setItem(i,7,new QTableWidgetItem(myEcoBean.getAoAscend()));
+    }
+
+    ui->rmTableWidget->setRowCount(insertarResoBean.length());
+    for (int i = 0; i < insertarResoBean.length(); i++){
+        ResonanciaBean myResonanciaBean = insertarResoBean[i];
+
+        ui->rmTableWidget->setItem(i,0,new QTableWidgetItem(myResonanciaBean.getFechaReso()));
+        ui->rmTableWidget->setItem(i,1,new QTableWidgetItem(myResonanciaBean.getFevi()));
+        ui->rmTableWidget->setItem(i,2,new QTableWidgetItem(myResonanciaBean.getVtdVi()));
+        ui->rmTableWidget->setItem(i,3,new QTableWidgetItem(myResonanciaBean.getDilataVi()));
+        ui->rmTableWidget->setItem(i,4,new QTableWidgetItem(myResonanciaBean.getDilataVd()));
+        ui->rmTableWidget->setItem(i,5,new QTableWidgetItem(myResonanciaBean.getFracRegValMit()));
+        ui->rmTableWidget->setItem(i,6,new QTableWidgetItem(myResonanciaBean.getFracRegValAo()));
+        ui->rmTableWidget->setItem(i,7,new QTableWidgetItem(myResonanciaBean.getRaizAo()));
+        ui->rmTableWidget->setItem(i,8,new QTableWidgetItem(myResonanciaBean.getAoAscend()));
+        ui->rmTableWidget->setItem(i,9,new QTableWidgetItem(myResonanciaBean.getRealceTardio()));
+        ui->rmTableWidget->setItem(i,10,new QTableWidgetItem(myResonanciaBean.getVarios()));
     }
 
     ui->tableWidgetMitral->setRowCount(insertarMitral.length());
