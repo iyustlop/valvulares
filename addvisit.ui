@@ -497,7 +497,12 @@
         </item>
         <item>
          <property name="text">
-          <string>Anticoagulantes</string>
+          <string>Sintrom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NOACS</string>
          </property>
         </item>
         <item>

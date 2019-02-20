@@ -256,6 +256,11 @@
              <string>Secundaria</string>
             </property>
            </item>
+           <item>
+            <property name="text">
+             <string>N/A</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item row="1" column="0">
@@ -928,7 +933,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">

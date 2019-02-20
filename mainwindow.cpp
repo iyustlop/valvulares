@@ -74,6 +74,8 @@ void MainWindow::on_comboBoxPatologiaValvular_activated(const QString &arg1)
         ui->protesisComboBox->addItem("Biológica Mitral");
         ui->protesisComboBox->addItem("Anillo Mitral");
         ui->protesisComboBox->addItem("Anillo Tricuspide");
+        ui->protesisComboBox->addItem("Tricúspide Biológica");
+        ui->protesisComboBox->addItem("Tricúspide Mecánica");
     }
     else{
         ui->causaComboBox->clear();
