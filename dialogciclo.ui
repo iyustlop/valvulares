@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogCiclo</class>
+ <widget class="QDialog" name="DialogCiclo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>374</width>
+    <height>398</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonCiclo">
+       <property name="text">
+        <string>CicloErgometro</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonTapiz">
+       <property name="text">
+        <string>Tapiz rodante</string>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="lineEditCicloVo2Picopre"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="lineEditCicloRer"/>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="lineEditCicloVo2enVa"/>
+   </item>
+   <item row="16" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonAplanada">
+       <property name="text">
+        <string>Aplanada</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QRadioButton" name="radioButtonNoAplanada">
+       <property name="text">
+        <string>No Aplanada</string>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="18" column="1">
+    <widget class="QLineEdit" name="lineEditCicloEqCo2enVa"/>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="labelDilatVd">
+     <property name="text">
+      <string>% VO2 en VA</string>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>OUES</string>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="1">
+    <widget class="QLineEdit" name="lineEditCicloOues"/>
+   </item>
+   <item row="22" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Reserva Ventilatoria</string>
+     </property>
+    </widget>
+   </item>
+   <item row="19" column="1">
+    <widget class="QLineEdit" name="lineEditCicloVslope"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="labelVTDVI">
+     <property name="text">
+      <string>RER</string>
+     </property>
+    </widget>
+   </item>
+   <item row="22" column="1">
+    <widget class="QLineEdit" name="lineEditCicloReserVent"/>
+   </item>
+   <item row="19" column="0">
+    <widget class="QLabel" name="labelAoAsc">
+     <property name="text">
+      <string>Vslope CO2</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QDateEdit" name="dateEditCicloFecha"/>
+   </item>
+   <item row="24" column="1">
+    <widget class="QPushButton" name="pushButtonCicloGuardar">
+     <property name="text">
+      <string>Guardar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="24" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="lineEditCicloVo2Indexado"/>
+   </item>
+   <item row="16" column="0">
+    <widget class="QLabel" name="labelTapse">
+     <property name="text">
+      <string>Morfologia Curva</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelVolAuIzq">
+     <property name="text">
+      <string>Modalidad</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelFevi">
+     <property name="text">
+      <string>VO2 indexado</string>
+     </property>
+    </widget>
+   </item>
+   <item row="18" column="0">
+    <widget class="QLabel" name="labelRaizAo">
+     <property name="text">
+      <string>Eq CO2 en VA</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Fecha</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="labelDilatVi">
+     <property name="text">
+      <string>% VO2 picopredicho</string>
+     </property>
+    </widget>
+   </item>
+   <item row="23" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Ventilacion oscilante</string>
+     </property>
+    </widget>
+   </item>
+   <item row="23" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="radioButtonCicloSi">
+       <property name="text">
+        <string>Si</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButtonCicloNo">
+       <property name="text">
+        <string>No</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DialogCiclo</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DialogCiclo</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

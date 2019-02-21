@@ -53,7 +53,11 @@ SOURCES += main.cpp\
     dialogpulmonar.cpp \
     dialogresonancia.cpp \
     db/resonanciadb.cpp \
-    bean/reso/resonancia.cpp
+    bean/reso/resonancia.cpp \
+    dialogciclo.cpp \
+    db/ciclodb.cpp \
+    bean/ciclo/ciclobean.cpp \
+    display/displayciclo.cpp
 
 HEADERS  += mainwindow.h \
     db/initdb.h \
@@ -84,7 +88,11 @@ HEADERS  += mainwindow.h \
     dialogpulmonar.h \
     dialogresonancia.h \
     db/resonanciadb.h \
-    bean/reso/resonanciabean.h
+    bean/reso/resonanciabean.h \
+    dialogciclo.h \
+    db/ciclodb.h \
+    bean/ciclo/ciclobean.h \
+    display/displayciclo.h
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
@@ -93,4 +101,5 @@ FORMS    += mainwindow.ui \
     dialogaorta.ui \
     dialogtri.ui \
     dialogpulmonar.ui \
-    dialogresonancia.ui
+    dialogresonancia.ui \
+    dialogciclo.ui

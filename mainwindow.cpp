@@ -5,10 +5,12 @@
 #include "bean/patientbean.h"
 #include "addvisit.h"
 #include "dialogeco.h"
+#include "dialogresonancia.h"
+#include "dialogciclo.h"
 #include "dialogmitral.h"
 #include "dialogaorta.h"
 #include "dialogtri.h"
-#include "dialogresonancia.h"
+
 
 #include <QMessageBox>
 
@@ -205,6 +207,135 @@ void MainWindow::on_pushButtonCreate_clicked()
 }
 
 
+void MainWindow::displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita)
+{
+    ui->citasTableWidget->setRowCount(insertarVisita.length());
+
+    for (int i = 0; i < insertarVisita.length();i++){
+
+        VisitBean visitaIter = insertarVisita[i];
+        insertarCita = visitaIter.getCita();
+        insertarParametros = visitaIter.getParametrosAnaliticos();
+
+        ui->citasTableWidget->setItem(i,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
+        ui->citasTableWidget->setItem(i,1,new QTableWidgetItem(insertarCita.getRitmo()));
+        ui->citasTableWidget->setItem(i,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
+        ui->citasTableWidget->setItem(i,3,new QTableWidgetItem(insertarCita.getFrcv()));
+        ui->citasTableWidget->setItem(i,4,new QTableWidgetItem(insertarParametros.getHB()));
+        ui->citasTableWidget->setItem(i,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
+        ui->citasTableWidget->setItem(i,6,new QTableWidgetItem(insertarParametros.getFG()));
+        ui->citasTableWidget->setItem(i,7,new QTableWidgetItem(insertarParametros.getProBNP()));
+        ui->citasTableWidget->setItem(i,8,new QTableWidgetItem(insertarParametros.getPotasio()));
+        ui->citasTableWidget->setItem(i,9,new QTableWidgetItem(insertarParametros.getIndicacionQr()));
+        ui->citasTableWidget->setItem(i,10,new QTableWidgetItem(insertarParametros.getEuroScore()));
+        ui->citasTableWidget->setItem(i,11,new QTableWidgetItem(insertarParametros.getTratamiento()));
+    }
+}
+
+void MainWindow::displayCicloInTW(QList<CicloBean> insertarCicloBean)
+{
+    ui->cicloTableWidget->setRowCount(insertarCicloBean.length());
+    for (int i = 0; i < insertarCicloBean.length(); i++){
+        CicloBean myCicloBean = insertarCicloBean[i];
+
+        ui->cicloTableWidget->setItem(i,0,new QTableWidgetItem(myCicloBean.getFechaCiclo()));
+        ui->cicloTableWidget->setItem(i,1,new QTableWidgetItem(myCicloBean.getModalidad()));
+        ui->cicloTableWidget->setItem(i,2,new QTableWidgetItem(myCicloBean.getVo2Indexado()));
+        ui->cicloTableWidget->setItem(i,3,new QTableWidgetItem(myCicloBean.getVo2PicoPredicho()));
+        ui->cicloTableWidget->setItem(i,4,new QTableWidgetItem(myCicloBean.getRer()));
+        ui->cicloTableWidget->setItem(i,5,new QTableWidgetItem(myCicloBean.getVo2enVa()));
+        ui->cicloTableWidget->setItem(i,6,new QTableWidgetItem(myCicloBean.getMorfCurva()));
+        ui->cicloTableWidget->setItem(i,7,new QTableWidgetItem(myCicloBean.getEqCo2enVa()));
+        ui->cicloTableWidget->setItem(i,8,new QTableWidgetItem(myCicloBean.getVslopeCo2()));
+        ui->cicloTableWidget->setItem(i,9,new QTableWidgetItem(myCicloBean.getOues()));
+        ui->cicloTableWidget->setItem(i,10,new QTableWidgetItem(myCicloBean.getReservVentilatoria()));
+        ui->cicloTableWidget->setItem(i,11,new QTableWidgetItem(myCicloBean.getVentOscilante()));
+    }
+}
+
+void MainWindow::displayResoInTw(QList<ResonanciaBean> insertarResoBean)
+{
+    ui->rmTableWidget->setRowCount(insertarResoBean.length());
+    for (int i = 0; i < insertarResoBean.length(); i++){
+        ResonanciaBean myResonanciaBean = insertarResoBean[i];
+
+        ui->rmTableWidget->setItem(i,0,new QTableWidgetItem(myResonanciaBean.getFechaReso()));
+        ui->rmTableWidget->setItem(i,1,new QTableWidgetItem(myResonanciaBean.getFevi()));
+        ui->rmTableWidget->setItem(i,2,new QTableWidgetItem(myResonanciaBean.getVtdVi()));
+        ui->rmTableWidget->setItem(i,3,new QTableWidgetItem(myResonanciaBean.getDilataVi()));
+        ui->rmTableWidget->setItem(i,4,new QTableWidgetItem(myResonanciaBean.getDilataVd()));
+        ui->rmTableWidget->setItem(i,5,new QTableWidgetItem(myResonanciaBean.getFracRegValMit()));
+        ui->rmTableWidget->setItem(i,6,new QTableWidgetItem(myResonanciaBean.getFracRegValAo()));
+        ui->rmTableWidget->setItem(i,7,new QTableWidgetItem(myResonanciaBean.getRaizAo()));
+        ui->rmTableWidget->setItem(i,8,new QTableWidgetItem(myResonanciaBean.getAoAscend()));
+        ui->rmTableWidget->setItem(i,9,new QTableWidgetItem(myResonanciaBean.getRealceTardio()));
+        ui->rmTableWidget->setItem(i,10,new QTableWidgetItem(myResonanciaBean.getVarios()));
+    }
+}
+
+void MainWindow::displayEcoInTw(QList<ecoBean> insertarEcoBean)
+{
+    ui->ecoTableWidget->setRowCount(insertarEcoBean.length());
+    for (int i = 0; i < insertarEcoBean.length(); i++){
+        ecoBean myEcoBean = insertarEcoBean[i];
+
+        ui->ecoTableWidget->setItem(i,0,new QTableWidgetItem(myEcoBean.getFechaEco()));
+        ui->ecoTableWidget->setItem(i,1,new QTableWidgetItem(myEcoBean.getVolAi()));
+        ui->ecoTableWidget->setItem(i,2,new QTableWidgetItem(myEcoBean.getFevi()));
+        ui->ecoTableWidget->setItem(i,3,new QTableWidgetItem(myEcoBean.getDilataVi()));
+        ui->ecoTableWidget->setItem(i,4,new QTableWidgetItem(myEcoBean.getVtdVi()));
+        ui->ecoTableWidget->setItem(i,5,new QTableWidgetItem(myEcoBean.getDilataVd()));
+        ui->ecoTableWidget->setItem(i,6,new QTableWidgetItem(myEcoBean.getTapse()));
+        ui->ecoTableWidget->setItem(i,7,new QTableWidgetItem(myEcoBean.getAoAscend()));
+    }
+}
+
+void MainWindow::displayMitralInTw(QList<MitralBean> insertarMitral)
+{
+    ui->tableWidgetMitral->setRowCount(insertarMitral.length());
+    for (int i = 0; i < insertarMitral.length(); i++){
+        MitralBean myMitralBean = insertarMitral[i];
+        ui->tableWidgetMitral->setItem(i,0,new QTableWidgetItem(myMitralBean.getFecha()));
+        ui->tableWidgetMitral->setItem(i,1,new QTableWidgetItem(myMitralBean.getGrdMedio()));
+        ui->tableWidgetMitral->setItem(i,2,new QTableWidgetItem(myMitralBean.getAvmXtmp()));
+        ui->tableWidgetMitral->setItem(i,3,new QTableWidgetItem(myMitralBean.getVOndaE()));
+        ui->tableWidgetMitral->setItem(i,4,new QTableWidgetItem(myMitralBean.getORe()));
+        ui->tableWidgetMitral->setItem(i,5,new QTableWidgetItem(myMitralBean.getVR()));
+        ui->tableWidgetMitral->setItem(i,6,new QTableWidgetItem(myMitralBean.getVC()));
+        ui->tableWidgetMitral->setItem(i,7,new QTableWidgetItem(myMitralBean.getInvSistolicaVvpp()));
+    }
+}
+
+void MainWindow::displayAortaInTw(QList<AortaBean> insertarAorta)
+{
+    ui->tableWidgetAorta->setRowCount(insertarAorta.length());
+    for (int i = 0; i < insertarAorta.length(); i++){
+        AortaBean myAortaBean = insertarAorta[i];
+        ui->tableWidgetAorta->setItem(i,0,new QTableWidgetItem(myAortaBean.getDate()));
+        ui->tableWidgetAorta->setItem(i,1,new QTableWidgetItem(myAortaBean.getGradAo()));
+        ui->tableWidgetAorta->setItem(i,2,new QTableWidgetItem(myAortaBean.getGradMedioAo()));
+        ui->tableWidgetAorta->setItem(i,3,new QTableWidgetItem(myAortaBean.getRelacionDeInl()));
+        ui->tableWidgetAorta->setItem(i,4,new QTableWidgetItem(myAortaBean.getAreaAo()));
+        ui->tableWidgetAorta->setItem(i,5,new QTableWidgetItem(myAortaBean.getOReIaO()));
+        ui->tableWidgetAorta->setItem(i,6,new QTableWidgetItem(myAortaBean.getVRiAo()));
+        ui->tableWidgetAorta->setItem(i,7,new QTableWidgetItem(myAortaBean.getVCiAo()));
+        ui->tableWidgetAorta->setItem(i,8,new QTableWidgetItem(myAortaBean.getRelAltJetIao()));
+        ui->tableWidgetAorta->setItem(i,9,new QTableWidgetItem(myAortaBean.getInversionIao()));
+    }
+}
+
+void MainWindow::displayTriInTw(QList<TriBean> insertarTri)
+{
+    ui->tableWidgetTri->setRowCount(insertarTri.length());
+    for (int i = 0; i < insertarTri.length(); i++){
+        TriBean myTriBean = insertarTri[i];
+        ui->tableWidgetTri->setItem(i,0,new QTableWidgetItem(myTriBean.getDateTri()));
+        ui->tableWidgetTri->setItem(i,1,new QTableWidgetItem(myTriBean.getPsap()));
+        ui->tableWidgetTri->setItem(i,2,new QTableWidgetItem(myTriBean.getGrado()));
+    }
+}
+
+
 void MainWindow::on_pushButtonRead_clicked()
 {
     PatientBean insertarPaciente;
@@ -219,6 +350,8 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<ecoBean> insertarEcoBean;
     // Lista de la reso.
     QList<ResonanciaBean> insertarResoBean;
+    // Lista de la ciclo.
+    QList<CicloBean> insertarCicloBean;
     // Lista de Mitral
     QList<MitralBean> insertarMitral;
     // Lista de Aorta
@@ -234,6 +367,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarVisita = myVisitaDb.readCita(queryId);
     insertarEcoBean = myEcoDb.readEco(queryId);
     insertarResoBean = myResonanciaDb.readResonancia(queryId);
+    insertarCicloBean = myCicloDb.readCiclo(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
     insertarAorta = myAortaDb.readAorta(queryId);
     insertarTri = myTriDb.readTri(queryId);
@@ -267,94 +401,14 @@ void MainWindow::on_pushButtonRead_clicked()
     ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
     ui->dateEditSugeryDate->setDate(fechaCirugia);
 
-    ui->citasTableWidget->setRowCount(insertarVisita.length());
+    displayCitaInTw(insertarParametros, insertarCita, insertarVisita);
+    displayEcoInTw(insertarEcoBean);
+    displayResoInTw(insertarResoBean);
+    displayCicloInTW(insertarCicloBean);
 
-    for (int i = 0; i < insertarVisita.length();i++){
-
-        VisitBean visitaIter = insertarVisita[i];
-        insertarCita = visitaIter.getCita();
-        insertarParametros = visitaIter.getParametrosAnaliticos();
-
-        ui->citasTableWidget->setItem(i,0,new QTableWidgetItem(insertarCita.getFechaConsulta()));
-        ui->citasTableWidget->setItem(i,1,new QTableWidgetItem(insertarCita.getRitmo()));
-        ui->citasTableWidget->setItem(i,2,new QTableWidgetItem(insertarCita.getGradoFuncional()));
-        ui->citasTableWidget->setItem(i,3,new QTableWidgetItem(insertarCita.getFrcv()));
-        ui->citasTableWidget->setItem(i,4,new QTableWidgetItem(insertarParametros.getHB()));
-        ui->citasTableWidget->setItem(i,5,new QTableWidgetItem(insertarParametros.getCreatinina()));
-        ui->citasTableWidget->setItem(i,6,new QTableWidgetItem(insertarParametros.getFG()));
-        ui->citasTableWidget->setItem(i,7,new QTableWidgetItem(insertarParametros.getProBNP()));
-        ui->citasTableWidget->setItem(i,8,new QTableWidgetItem(insertarParametros.getPotasio()));
-        ui->citasTableWidget->setItem(i,9,new QTableWidgetItem(insertarParametros.getIndicacionQr()));
-        ui->citasTableWidget->setItem(i,10,new QTableWidgetItem(insertarParametros.getEuroScore()));
-        ui->citasTableWidget->setItem(i,11,new QTableWidgetItem(insertarParametros.getTratamiento()));
-    }
-
-    ui->ecoTableWidget->setRowCount(insertarEcoBean.length());
-    for (int i = 0; i < insertarEcoBean.length(); i++){
-        ecoBean myEcoBean = insertarEcoBean[i];
-
-        ui->ecoTableWidget->setItem(i,0,new QTableWidgetItem(myEcoBean.getFechaEco()));
-        ui->ecoTableWidget->setItem(i,1,new QTableWidgetItem(myEcoBean.getVolAi()));
-        ui->ecoTableWidget->setItem(i,2,new QTableWidgetItem(myEcoBean.getFevi()));
-        ui->ecoTableWidget->setItem(i,3,new QTableWidgetItem(myEcoBean.getDilataVi()));
-        ui->ecoTableWidget->setItem(i,4,new QTableWidgetItem(myEcoBean.getVtdVi()));
-        ui->ecoTableWidget->setItem(i,5,new QTableWidgetItem(myEcoBean.getDilataVd()));
-        ui->ecoTableWidget->setItem(i,6,new QTableWidgetItem(myEcoBean.getTapse()));
-        ui->ecoTableWidget->setItem(i,7,new QTableWidgetItem(myEcoBean.getAoAscend()));
-    }
-
-    ui->rmTableWidget->setRowCount(insertarResoBean.length());
-    for (int i = 0; i < insertarResoBean.length(); i++){
-        ResonanciaBean myResonanciaBean = insertarResoBean[i];
-
-        ui->rmTableWidget->setItem(i,0,new QTableWidgetItem(myResonanciaBean.getFechaReso()));
-        ui->rmTableWidget->setItem(i,1,new QTableWidgetItem(myResonanciaBean.getFevi()));
-        ui->rmTableWidget->setItem(i,2,new QTableWidgetItem(myResonanciaBean.getVtdVi()));
-        ui->rmTableWidget->setItem(i,3,new QTableWidgetItem(myResonanciaBean.getDilataVi()));
-        ui->rmTableWidget->setItem(i,4,new QTableWidgetItem(myResonanciaBean.getDilataVd()));
-        ui->rmTableWidget->setItem(i,5,new QTableWidgetItem(myResonanciaBean.getFracRegValMit()));
-        ui->rmTableWidget->setItem(i,6,new QTableWidgetItem(myResonanciaBean.getFracRegValAo()));
-        ui->rmTableWidget->setItem(i,7,new QTableWidgetItem(myResonanciaBean.getRaizAo()));
-        ui->rmTableWidget->setItem(i,8,new QTableWidgetItem(myResonanciaBean.getAoAscend()));
-        ui->rmTableWidget->setItem(i,9,new QTableWidgetItem(myResonanciaBean.getRealceTardio()));
-        ui->rmTableWidget->setItem(i,10,new QTableWidgetItem(myResonanciaBean.getVarios()));
-    }
-
-    ui->tableWidgetMitral->setRowCount(insertarMitral.length());
-    for (int i = 0; i < insertarMitral.length(); i++){
-        MitralBean myMitralBean = insertarMitral[i];
-        ui->tableWidgetMitral->setItem(i,0,new QTableWidgetItem(myMitralBean.getFecha()));
-        ui->tableWidgetMitral->setItem(i,1,new QTableWidgetItem(myMitralBean.getGrdMedio()));
-        ui->tableWidgetMitral->setItem(i,2,new QTableWidgetItem(myMitralBean.getAvmXtmp()));
-        ui->tableWidgetMitral->setItem(i,3,new QTableWidgetItem(myMitralBean.getVOndaE()));
-        ui->tableWidgetMitral->setItem(i,4,new QTableWidgetItem(myMitralBean.getORe()));
-        ui->tableWidgetMitral->setItem(i,5,new QTableWidgetItem(myMitralBean.getVR()));
-        ui->tableWidgetMitral->setItem(i,6,new QTableWidgetItem(myMitralBean.getVC()));
-        ui->tableWidgetMitral->setItem(i,7,new QTableWidgetItem(myMitralBean.getInvSistolicaVvpp()));
-    }
-
-    ui->tableWidgetAorta->setRowCount(insertarAorta.length());
-    for (int i = 0; i < insertarAorta.length(); i++){
-        AortaBean myAortaBean = insertarAorta[i];
-        ui->tableWidgetAorta->setItem(i,0,new QTableWidgetItem(myAortaBean.getDate()));
-        ui->tableWidgetAorta->setItem(i,1,new QTableWidgetItem(myAortaBean.getGradAo()));
-        ui->tableWidgetAorta->setItem(i,2,new QTableWidgetItem(myAortaBean.getGradMedioAo()));
-        ui->tableWidgetAorta->setItem(i,3,new QTableWidgetItem(myAortaBean.getRelacionDeInl()));
-        ui->tableWidgetAorta->setItem(i,4,new QTableWidgetItem(myAortaBean.getAreaAo()));
-        ui->tableWidgetAorta->setItem(i,5,new QTableWidgetItem(myAortaBean.getOReIaO()));
-        ui->tableWidgetAorta->setItem(i,6,new QTableWidgetItem(myAortaBean.getVRiAo()));
-        ui->tableWidgetAorta->setItem(i,7,new QTableWidgetItem(myAortaBean.getVCiAo()));
-        ui->tableWidgetAorta->setItem(i,8,new QTableWidgetItem(myAortaBean.getRelAltJetIao()));
-        ui->tableWidgetAorta->setItem(i,9,new QTableWidgetItem(myAortaBean.getInversionIao()));
-    }
-
-    ui->tableWidgetTri->setRowCount(insertarTri.length());
-    for (int i = 0; i < insertarTri.length(); i++){
-        TriBean myTriBean = insertarTri[i];
-        ui->tableWidgetTri->setItem(i,0,new QTableWidgetItem(myTriBean.getDateTri()));
-        ui->tableWidgetTri->setItem(i,1,new QTableWidgetItem(myTriBean.getPsap()));
-        ui->tableWidgetTri->setItem(i,2,new QTableWidgetItem(myTriBean.getGrado()));
-    }
+    displayMitralInTw(insertarMitral);
+    displayAortaInTw(insertarAorta);
+    displayTriInTw(insertarTri);
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
@@ -470,8 +524,9 @@ void MainWindow::clearUi()
     ui->dateEditSugeryDate->setDate(QDate::currentDate());
 
     ui->citasTableWidget->setRowCount(0);
-
     ui->ecoTableWidget->setRowCount(0);
+    ui->rmTableWidget->setRowCount(0);
+    ui->cicloTableWidget->setRowCount(0);
 
     ui->tableWidgetMitral->setRowCount(0);
 
@@ -538,6 +593,20 @@ void MainWindow::on_pushButtonResonancia_clicked()
     }
 }
 
+void MainWindow::on_pushButtonCiclo_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogCiclo cicloDialog(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        cicloDialog.exec();
+        clearUi();
+    }
+}
+
 void MainWindow::on_pushButtonClear_clicked()
 {
     clearUi();
@@ -593,16 +662,3 @@ void MainWindow::on_pushButtonTri_clicked()
         clearUi();
     }
 }
-
-void MainWindow::on_comboBoxCausa_activated(const QString &arg1)
-{
-
-}
-
-void MainWindow::on_CreateResonancia_clicked()
-{
-
-}
-
-
-

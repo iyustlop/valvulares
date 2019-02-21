@@ -4,11 +4,13 @@
 #include "db/initdb.h"
 #include "db/ecodb.h"
 #include "db/resonanciadb.h"
+#include "db/ciclodb.h"
 #include "db/pacientedb.h"
 #include "db/citadb.h"
 #include "db/mitraldb.h"
 #include "db/aortadb.h"
 #include "db/tridb.h"
+#include "display/displayciclo.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -25,28 +27,38 @@ public:
     QString getNumeroHistoria();
     void clearUi();
 
+    void displayCicloInTW(QList<CicloBean> insertarCicloBean);
+
+    void displayResoInTw(QList<ResonanciaBean> insertarResoBean);
+
+    void displayEcoInTw(QList<ecoBean> insertarEcoBean);
+
+    void displayMitralInTw(QList<MitralBean> insertarMitral);
+
+    void displayAortaInTw(QList<AortaBean> insertarAorta);
+
+    void displayTriInTw(QList<TriBean> insertarTri);
+
+    void displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita);
+
 private slots:
     void on_pushButtonCreate_clicked();
     void on_pushButtonRead_clicked();
-    void on_pushButtonCita_clicked();
-    void on_pushButtonEco_clicked();
     void on_pushButtonClear_clicked();
     void on_pushButtonUpdate_clicked();
+
+    void on_pushButtonCita_clicked();
+    void on_pushButtonEco_clicked();
+    void on_pushButtonResonancia_clicked();
+    void on_pushButtonCiclo_clicked();
+
     void on_comboBox_activated(const QString &arg1);
     void on_comboBoxPatologiaValvular_activated(const QString &arg1);
     void on_combinadaComboBox_activated(const QString &arg1);
 
     void on_pushButtonMitral_clicked();
-
     void on_pushButtonAorta_clicked();
-
     void on_pushButtonTri_clicked();
-
-    void on_comboBoxCausa_activated(const QString &arg1);
-
-    void on_CreateResonancia_clicked();
-
-    void on_pushButtonResonancia_clicked();
 
 private:
     InitDb valvularesDb;
@@ -54,6 +66,7 @@ private:
     CitaDb myVisitaDb;
     EcoDb myEcoDb;
     ResonanciaDb myResonanciaDb;
+    CicloDb myCicloDb;
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;
