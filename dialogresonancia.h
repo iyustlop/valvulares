@@ -21,6 +21,7 @@ public:
 private slots:
     void on_pushButtonGuardar_clicked();
 
+
     void on_pushButtonResoGuardar_clicked();
     void on_radioButtonResoDiViSi_clicked();
     void on_radioButtonResoDiViNo_clicked();

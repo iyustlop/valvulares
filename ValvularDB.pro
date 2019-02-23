@@ -59,6 +59,7 @@ SOURCES += main.cpp\
     bean/ciclo/ciclobean.cpp \
     display/displayciclo.cpp
 
+
 HEADERS  += mainwindow.h \
     db/initdb.h \
     bean/etiology.h \
@@ -88,11 +89,13 @@ HEADERS  += mainwindow.h \
     dialogpulmonar.h \
     dialogresonancia.h \
     db/resonanciadb.h \
+
     bean/reso/resonanciabean.h \
     dialogciclo.h \
     db/ciclodb.h \
     bean/ciclo/ciclobean.h \
     display/displayciclo.h
+
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
@@ -103,3 +106,4 @@ FORMS    += mainwindow.ui \
     dialogpulmonar.ui \
     dialogresonancia.ui \
     dialogciclo.ui
+
