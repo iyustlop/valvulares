@@ -674,7 +674,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabMitral">
      <attribute name="title">
@@ -1193,17 +1193,17 @@
       </column>
       <column>
        <property name="text">
-        <string>Realce tardio</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
         <string>Raiz Aortica</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Aorta Ascendente</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Realce tardio</string>
        </property>
       </column>
       <column>
@@ -1239,6 +1239,110 @@
         <widget class="QPushButton" name="pushButtonResonancia">
          <property name="text">
           <string>Create Resonancia</string>
+
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="cicloTab">
+     <attribute name="title">
+      <string>Cicloergometro</string>
+     </attribute>
+     <widget class="QTableWidget" name="cicloTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>1</y>
+        <width>1261</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Fecha</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Modalidad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>VO2 indexado</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>%VO2 picoperdiclo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>RER</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>%VO2 en V.A.</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Morfologia curva</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Eq CO2 en VA</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Vslope CO2</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>OUES</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ventilacion Oscilante</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>170</y>
+        <width>1261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonCiclo">
+         <property name="text">
+          <string>Create CicloErgometría</string>
+
          </property>
         </widget>
        </item>
@@ -1250,11 +1354,13 @@
       <string>Ergometria</string>
      </attribute>
     </widget>
+
     <widget class="QWidget" name="cicloTab">
      <attribute name="title">
       <string>Cicloergometro</string>
      </attribute>
     </widget>
+
    </widget>
    <zorder>tabWidget</zorder>
    <zorder>layoutWidget</zorder>
