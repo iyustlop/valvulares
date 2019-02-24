@@ -96,6 +96,12 @@ QSqlError InitDb::startDb(){
                "reservaVent varchar(20), "
                "ventOscilante varchar(20), "
                "FOREIGN KEY(pruebasDiagnosticasCicloId) REFERENCES person(id))");
+    query.exec("CREATE TABLE pruebasDiagnosticasErgo (pruebasDiagnosticasErgoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateErgo varchar(20), "
+               "tEsfuerzo varchar(20), "
+               "mets varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasErgoId) REFERENCES person(id))");
     query.exec("CREATE TABLE mitral (mitralId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
                "dateMitral varchar(20), "
