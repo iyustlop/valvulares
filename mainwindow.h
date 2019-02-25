@@ -61,6 +61,7 @@ private slots:
 
     void on_pushButtonErgo_clicked();
 
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;

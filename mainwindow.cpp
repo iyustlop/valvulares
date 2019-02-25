@@ -11,6 +11,7 @@
 #include "dialogmitral.h"
 #include "dialogaorta.h"
 #include "dialogtri.h"
+#include "dialogresonancia.h"
 
 
 #include <QMessageBox>
@@ -210,6 +211,68 @@ void MainWindow::on_pushButtonCreate_clicked()
 
 void MainWindow::displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita)
 {
+
+    PatientBean insertarPaciente;
+    Etiology insertarEtiologia;    
+    ProtesicDisfunction insertarDisfucionProtesica;
+    Person insertarPersona;
+    // lista de la vista.
+    QList<VisitBean> insertarVisita;
+    Cita insertarCita;
+    ParametrosAnaliticos insertarParametros;
+    // Lista del Eco.
+    QList<ecoBean> insertarEcoBean;
+    // Lista de la reso.
+    QList<ResonanciaBean> insertarResoBean;
+    // Lista de Mitral
+    QList<MitralBean> insertarMitral;
+    // Lista de Aorta
+    QList<AortaBean> insertarAorta;
+    //Lista de tricuspide
+    QList<TriBean> insertarTri;
+
+    QString queryId;
+
+    queryId = ui->lineEditNumeroHistoria->text();
+
+    insertarPaciente = myPacienteDb.readDB(queryId);
+    insertarVisita = myVisitaDb.readCita(queryId);
+    insertarEcoBean = myEcoDb.readEco(queryId);
+    insertarResoBean = myResonanciaDb.readResonancia(queryId);
+    insertarMitral = myMitralDb.readMitral(queryId);
+    insertarAorta = myAortaDb.readAorta(queryId);
+    insertarTri = myTriDb.readTri(queryId);
+
+    insertarPersona = insertarPaciente.getPersona();
+    insertarEtiologia = insertarPaciente.getEtiologia();
+    insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
+
+    QDate fechaCirugia    = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
+
+    ui->lineEditNombre->setText(insertarPersona.getNombre());
+    ui->lineEditApellidos->setText(insertarPersona.getApellidos());
+    ui->lineEditAge->setText(insertarPersona.getEdad());
+    if (insertarPersona.getGenero() == "Hombre"){
+        ui->radioButtonHombre->setChecked(true);
+    }
+    else{
+        ui->radioButtonMujer->setChecked(true);
+    }
+    ui->comboBox->setCurrentText(insertarEtiologia.getEtiologia());
+    on_comboBox_activated(insertarEtiologia.getEtiologia());
+    ui->comboBoxCausa->setCurrentText(insertarEtiologia.getCausa());
+    ui->comboBoxPatologiaValvular->setCurrentText(insertarEtiologia.getPatlogiaValvular());
+    ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
+    on_comboBoxPatologiaValvular_activated(insertarEtiologia.getPatlogiaValvular());
+    on_combinadaComboBox_activated(insertarEtiologia.getMixedVpatology());
+    //ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
+    ui->causaComboBox->setCurrentText(insertarDisfucionProtesica.getCausa());
+    ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
+    ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
+    ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
+    ui->dateEditSugeryDate->setDate(fechaCirugia);
+
+
     ui->citasTableWidget->setRowCount(insertarVisita.length());
 
     for (int i = 0; i < insertarVisita.length();i++){
@@ -232,6 +295,7 @@ void MainWindow::displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita i
         ui->citasTableWidget->setItem(i,11,new QTableWidgetItem(insertarParametros.getTratamiento()));
     }
 }
+
 
 void MainWindow::displayCicloInTW(QList<CicloBean> insertarCicloBean)
 {
@@ -291,6 +355,7 @@ void MainWindow::displayEcoInTw(QList<ecoBean> insertarEcoBean)
     }
 }
 
+
 void MainWindow::displayErgoInTw(QList<ErgoBean> insertarErgoBean)
 {
     ui->ergoTableWidget->setRowCount(insertarErgoBean.length());
@@ -303,8 +368,28 @@ void MainWindow::displayErgoInTw(QList<ErgoBean> insertarErgoBean)
     }
 }
 
+
 void MainWindow::displayMitralInTw(QList<MitralBean> insertarMitral)
 {
+
+    ui->rmTableWidget->setRowCount(insertarResoBean.length());
+    for (int i = 0; i < insertarResoBean.length(); i++){
+        ResonanciaBean myResonanciaBean = insertarResoBean[i];
+
+        ui->rmTableWidget->setItem(i,0,new QTableWidgetItem(myResonanciaBean.getFechaReso()));
+        ui->rmTableWidget->setItem(i,1,new QTableWidgetItem(myResonanciaBean.getFevi()));
+        ui->rmTableWidget->setItem(i,2,new QTableWidgetItem(myResonanciaBean.getVtdVi()));
+        ui->rmTableWidget->setItem(i,3,new QTableWidgetItem(myResonanciaBean.getDilataVi()));
+        ui->rmTableWidget->setItem(i,4,new QTableWidgetItem(myResonanciaBean.getDilataVd()));
+        ui->rmTableWidget->setItem(i,5,new QTableWidgetItem(myResonanciaBean.getFracRegValMit()));
+        ui->rmTableWidget->setItem(i,6,new QTableWidgetItem(myResonanciaBean.getFracRegValAo()));
+        ui->rmTableWidget->setItem(i,7,new QTableWidgetItem(myResonanciaBean.getRaizAo()));
+        ui->rmTableWidget->setItem(i,8,new QTableWidgetItem(myResonanciaBean.getAoAscend()));
+        ui->rmTableWidget->setItem(i,9,new QTableWidgetItem(myResonanciaBean.getRealceTardio()));
+        ui->rmTableWidget->setItem(i,10,new QTableWidgetItem(myResonanciaBean.getVarios()));
+    }
+
+
     ui->tableWidgetMitral->setRowCount(insertarMitral.length());
     for (int i = 0; i < insertarMitral.length(); i++){
         MitralBean myMitralBean = insertarMitral[i];
@@ -610,6 +695,7 @@ void MainWindow::on_pushButtonResonancia_clicked()
         clearUi();
     }
 }
+
 
 void MainWindow::on_pushButtonCiclo_clicked()
 {

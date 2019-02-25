@@ -62,6 +62,7 @@ SOURCES += main.cpp\
     db/ergodb.cpp \
     bean/ergo/ergobean.cpp
 
+
 HEADERS  += mainwindow.h \
     db/initdb.h \
     bean/etiology.h \
@@ -91,6 +92,7 @@ HEADERS  += mainwindow.h \
     dialogpulmonar.h \
     dialogresonancia.h \
     db/resonanciadb.h \
+
     bean/reso/resonanciabean.h \
     dialogciclo.h \
     db/ciclodb.h \
@@ -99,6 +101,7 @@ HEADERS  += mainwindow.h \
     dialogergo.h \
     db/ergodb.h \
     bean/ergo/ergobean.h
+
 
 FORMS    += mainwindow.ui \
     addvisit.ui \
@@ -110,3 +113,4 @@ FORMS    += mainwindow.ui \
     dialogresonancia.ui \
     dialogciclo.ui \
     dialogergo.ui
+

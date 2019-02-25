@@ -1238,6 +1238,7 @@
         <widget class="QPushButton" name="pushButtonResonancia">
          <property name="text">
           <string>Create Resonancia</string>
+
          </property>
         </widget>
        </item>
@@ -1340,6 +1341,7 @@
         <widget class="QPushButton" name="pushButtonCiclo">
          <property name="text">
           <string>Create CicloErgometría</string>
+
          </property>
         </widget>
        </item>
@@ -1408,6 +1410,13 @@
       </layout>
      </widget>
     </widget>
+
+    <widget class="QWidget" name="cicloTab">
+     <attribute name="title">
+      <string>Cicloergometro</string>
+     </attribute>
+    </widget>
+
    </widget>
    <zorder>tabWidget</zorder>
    <zorder>layoutWidget</zorder>
