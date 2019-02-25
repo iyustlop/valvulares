@@ -7,6 +7,139 @@ InitDb::InitDb()
 
 }
 
+void InitDb::createTableResonancia(QSqlQuery query)
+{
+    query.exec("CREATE TABLE resonancia (resonanciaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateAorta varchar(20), "
+               "nivelIao varchar(20), "
+               "raizAorta varchar(20), "
+               "aortaAscendente varchar(20), "
+               "realceTardio varchar(20), "
+               "descripcion varchar(20), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+}
+
+void InitDb::createTablePruebasDiagnosticasErgo(QSqlQuery query)
+{
+    query.exec("CREATE TABLE pruebasDiagnosticasErgo (pruebasDiagnosticasErgoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateErgo varchar(20), "
+               "tEsfuerzo varchar(20), "
+               "mets varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasErgoId) REFERENCES person(id))");
+}
+
+void InitDb::createTablePruebasDiagnosticasCiclo(QSqlQuery query)
+{
+    query.exec("CREATE TABLE pruebasDiagnosticasCiclo (pruebasDiagnosticasCicloId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateCiclo varchar(20), "
+               "fevi varchar(20), "
+               "modalidad varchar(20), "
+               "vo2indexado varchar(20), "
+               "vo2picoperdicho varchar(20), "
+               "rer varchar(20), "
+               "vo2enVa varchar(20), "
+               "morfCurva varchar(20), "
+               "EqCo2enVa varchar(20), "
+               "vslopeCo2 varchar(20), "
+               "oues varchar(20), "
+               "reservaVent varchar(20), "
+               "ventOscilante varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasCicloId) REFERENCES person(id))");
+}
+
+void InitDb::createTablePruebasDiagnosticasReso(QSqlQuery query)
+{
+    query.exec("CREATE TABLE pruebasDiagnosticasReso (pruebasDiagnosticasResoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateReso varchar(20), "
+               "fevi varchar(20), "
+               "vtvdi varchar(20), "
+               "dilatacionVi varchar(20), "
+               "dilatacionVd varchar(20), "
+               "fracRegMit varchar(20), "
+               "fracRegAo varchar(20), "
+               "raizAortica varchar(20), "
+               "aortaAscecndente varchar(20), "
+               "realceTardio varchar(20), "
+               "varios varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasResoId) REFERENCES person(id))");
+}
+
+void InitDb::createTablePruebasDiagnosticasEco(QSqlQuery query)
+{
+    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateEco varchar(20), "
+               "volumenAuriculaIzquierda varchar(20), "
+               "fevi varchar(20), "
+               "dilatacionVi varchar(20), "
+               "vtdVi varchar(20), "
+               "dilatacionVd varchar(20), "
+               "tapse varchar(20), "
+               "raizAortica varchar(20), "
+               "aortaAscecndente varchar(20), "
+               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
+}
+
+void InitDb::createTableCita(QSqlQuery query)
+{
+    query.exec("CREATE TABLE cita (visitId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateVisit varchar(20), "
+               "rhythm varchar(20), "
+               "functionalGrade varchar(20), "
+               "FRCV varchar(20), "
+               "HB varchar(20), "
+               "creatinina varchar(20), "
+               "FG varchar(20), "
+               "proBNP varchar(20), "
+               "potasio varchar(20), "
+               "indicacionQuirurgica varchar(20), "
+               "euroScore varchar(20), "
+               "tratamiento varchar(40), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+}
+
+void InitDb::createTableProtesisBiologica(QSqlQuery query)
+{
+    query.exec("CREATE TABLE protesisBiologica (protesisBiologicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateAorta varchar(20), "
+               "tipo varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "relacionIntegrales varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+}
+
+void InitDb::createTableProtesisMecanica(QSqlQuery query)
+{
+    query.exec("CREATE TABLE protesisMecanica (protesisMecanicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateAorta varchar(20), "
+               "tipo varchar(20), "
+               "gradienteMaximo varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "tAcao varchar(20), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+}
+
+void InitDb::createTableAnillo(QSqlQuery query)
+{
+    query.exec("CREATE TABLE anillo (anilloId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+               "personId int, "
+               "dateAorta varchar(20), "
+               "posicion varchar(20), "
+               "gradienteMedio varchar(20), "
+               "leakPeriprotesico varchar(20), "
+               "FOREIGN KEY(personId) REFERENCES person(id))");
+}
+
 QSqlError InitDb::startDb(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
@@ -39,69 +172,13 @@ QSqlError InitDb::startDb(){
                "numero varchar(20), "
                "fechaCirugia varchar(20), "
                "FOREIGN KEY(disfuncionId) REFERENCES person(id))");
-    query.exec("CREATE TABLE cita (visitId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateVisit varchar(20), "
-               "rhythm varchar(20), "
-               "functionalGrade varchar(20), "
-               "FRCV varchar(20), "               
-               "HB varchar(20), "
-               "creatinina varchar(20), "
-               "FG varchar(20), "
-               "proBNP varchar(20), "
-               "potasio varchar(20), "                                 
-               "indicacionQuirurgica varchar(20), "
-               "euroScore varchar(20), "
-               "tratamiento varchar(40), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE pruebasDiagnosticasEco (pruebasDiagnosticasEcoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateEco varchar(20), "
-               "volumenAuriculaIzquierda varchar(20), "
-               "fevi varchar(20), "
-               "dilatacionVi varchar(20), "
-               "vtdVi varchar(20), "
-               "dilatacionVd varchar(20), "
-               "tapse varchar(20), "
-               "raizAortica varchar(20), "
-               "aortaAscecndente varchar(20), "
-               "FOREIGN KEY(pruebasDiagnosticasEcoId) REFERENCES person(id))");
-    query.exec("CREATE TABLE pruebasDiagnosticasReso (pruebasDiagnosticasResoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateReso varchar(20), "
-               "fevi varchar(20), "
-               "vtvdi varchar(20), "
-               "dilatacionVi varchar(20), "
-               "dilatacionVd varchar(20), "
-               "fracRegMit varchar(20), "
-               "fracRegAo varchar(20), "
-               "raizAortica varchar(20), "
-               "aortaAscecndente varchar(20), "
-               "realceTardio varchar(20), "
-               "varios varchar(20), "
-               "FOREIGN KEY(pruebasDiagnosticasResoId) REFERENCES person(id))");
-    query.exec("CREATE TABLE pruebasDiagnosticasCiclo (pruebasDiagnosticasCicloId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateCiclo varchar(20), "
-               "fevi varchar(20), "
-               "modalidad varchar(20), "
-               "vo2indexado varchar(20), "
-               "vo2picoperdicho varchar(20), "
-               "rer varchar(20), "
-               "vo2enVa varchar(20), "
-               "morfCurva varchar(20), "
-               "EqCo2enVa varchar(20), "
-               "vslopeCo2 varchar(20), "
-               "oues varchar(20), "
-               "reservaVent varchar(20), "
-               "ventOscilante varchar(20), "
-               "FOREIGN KEY(pruebasDiagnosticasCicloId) REFERENCES person(id))");
-    query.exec("CREATE TABLE pruebasDiagnosticasErgo (pruebasDiagnosticasErgoId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateErgo varchar(20), "
-               "tEsfuerzo varchar(20), "
-               "mets varchar(20), "
-               "FOREIGN KEY(pruebasDiagnosticasErgoId) REFERENCES person(id))");
+
+    createTableCita(query);
+    createTablePruebasDiagnosticasEco(query);
+    createTablePruebasDiagnosticasReso(query);
+    createTablePruebasDiagnosticasCiclo(query);
+    createTablePruebasDiagnosticasErgo(query);
+
     query.exec("CREATE TABLE mitral (mitralId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
                "dateMitral varchar(20), "
@@ -139,41 +216,11 @@ QSqlError InitDb::startDb(){
                "gradienteMedio varchar(20), "
                "ip varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE protesisBiologica (protesisBiologicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateAorta varchar(20), "
-               "biologica varchar(20), "
-               "gradienteMaximo varchar(20), "
-               "gradienteMedio varchar(20), "
-               "relacionIntegrales varchar(20), "
-               "leakPeriprotesico varchar(20), "
-               "avmXtHp varchar(20), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE protesisMecanica (protesisMecanicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateAorta varchar(20), "
-               "mecanica varchar(20), "
-               "gradienteMaximo varchar(20), "
-               "gradienteMedio varchar(20), "
-               "leakPeriprotesico varchar(20), "
-               "tAcao varchar(20), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE anillo (anilloId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateAorta varchar(20), "
-               "posicion varchar(20), "
-               "gradienteMedio varchar(20), "
-               "leakPeriprotesico varchar(20), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
-    query.exec("CREATE TABLE resonancia (resonanciaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-               "personId int, "
-               "dateAorta varchar(20), "
-               "nivelIao varchar(20), "
-               "raizAorta varchar(20), "
-               "aortaAscendente varchar(20), "
-               "realceTardio varchar(20), "
-               "descripcion varchar(20), "
-               "FOREIGN KEY(personId) REFERENCES person(id))");
+
+    createTableProtesisBiologica(query);
+    createTableProtesisMecanica(query);
+    createTableAnillo(query);
+    createTableResonancia(query);
     return QSqlError();
 }
 
