@@ -47,7 +47,7 @@ void DialogResonancia::on_pushButtonResoGuardar_clicked()
     myResoBean.setRealceTardio(ui->lineEditResoRealceT->text());
     myResoBean.setVarios(ui->lineEditResoVarios->text());
 
-    if (ui->radioButtonResoDiVdSi->isChecked()){
+    if (ui->radioButtonResoDiViSi->isChecked()){
         myResoBean.setDilataVi("Si");
     }
     else{

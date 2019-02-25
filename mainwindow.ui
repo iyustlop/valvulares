@@ -667,7 +667,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tabMitral">
      <attribute name="title">
@@ -891,6 +891,221 @@
       </item>
      </layout>
     </widget>
+    <widget class="QWidget" name="tabProtesis">
+     <attribute name="title">
+      <string>Protesis Biológica</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <widget class="QTableWidget" name="tableWidgetProtesisBio">
+         <column>
+          <property name="text">
+           <string>Fecha</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Tipo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grad Max.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grad Medio</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>T ac AO</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Leak Perip.</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QPushButton" name="pushButtonProtesisBio">
+           <property name="text">
+            <string>Create Protesis Bio.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerMitral_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Protesis Mecánica</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QTableWidget" name="tableWidgetProtesisMec">
+         <column>
+          <property name="text">
+           <string>Fecha</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Tipo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grad Max.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grad Medio</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>T ac AO</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Leak Perip.</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QPushButton" name="pushButtonProtesisMec">
+           <property name="text">
+            <string>Create Protesis Mec.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerMitral_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Anillo</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>521</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QTableWidget" name="tableWidgetAnillo">
+         <column>
+          <property name="text">
+           <string>Fecha</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Tipo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Grad</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Leak</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QPushButton" name="pushButtonAnillo">
+           <property name="text">
+            <string>Create Anillo</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerMitral_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tabPulmonar">
      <attribute name="title">
       <string>Pulmonar</string>
@@ -906,11 +1121,6 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4"/>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabProtesis">
-     <attribute name="title">
-      <string>Protesis</string>
-     </attribute>
     </widget>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
@@ -932,7 +1142,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="consultaTab">
      <attribute name="title">
@@ -1238,7 +1448,6 @@
         <widget class="QPushButton" name="pushButtonResonancia">
          <property name="text">
           <string>Create Resonancia</string>
-
          </property>
         </widget>
        </item>
@@ -1310,6 +1519,11 @@
       </column>
       <column>
        <property name="text">
+        <string>Reserva Vent.</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Ventilacion Oscilante</string>
        </property>
       </column>
@@ -1341,7 +1555,6 @@
         <widget class="QPushButton" name="pushButtonCiclo">
          <property name="text">
           <string>Create CicloErgometría</string>
-
          </property>
         </widget>
        </item>
@@ -1410,13 +1623,6 @@
       </layout>
      </widget>
     </widget>
-
-    <widget class="QWidget" name="cicloTab">
-     <attribute name="title">
-      <string>Cicloergometro</string>
-     </attribute>
-    </widget>
-
    </widget>
    <zorder>tabWidget</zorder>
    <zorder>layoutWidget</zorder>

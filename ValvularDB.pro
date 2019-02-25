@@ -92,7 +92,6 @@ HEADERS  += mainwindow.h \
     dialogpulmonar.h \
     dialogresonancia.h \
     db/resonanciadb.h \
-
     bean/reso/resonanciabean.h \
     dialogciclo.h \
     db/ciclodb.h \

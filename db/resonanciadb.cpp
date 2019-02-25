@@ -39,7 +39,7 @@ QList<ResonanciaBean> ResonanciaDb::readResonancia(QString queryId)
     ResonanciaBean resonanciaBean;
     QList<ResonanciaBean> resoList;
 
-    query.prepare("SELECT preso.dateReso,preso.fevi,preso.vtvdi,preso.dilatacionVd,preso.dilatacionVi,preso.fracRegMit,preso.fracRegAo,preso.raizAortica,preso.aortaAscecndente,preso.realceTardio,preso.varios "
+    query.prepare("SELECT preso.dateReso,preso.fevi,preso.vtvdi,preso.dilatacionVi,preso.dilatacionVd,preso.fracRegMit,preso.fracRegAo,preso.raizAortica,preso.aortaAscecndente,preso.realceTardio,preso.varios "
                   "FROM pruebasDiagnosticasReso preso "
                   "WHERE preso.personId = :id");
     query.bindValue(":id",queryId);
