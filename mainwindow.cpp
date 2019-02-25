@@ -7,6 +7,7 @@
 #include "dialogeco.h"
 #include "dialogresonancia.h"
 #include "dialogciclo.h"
+#include "dialogergo.h"
 #include "dialogmitral.h"
 #include "dialogaorta.h"
 #include "dialogtri.h"
@@ -355,6 +356,19 @@ void MainWindow::displayEcoInTw(QList<ecoBean> insertarEcoBean)
 }
 
 
+void MainWindow::displayErgoInTw(QList<ErgoBean> insertarErgoBean)
+{
+    ui->ergoTableWidget->setRowCount(insertarErgoBean.length());
+    for (int i = 0; i < insertarErgoBean.length(); i++){
+        ErgoBean myErgoBean = insertarErgoBean[i];
+
+        ui->ergoTableWidget->setItem(i,0,new QTableWidgetItem(myErgoBean.getFechaErgo()));
+        ui->ergoTableWidget->setItem(i,1,new QTableWidgetItem(myErgoBean.getTEsfuerzo()));
+        ui->ergoTableWidget->setItem(i,2,new QTableWidgetItem(myErgoBean.getMets()));
+    }
+}
+
+
 void MainWindow::displayMitralInTw(QList<MitralBean> insertarMitral)
 {
 
@@ -436,6 +450,8 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<ResonanciaBean> insertarResoBean;
     // Lista de la ciclo.
     QList<CicloBean> insertarCicloBean;
+    // Lista de la ergo.
+    QList<ErgoBean> insertarErgoBean;
     // Lista de Mitral
     QList<MitralBean> insertarMitral;
     // Lista de Aorta
@@ -452,6 +468,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarEcoBean = myEcoDb.readEco(queryId);
     insertarResoBean = myResonanciaDb.readResonancia(queryId);
     insertarCicloBean = myCicloDb.readCiclo(queryId);
+    insertarErgoBean = myErgoDb.readErgo(queryId);
     insertarMitral = myMitralDb.readMitral(queryId);
     insertarAorta = myAortaDb.readAorta(queryId);
     insertarTri = myTriDb.readTri(queryId);
@@ -489,10 +506,12 @@ void MainWindow::on_pushButtonRead_clicked()
     displayEcoInTw(insertarEcoBean);
     displayResoInTw(insertarResoBean);
     displayCicloInTW(insertarCicloBean);
+    displayErgoInTw(insertarErgoBean);
 
     displayMitralInTw(insertarMitral);
     displayAortaInTw(insertarAorta);
     displayTriInTw(insertarTri);
+
 }
 
 void MainWindow::on_pushButtonUpdate_clicked()
@@ -692,6 +711,20 @@ void MainWindow::on_pushButtonCiclo_clicked()
     }
 }
 
+void MainWindow::on_pushButtonErgo_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogErgo ergoDialog(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        ergoDialog.exec();
+        clearUi();
+    }
+}
+
 void MainWindow::on_pushButtonClear_clicked()
 {
     clearUi();
@@ -746,16 +779,6 @@ void MainWindow::on_pushButtonTri_clicked()
         dialogTri.exec();
         clearUi();
     }
-}
-
-void MainWindow::on_comboBoxCausa_activated(const QString &arg1)
-{
-
-}
-
-void MainWindow::on_CreateResonancia_clicked()
-{
-
 }
 
 

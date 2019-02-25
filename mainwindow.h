@@ -3,6 +3,7 @@
 
 #include "db/initdb.h"
 #include "db/ecodb.h"
+#include "db/ergodb.h"
 #include "db/resonanciadb.h"
 #include "db/ciclodb.h"
 #include "db/pacientedb.h"
@@ -27,19 +28,16 @@ public:
     QString getNumeroHistoria();
     void clearUi();
 
+    void displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita);
     void displayCicloInTW(QList<CicloBean> insertarCicloBean);
-
     void displayResoInTw(QList<ResonanciaBean> insertarResoBean);
-
     void displayEcoInTw(QList<ecoBean> insertarEcoBean);
+    void displayErgoInTw(QList<ErgoBean> insertarErgoBean);
 
     void displayMitralInTw(QList<MitralBean> insertarMitral);
-
     void displayAortaInTw(QList<AortaBean> insertarAorta);
-
     void displayTriInTw(QList<TriBean> insertarTri);
 
-    void displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita);
 
 private slots:
     void on_pushButtonCreate_clicked();
@@ -60,11 +58,9 @@ private slots:
     void on_pushButtonAorta_clicked();
     void on_pushButtonTri_clicked();
 
-    void on_comboBoxCausa_activated(const QString &arg1);
 
-    void on_CreateResonancia_clicked();
+    void on_pushButtonErgo_clicked();
 
-    void on_pushButtonResonancia_clicked();
 
 private:
     InitDb valvularesDb;
@@ -73,6 +69,7 @@ private:
     EcoDb myEcoDb;
     ResonanciaDb myResonanciaDb;
     CicloDb myCicloDb;
+    ErgoDb myErgoDb;
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;

@@ -57,7 +57,10 @@ SOURCES += main.cpp\
     dialogciclo.cpp \
     db/ciclodb.cpp \
     bean/ciclo/ciclobean.cpp \
-    display/displayciclo.cpp
+    display/displayciclo.cpp \
+    dialogergo.cpp \
+    db/ergodb.cpp \
+    bean/ergo/ergobean.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -94,7 +97,10 @@ HEADERS  += mainwindow.h \
     dialogciclo.h \
     db/ciclodb.h \
     bean/ciclo/ciclobean.h \
-    display/displayciclo.h
+    display/displayciclo.h \
+    dialogergo.h \
+    db/ergodb.h \
+    bean/ergo/ergobean.h
 
 
 FORMS    += mainwindow.ui \
@@ -105,5 +111,6 @@ FORMS    += mainwindow.ui \
     dialogtri.ui \
     dialogpulmonar.ui \
     dialogresonancia.ui \
-    dialogciclo.ui
+    dialogciclo.ui \
+    dialogergo.ui
 
