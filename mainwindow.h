@@ -11,6 +11,7 @@
 #include "db/mitraldb.h"
 #include "db/aortadb.h"
 #include "db/tridb.h"
+#include "db/protesisbiologicadb.h"
 #include "display/displayciclo.h"
 #include <QMainWindow>
 
@@ -37,6 +38,7 @@ public:
     void displayMitralInTw(QList<MitralBean> insertarMitral);
     void displayAortaInTw(QList<AortaBean> insertarAorta);
     void displayTriInTw(QList<TriBean> insertarTri);
+    void displayProtesisBioInTw(QList<ProtesisBiologicaBean> insertarProtesisBio);
 
 
 private slots:
@@ -62,6 +64,8 @@ private slots:
     void on_pushButtonErgo_clicked();
 
 
+    void on_pushButtonProtesisBio_clicked();
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;
@@ -73,9 +77,11 @@ private:
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;
+    ProtesisBiologicaDb myProtesisBiologicaDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);
+
 };
 
 #endif // MAINWINDOW_H
