@@ -63,7 +63,10 @@ SOURCES += main.cpp\
     bean/ergo/ergobean.cpp \
     dialogprotesisbiologica.cpp \
     db/protesisbiologicadb.cpp \
-    bean/protesis/protesisbiologicabean.cpp
+    bean/protesis/protesisbiologicabean.cpp \
+    dialogprotesismecanica.cpp \
+    db/protesismecanicadb.cpp \
+    bean/protesis/protesismecanicabean.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -105,7 +108,10 @@ HEADERS  += mainwindow.h \
     bean/ergo/ergobean.h \
     dialogprotesisbiologica.h \
     db/protesisbiologicadb.h \
-    bean/protesis/protesisbiologicabean.h
+    bean/protesis/protesisbiologicabean.h \
+    dialogprotesismecanica.h \
+    db/protesismecanicadb.h \
+    bean/protesis/protesismecanicacabean.h
 
 
 FORMS    += mainwindow.ui \
@@ -118,5 +124,6 @@ FORMS    += mainwindow.ui \
     dialogresonancia.ui \
     dialogciclo.ui \
     dialogergo.ui \
-    dialogprotesisbiologica.ui
+    dialogprotesisbiologica.ui \
+    dialogprotesismecanica.ui
 

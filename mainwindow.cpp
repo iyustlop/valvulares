@@ -14,6 +14,7 @@
 #include "dialogtri.h"
 #include "dialogresonancia.h"
 #include "dialogprotesisbiologica.h"
+#include "dialogprotesismecanica.h"
 
 
 #include <QMessageBox>
@@ -426,6 +427,20 @@ void MainWindow::displayProtesisBioInTw(QList<ProtesisBiologicaBean> insertarPro
     }
 }
 
+void MainWindow::displayProtesisMecInTw(QList<ProtesisMecanicaBean> insertarProtesisMec)
+{
+    ui->tableWidgetProtesisMec->setRowCount(insertarProtesisMec.length());
+    for (int i = 0; i < insertarProtesisMec.length(); i++){
+        ProtesisMecanicaBean myProtesisMecanicaBean = insertarProtesisMec[i];
+        ui->tableWidgetProtesisMec->setItem(i,0,new QTableWidgetItem(myProtesisMecanicaBean.getDateProtesisMecanica()));
+        ui->tableWidgetProtesisMec->setItem(i,1,new QTableWidgetItem(myProtesisMecanicaBean.getTipoProtesisMecanica()));
+        ui->tableWidgetProtesisMec->setItem(i,2,new QTableWidgetItem(myProtesisMecanicaBean.getGradienteMax()));
+        ui->tableWidgetProtesisMec->setItem(i,3,new QTableWidgetItem(myProtesisMecanicaBean.getGradienteMed()));
+        ui->tableWidgetProtesisMec->setItem(i,4,new QTableWidgetItem(myProtesisMecanicaBean.getTAcenAo()));
+        ui->tableWidgetProtesisMec->setItem(i,5,new QTableWidgetItem(myProtesisMecanicaBean.getLeak()));
+    }
+}
+
 
 void MainWindow::on_pushButtonRead_clicked()
 {
@@ -453,6 +468,8 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<TriBean> insertarTri;
     //Lista Protesis bio
     QList<ProtesisBiologicaBean> insertarProtesisBiologicaBean;
+    //Lista Protesis mec
+    QList<ProtesisMecanicaBean> insertarProtesisMecanicaBean;
 
     QString queryId;
 
@@ -468,6 +485,7 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarAorta = myAortaDb.readAorta(queryId);
     insertarTri = myTriDb.readTri(queryId);
     insertarProtesisBiologicaBean = myProtesisBiologicaDb.readProtesisBiologicaDb(queryId);
+    insertarProtesisMecanicaBean = myProtesisMecanicaDb.readProtesisMecanicaDb(queryId);
 
 
     insertarPersona = insertarPaciente.getPersona();
@@ -515,6 +533,7 @@ void MainWindow::on_pushButtonRead_clicked()
     displayAortaInTw(insertarAorta);
     displayTriInTw(insertarTri);
     displayProtesisBioInTw(insertarProtesisBiologicaBean);
+    displayProtesisMecInTw(insertarProtesisMecanicaBean);
 
 }
 
@@ -798,6 +817,20 @@ void MainWindow::on_pushButtonProtesisBio_clicked()
     } else{
         //myAddVisit.setModal(true);
         dialogProtesisBiologica.exec();
+        clearUi();
+    }
+}
+
+void MainWindow::on_pushButtonProtesisMec_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogProtesisMecanica dialogProtesisMecanica(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogProtesisMecanica.exec();
         clearUi();
     }
 }
