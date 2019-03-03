@@ -107,7 +107,7 @@ void InitDb::createTableProtesisBiologica(QSqlQuery query)
 {
     query.exec("CREATE TABLE protesisBiologica (protesisBiologicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
-               "dateAorta varchar(20), "
+               "dateProtBio varchar(20), "
                "tipo varchar(20), "
                "gradienteMaximo varchar(20), "
                "gradienteMedio varchar(20), "
@@ -120,12 +120,14 @@ void InitDb::createTableProtesisMecanica(QSqlQuery query)
 {
     query.exec("CREATE TABLE protesisMecanica (protesisMecanicaId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
-               "dateAorta varchar(20), "
+               "dateProtMec varchar(20), "
                "tipo varchar(20), "
                "gradienteMaximo varchar(20), "
                "gradienteMedio varchar(20), "
                "leakPeriprotesico varchar(20), "
                "tAcao varchar(20), "
+               "areaMitral varchar(20), "
+               "relacionIntegrales varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");
 }
 
@@ -133,8 +135,8 @@ void InitDb::createTableAnillo(QSqlQuery query)
 {
     query.exec("CREATE TABLE anillo (anilloId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
                "personId int, "
-               "dateAorta varchar(20), "
-               "posicion varchar(20), "
+               "dateAnillo varchar(20), "
+               "tipo varchar(20), "
                "gradienteMedio varchar(20), "
                "leakPeriprotesico varchar(20), "
                "FOREIGN KEY(personId) REFERENCES person(id))");

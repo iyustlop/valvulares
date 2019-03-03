@@ -11,6 +11,9 @@
 #include "db/mitraldb.h"
 #include "db/aortadb.h"
 #include "db/tridb.h"
+#include "db/protesisbiologicadb.h"
+#include "db/protesismecanicadb.h"
+#include "db/anillodb.h"
 #include "display/displayciclo.h"
 #include <QMainWindow>
 
@@ -37,6 +40,9 @@ public:
     void displayMitralInTw(QList<MitralBean> insertarMitral);
     void displayAortaInTw(QList<AortaBean> insertarAorta);
     void displayTriInTw(QList<TriBean> insertarTri);
+    void displayProtesisBioInTw(QList<ProtesisBiologicaBean> insertarProtesisBio);
+    void displayProtesisMecInTw(QList<ProtesisMecanicaBean> insertarProtesisMec);
+    void displayAnilloInTw(QList<AnilloBean> insertarAnillo);
 
 
 private slots:
@@ -57,10 +63,13 @@ private slots:
     void on_pushButtonMitral_clicked();
     void on_pushButtonAorta_clicked();
     void on_pushButtonTri_clicked();
-
-
     void on_pushButtonErgo_clicked();
+    void on_pushButtonProtesisBio_clicked();
+    void on_pushButtonProtesisMec_clicked();
 
+    void on_pushButtonAnillo_clicked();
+
+    void on_pushButtonExport_clicked();
 
 private:
     InitDb valvularesDb;
@@ -73,6 +82,9 @@ private:
     MitralDb myMitralDb;
     AortaDb myAortaDb;
     TriDb myTriDb;
+    ProtesisBiologicaDb myProtesisBiologicaDb;
+    ProtesisMecanicaDb myProtesisMecanicaDb;
+    AnilloDb myAnilloDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);

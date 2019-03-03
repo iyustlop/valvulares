@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include "db/initdb.h"
@@ -12,6 +13,9 @@
 #include "dialogaorta.h"
 #include "dialogtri.h"
 #include "dialogresonancia.h"
+#include "dialogprotesisbiologica.h"
+#include "dialogprotesismecanica.h"
+#include "dialoganillo.h"
 
 
 #include <QMessageBox>
@@ -212,65 +216,7 @@ void MainWindow::on_pushButtonCreate_clicked()
 void MainWindow::displayCitaInTw(ParametrosAnaliticos insertarParametros, Cita insertarCita, QList<VisitBean> insertarVisita)
 {
 
-    PatientBean insertarPaciente;
-    Etiology insertarEtiologia;    
-    ProtesicDisfunction insertarDisfucionProtesica;
-    Person insertarPersona;
-    // Lista del Eco.
-    QList<ecoBean> insertarEcoBean;
-    // Lista de la reso.
-    QList<ResonanciaBean> insertarResoBean;
-    // Lista de Mitral
-    QList<MitralBean> insertarMitral;
-    // Lista de Aorta
-    QList<AortaBean> insertarAorta;
-    //Lista de tricuspide
-    QList<TriBean> insertarTri;
-
-    QString queryId;
-
-    queryId = ui->lineEditNumeroHistoria->text();
-
-    insertarPaciente = myPacienteDb.readDB(queryId);
-    insertarVisita = myVisitaDb.readCita(queryId);
-    insertarEcoBean = myEcoDb.readEco(queryId);
-    insertarResoBean = myResonanciaDb.readResonancia(queryId);
-    insertarMitral = myMitralDb.readMitral(queryId);
-    insertarAorta = myAortaDb.readAorta(queryId);
-    insertarTri = myTriDb.readTri(queryId);
-
-    insertarPersona = insertarPaciente.getPersona();
-    insertarEtiologia = insertarPaciente.getEtiologia();
-    insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
-
-    QDate fechaCirugia    = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
-
-    ui->lineEditNombre->setText(insertarPersona.getNombre());
-    ui->lineEditApellidos->setText(insertarPersona.getApellidos());
-    ui->lineEditAge->setText(insertarPersona.getEdad());
-    if (insertarPersona.getGenero() == "Hombre"){
-        ui->radioButtonHombre->setChecked(true);
-    }
-    else{
-        ui->radioButtonMujer->setChecked(true);
-    }
-    ui->comboBox->setCurrentText(insertarEtiologia.getEtiologia());
-    on_comboBox_activated(insertarEtiologia.getEtiologia());
-    ui->comboBoxCausa->setCurrentText(insertarEtiologia.getCausa());
-    ui->comboBoxPatologiaValvular->setCurrentText(insertarEtiologia.getPatlogiaValvular());
-    ui->combinadaComboBox->setCurrentText(insertarEtiologia.getMixedVpatology());
-    on_comboBoxPatologiaValvular_activated(insertarEtiologia.getPatlogiaValvular());
-    on_combinadaComboBox_activated(insertarEtiologia.getMixedVpatology());
-    //ui->comboBoxPatologiaValvularCombinada->setCurrentText(insertarEtiologia.getValvularPatologySecondary());
-    ui->causaComboBox->setCurrentText(insertarDisfucionProtesica.getCausa());
-    ui->protesisComboBox->setCurrentText(insertarDisfucionProtesica.getProtesis());
-    ui->modeloLineEdit->setText(insertarDisfucionProtesica.getModelo());
-    ui->nMeroLineEdit->setText(insertarDisfucionProtesica.getNumero());
-    ui->dateEditSugeryDate->setDate(fechaCirugia);
-
-
     ui->citasTableWidget->setRowCount(insertarVisita.length());
-
     for (int i = 0; i < insertarVisita.length();i++){
 
         VisitBean visitaIter = insertarVisita[i];
@@ -410,6 +356,47 @@ void MainWindow::displayTriInTw(QList<TriBean> insertarTri)
     }
 }
 
+void MainWindow::displayProtesisBioInTw(QList<ProtesisBiologicaBean> insertarProtesisBio)
+{
+    ui->tableWidgetProtesisBio->setRowCount(insertarProtesisBio.length());
+    for (int i = 0; i < insertarProtesisBio.length(); i++){
+        ProtesisBiologicaBean myProtesisBiologicaBean = insertarProtesisBio[i];
+        ui->tableWidgetProtesisBio->setItem(i,0,new QTableWidgetItem(myProtesisBiologicaBean.getDateProtesisBiologica()));
+        ui->tableWidgetProtesisBio->setItem(i,1,new QTableWidgetItem(myProtesisBiologicaBean.getTipoProtesisBiologica()));
+        ui->tableWidgetProtesisBio->setItem(i,2,new QTableWidgetItem(myProtesisBiologicaBean.getGradienteMax()));
+        ui->tableWidgetProtesisBio->setItem(i,3,new QTableWidgetItem(myProtesisBiologicaBean.getGradienteMed()));
+        ui->tableWidgetProtesisBio->setItem(i,4,new QTableWidgetItem(myProtesisBiologicaBean.getRi()));
+        ui->tableWidgetProtesisBio->setItem(i,5,new QTableWidgetItem(myProtesisBiologicaBean.getLeak()));
+    }
+}
+
+void MainWindow::displayProtesisMecInTw(QList<ProtesisMecanicaBean> insertarProtesisMec)
+{
+    ui->tableWidgetProtesisMec->setRowCount(insertarProtesisMec.length());
+    for (int i = 0; i < insertarProtesisMec.length(); i++){
+        ProtesisMecanicaBean myProtesisMecanicaBean = insertarProtesisMec[i];
+        ui->tableWidgetProtesisMec->setItem(i,0,new QTableWidgetItem(myProtesisMecanicaBean.getDateProtesisMecanica()));
+        ui->tableWidgetProtesisMec->setItem(i,1,new QTableWidgetItem(myProtesisMecanicaBean.getTipoProtesisMecanica()));
+        ui->tableWidgetProtesisMec->setItem(i,2,new QTableWidgetItem(myProtesisMecanicaBean.getGradienteMax()));
+        ui->tableWidgetProtesisMec->setItem(i,3,new QTableWidgetItem(myProtesisMecanicaBean.getGradienteMed()));
+        ui->tableWidgetProtesisMec->setItem(i,4,new QTableWidgetItem(myProtesisMecanicaBean.getTAcenAo()));
+        ui->tableWidgetProtesisMec->setItem(i,5,new QTableWidgetItem(myProtesisMecanicaBean.getLeak()));
+        ui->tableWidgetProtesisMec->setItem(i,6,new QTableWidgetItem(myProtesisMecanicaBean.getAreaMitral()));
+        ui->tableWidgetProtesisMec->setItem(i,7,new QTableWidgetItem(myProtesisMecanicaBean.getRi()));
+    }
+}
+
+void MainWindow::displayAnilloInTw(QList<AnilloBean> insertarAnillo)
+{
+    ui->tableWidgetAnillo->setRowCount(insertarAnillo.length());
+    for (int i = 0; i < insertarAnillo.length(); i++){
+        AnilloBean myAnilloBean = insertarAnillo[i];
+        ui->tableWidgetAnillo->setItem(i,0,new QTableWidgetItem(myAnilloBean.getDateAnillo()));
+        ui->tableWidgetAnillo->setItem(i,1,new QTableWidgetItem(myAnilloBean.getTipoAnillo()));
+        ui->tableWidgetAnillo->setItem(i,2,new QTableWidgetItem(myAnilloBean.getGradiente()));
+        ui->tableWidgetAnillo->setItem(i,3,new QTableWidgetItem(myAnilloBean.getLeak()));
+    }
+}
 
 void MainWindow::on_pushButtonRead_clicked()
 {
@@ -435,7 +422,12 @@ void MainWindow::on_pushButtonRead_clicked()
     QList<AortaBean> insertarAorta;
     //Lista de tricuspide
     QList<TriBean> insertarTri;
-
+    //Lista Protesis bio
+    QList<ProtesisBiologicaBean> insertarProtesisBiologicaBean;
+    //Lista Protesis mec
+    QList<ProtesisMecanicaBean> insertarProtesisMecanicaBean;
+    //Lista Anillo
+    QList<AnilloBean> insertarAnilloBean;
     QString queryId;
 
     queryId = ui->lineEditNumeroHistoria->text();
@@ -449,12 +441,21 @@ void MainWindow::on_pushButtonRead_clicked()
     insertarMitral = myMitralDb.readMitral(queryId);
     insertarAorta = myAortaDb.readAorta(queryId);
     insertarTri = myTriDb.readTri(queryId);
+    insertarProtesisBiologicaBean = myProtesisBiologicaDb.readProtesisBiologicaDb(queryId);
+    insertarProtesisMecanicaBean = myProtesisMecanicaDb.readProtesisMecanicaDb(queryId);
+    insertarAnilloBean = myAnilloDb.readAnilloDb(queryId);
 
     insertarPersona = insertarPaciente.getPersona();
     insertarEtiologia = insertarPaciente.getEtiologia();
     insertarDisfucionProtesica = insertarEtiologia.getDisfuncionProtesica();
 
-    QDate fechaCirugia    = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
+    QDate fechaCirugia;
+
+    if (insertarDisfucionProtesica.getFechaCirugia().isEmpty()== true){
+        fechaCirugia = QDate::fromString("01/01/2000","dd/MM/yyyy");
+    }else {
+        fechaCirugia = QDate::fromString(insertarDisfucionProtesica.getFechaCirugia(),"dd/MM/yyyy");
+    }
 
     ui->lineEditNombre->setText(insertarPersona.getNombre());
     ui->lineEditApellidos->setText(insertarPersona.getApellidos());
@@ -488,6 +489,9 @@ void MainWindow::on_pushButtonRead_clicked()
     displayMitralInTw(insertarMitral);
     displayAortaInTw(insertarAorta);
     displayTriInTw(insertarTri);
+    displayProtesisBioInTw(insertarProtesisBiologicaBean);
+    displayProtesisMecInTw(insertarProtesisMecanicaBean);
+    displayAnilloInTw(insertarAnilloBean);
 
 }
 
@@ -760,3 +764,50 @@ void MainWindow::on_pushButtonTri_clicked()
 
 
 
+
+void MainWindow::on_pushButtonProtesisBio_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogProtesisBiologica dialogProtesisBiologica(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogProtesisBiologica.exec();
+        clearUi();
+    }
+}
+
+void MainWindow::on_pushButtonProtesisMec_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogProtesisMecanica dialogProtesisMecanica(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogProtesisMecanica.exec();
+        clearUi();
+    }
+}
+
+void MainWindow::on_pushButtonAnillo_clicked()
+{
+    QString numeroHistoria = comprobarLineEdit(ui->lineEditNumeroHistoria->text());
+    DialogAnillo dialogAnillo(numeroHistoria);
+    int x = QString::compare(numeroHistoria,"Vacio");
+    if (x == 0){
+
+    } else{
+        //myAddVisit.setModal(true);
+        dialogAnillo.exec();
+        clearUi();
+    }
+}
+
+void MainWindow::on_pushButtonExport_clicked()
+{
+    QList<PatientBean> pacientes = myPacienteDb.readDB();
+}

@@ -545,6 +545,25 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButtonUpdate">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="1">
         <widget class="QPushButton" name="pushButtonRead">
          <property name="sizePolicy">
@@ -615,25 +634,6 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="pushButtonUpdate">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Update</string>
-         </property>
-        </widget>
-       </item>
        <item row="4" column="1">
         <widget class="QPushButton" name="pushButtonClear">
          <property name="sizePolicy">
@@ -653,6 +653,13 @@
          </property>
         </widget>
        </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="pushButtonExport">
+         <property name="text">
+          <string>Export</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
     </layout>
@@ -667,7 +674,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tabMitral">
      <attribute name="title">
@@ -929,7 +936,7 @@
          </column>
          <column>
           <property name="text">
-           <string>T ac AO</string>
+           <string>RI</string>
           </property>
          </column>
          <column>
@@ -975,7 +982,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>761</width>
+        <width>1031</width>
         <height>231</height>
        </rect>
       </property>
@@ -1010,6 +1017,16 @@
          <column>
           <property name="text">
            <string>Leak Perip.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Area Mitral</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>RI</string>
           </property>
          </column>
         </widget>
