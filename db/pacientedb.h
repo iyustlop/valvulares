@@ -11,6 +11,7 @@ public:
     PacienteDb();
     QSqlError insertDB(PatientBean paciente);
     PatientBean readDB(QString queryId);
+    QList<PatientBean> readDB();
 };
 
 #endif // PACIENTEDB_H

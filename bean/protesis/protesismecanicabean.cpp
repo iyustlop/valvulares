@@ -65,3 +65,23 @@ void ProtesisMecanicaBean::setLeak(const QString &value)
 leak = value;
 }
 
+QString ProtesisMecanicaBean::getAreaMitral() const
+{
+return areaMitral;
+}
+
+void ProtesisMecanicaBean::setAreaMitral(const QString &value)
+{
+areaMitral = value;
+}
+
+QString ProtesisMecanicaBean::getRi() const
+{
+return ri;
+}
+
+void ProtesisMecanicaBean::setRi(const QString &value)
+{
+ri = value;
+}
+

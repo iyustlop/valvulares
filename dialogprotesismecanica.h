@@ -28,4 +28,4 @@ private:
     void showError(const QSqlError &err);
 };
 
-#endif // DIALOGPROTESISMECANICA_H
+#endif // DIALOGANILLO_H

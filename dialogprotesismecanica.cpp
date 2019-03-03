@@ -37,6 +37,8 @@ void DialogProtesisMecanica::on_pushButtonProtMec_clicked()
     myProtesisMecanicaBean.setGradienteMed(ui->lineEditGradienteMedio->text());
     myProtesisMecanicaBean.setTAcenAo(ui->lineEditTacEnAo->text());
     myProtesisMecanicaBean.setLeak(ui->lineEditLeak->text());
+    myProtesisMecanicaBean.setAreaMitral(ui->lineEditAreaMitral->text());
+    myProtesisMecanicaBean.setRi(ui->lineEditRI->text());
 
     QSqlError err = insertProtesisMecanicaaDb.insertProtesisMecanicaDb(getNumeroHistoria(),myProtesisMecanicaBean);
     if (err.type() != QSqlError::NoError) {

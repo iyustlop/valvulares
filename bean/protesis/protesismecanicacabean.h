@@ -27,6 +27,12 @@ public:
     QString getLeak() const;
     void setLeak(const QString &value);
 
+    QString getAreaMitral() const;
+    void setAreaMitral(const QString &value);
+
+    QString getRi() const;
+    void setRi(const QString &value);
+
 private:
     QString dateProtesisMecanica;
     QString tipoProtesisMecanica;
@@ -34,6 +40,8 @@ private:
     QString gradienteMed;
     QString tAcenAo;
     QString leak;
+    QString areaMitral;
+    QString ri;
 };
 
 #endif // PROTESISMECANICA_H

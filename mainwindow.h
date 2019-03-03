@@ -13,6 +13,7 @@
 #include "db/tridb.h"
 #include "db/protesisbiologicadb.h"
 #include "db/protesismecanicadb.h"
+#include "db/anillodb.h"
 #include "display/displayciclo.h"
 #include <QMainWindow>
 
@@ -41,6 +42,7 @@ public:
     void displayTriInTw(QList<TriBean> insertarTri);
     void displayProtesisBioInTw(QList<ProtesisBiologicaBean> insertarProtesisBio);
     void displayProtesisMecInTw(QList<ProtesisMecanicaBean> insertarProtesisMec);
+    void displayAnilloInTw(QList<AnilloBean> insertarAnillo);
 
 
 private slots:
@@ -65,6 +67,10 @@ private slots:
     void on_pushButtonProtesisBio_clicked();
     void on_pushButtonProtesisMec_clicked();
 
+    void on_pushButtonAnillo_clicked();
+
+    void on_pushButtonExport_clicked();
+
 private:
     InitDb valvularesDb;
     PacienteDb myPacienteDb;
@@ -78,10 +84,10 @@ private:
     TriDb myTriDb;
     ProtesisBiologicaDb myProtesisBiologicaDb;
     ProtesisMecanicaDb myProtesisMecanicaDb;
+    AnilloDb myAnilloDb;
     Ui::MainWindow *ui;
     void showError(const QSqlError &err);
     QString comprobarLineEdit(QString lineEdit);
-
 };
 
 #endif // MAINWINDOW_H
